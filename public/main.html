@@ -7,34 +7,115 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fb;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 0;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #a6a5a8;
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+           }
+
+        .sidebar-header img {
+            width: 50px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .sidebar-header h2 {
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .menu-btn {
+            font-size: 30px;
+            cursor: pointer;
+            color: #000000;
+            background: rgb(100, 97, 97);
+            border: rgb(0, 0, 0);
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 1111;
+        }
+
+    
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .header-left h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .header-right button {
+            font-size: 16px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .main-section p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+        }
+       
+    </style>
 </head>
 
 <body>
 
     <!-- Sliding Ad Section -->
-    <div id="ad-banner" class="ad-banner">
+    <div id="ad-banner" class="asd-banner">
         <div class="ad-content">
-            <p>Special Offer: Take the Quiz & Win a Prize!</p>
+            <p>Welcome Coderz welcome!</p>
             <button class="close-btn" onclick="closeAd()">X</button>
         </div>
     </div>
 
-    <div class="main-container">
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <img src="logo.png" alt="Logo" class="logo">
-                <h2>Welcome, <span id="user-name">User</span></h2>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#">Dashboard</a></li>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">Settings</a></li>
-                    <li><a href="#">Logout</a></li>
-                </ul>
-            </nav>
-        </aside>
+    <!-- Sliding Menu Button (Three Dots) -->
+    <span class="menu-btn" onclick="toggleSidebar()">&#x2022;&#x2022;&#x2022;</span>
 
+    <!-- Sidebar (Hidden initially) -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="profile-icon.png" alt="Profile Icon">
+            <h2>Welcome, <span id="user-name">User</span></h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-container" id="main-container">
         <main class="content">
             <header class="header">
                 <div class="header-left">
@@ -44,11 +125,7 @@
                     <button class="profile-btn" onclick="window.location.href='profile.html'">
                         <img src="profile-icon.png" alt="Profile Icon" class="profile-icon"> Profile
                     </button>
-
                     <button class="quiz-btn" onclick="window.location.href='quiz.html'">Start Quiz</button>
-
-                        Start Quiz
-                    </button>
                 </div>
             </header>
 
@@ -64,17 +141,19 @@
     </div>
 
     <script>
-        // Fetch User Data from Backend
-        fetch('http://localhost:3000/user')
-            .then(response => response.json())
-            .then(data => {
-                // Example: Displaying the first user's name in the dashboard
-                const userNameElement = document.getElementById('user-name');
-                if (data.length > 0) {
-                    userNameElement.textContent = data[0].name;  // Replace with actual user data
-                }
-            })
-            .catch(error => console.error('Error fetching user data:', error));
+        // Toggle Sidebar on clicking the menu button (three dots)
+        function toggleSidebar() {
+            var sidebar = document.getElementById('sidebar');
+            var mainContainer = document.getElementById('main-container');
+
+            if (sidebar.style.width === '250px') {
+                sidebar.style.width = '0';
+                mainContainer.style.marginLeft = '0';
+            } else {
+                sidebar.style.width = '250px';
+                mainContainer.style.marginLeft = '250px';
+            }
+        }
 
         // Close the ad banner
         function closeAd() {
