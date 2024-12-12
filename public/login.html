@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Logo and Header -->
+        <h2 class="logo">
+            <img src="imagee.jpg" alt="Logo" class="logo-image"> Hello Coderz
+        </h2>
+        <h3>Log in to your account</h3>
+
+        <!-- Login Form -->
+        <div class="logreg-box">
+            <div class="form-box login">
+                <form action="/login" method="POST" id="loginForm">
+                    <h2>Log In</h2>
+
+                    <!-- Error Message -->
+                    <div id="error-message" role="alert" style="color: red; display: none;"></div>
+
+                    <!-- Email Input -->
+                    <div class="input-box">
+                        <span class="icon"><i class="bx bxs-envelope"></i></span>
+                        <input type="email" name="email" id="email" required placeholder="Enter your email">
+                        <label for="email">Email</label>
+                    </div>
+
+                    <!-- Password Input -->
+                    <div class="input-box">
+                        <span class="icon" onclick="togglePasswordVisibility()">
+                            <i class="bx bxs-lock-alt" id="lockIcon" aria-label="Toggle password visibility" role="button" tabindex="0"></i>
+                        </span>
+                        <input type="password" name="password" id="password" required placeholder="Enter your password">
+                        <label for="password">Password</label>
+                    </div>
+
+                    <!-- Remember Me and Forgot Password -->
+                    <div class="remember-forget">
+                        <label><input type="checkbox" name="remember"> Remember me</label>
+                        <a href="forget.html">Forgot Password?</a>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn">Log In</button>
+
+                    <!-- Sign Up Redirect -->
+                    <div class="login-register">
+                        Don't have an account? <a href="register.html" class="register-link">Sign Up</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="social-icons">
+            <a href="https://www.facebook.com/pravin12sonwane" target="_blank"><i class="bx bxl-facebook"></i></a>
+            <a href="https://www.instagram.com/its.pravin.2004" target="_blank"><i class="bx bxl-instagram"></i></a>
+            <a href="https://www.youtube.com/@ProgrammingWithPravin" target="_blank"><i class="bx bxl-youtube"></i></a>
+            <a href="https://www.linkedin.com/in/pravin-sonwane" target="_blank"><i class="bx bxl-linkedin"></i></a>
+        </div>
+    </div>
+
+    <script>
+        function togglePasswordVisibility() {
+            const passwordField = document.getElementById('password');
+            const lockIcon = document.getElementById('lockIcon');
+
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                lockIcon.classList.replace('bxs-lock-alt', 'bxs-lock-open-alt');
+            } else {
+                passwordField.type = 'password';
+                lockIcon.classList.replace('bxs-lock-open-alt', 'bxs-lock-alt');
+            }
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+
+            // Reset error display
+            errorMessage.style.display = 'none';
+
+            // Validate email format
+            if (!validateEmail(email)) {
+                errorMessage.textContent = 'Please enter a valid email address.';
+                errorMessage.style.display = 'block';
+                event.preventDefault();
+                return;
+            }
+
+            // Validate password length
+            if (password.length < 6) {
+                errorMessage.textContent = 'Password must be at least 6 characters long.';
+                errorMessage.style.display = 'block';
+                event.preventDefault();
+            }
+        });
+
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
+    <link rel="stylesheet" href="forget.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Logo and Header -->
+        <h2 class="logo">
+            <img src="imagee.jpg" alt="Logo" class="logo-image"> Hello Coderz
+        </h2>
+        <h3>Reset Your Password</h3>
+
+        <!-- Reset Password Form -->
+        <div class="form-box">
+            <form method="post" action="/forget" id="resetForm" onsubmit="return validatePasswords()">
+                <h2>Reset Password</h2>
+
+                <!-- Email Input -->
+                <div class="input-box">
+                    <span class="icon"><i class="bx bxs-envelope"></i></span>
+                    <input type="email" name="email" id="email" required aria-label="Email Address" placeholder="Enter your email">
+                    <label for="email">Email Address</label>
+                </div>
+
+                <!-- New Password Input -->
+                <div class="input-box">
+                    <span class="icon"><i class="bx bxs-lock-alt"></i></span>
+                    <input type="password" name="newpassword" id="newpassword" required aria-label="New Password" placeholder="Enter new password">
+                    <label for="newpassword">New Password</label>
+                </div>
+
+                <!-- Confirm Password Input -->
+                <div class="input-box">
+                    <span class="icon"><i class="bx bxs-lock-alt"></i></span>
+                    <input type="password" name="confirmpassword" id="confirmpassword" required aria-label="Confirm Password" placeholder="Confirm your password">
+                    <label for="confirmpassword">Confirm Password</label>
+                </div>
+
+                <!-- Error Message -->
+                <div id="error-message" role="alert" style="color: red; display: none;">Passwords do not match!</div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn">Change Password</button>
+
+                <!-- Back to Login -->
+                <div class="login-register">
+                    Remember your password? <a href="login.html" class="register-link">Log In</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function validatePasswords() {
+            const newPassword = document.getElementById('newpassword').value;
+            const confirmPassword = document.getElementById('confirmpassword').value;
+            const errorMessage = document.getElementById('error-message');
+
+            // Reset error display
+            errorMessage.style.display = 'none';
+
+            // Check password length
+            if (newPassword.length < 8) {
+                errorMessage.textContent = 'Password must be at least 8 characters long.';
+                errorMessage.style.display = 'block';
+                return false;
+            }
+
+            // Check if passwords match
+            if (newPassword !== confirmPassword) {
+                errorMessage.textContent = 'Passwords do not match!';
+                errorMessage.style.display = 'block';
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+
+</html>
