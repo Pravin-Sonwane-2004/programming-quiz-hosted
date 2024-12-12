@@ -27,7 +27,7 @@ const connectToDatabase = async () => {
   try {
     await client.connect(); // Establish a connection
     db = client.db(dbName); // Use DB_NAME from .env or fallback to "defaultDB"
-    console.log("✅ MongoDB connected successfully!");
+    console.log("✅ yey 😎😎😎MongoDB connected successfully!");
     console.log(`📂 Using database: ${dbName}`);
   } catch (err) {
     console.error("❌ MongoDB connection failed:", err.message);
@@ -54,7 +54,7 @@ const gracefulShutdown = async () => {
   try {
     if (client) {
       await client.close(); // Close the MongoDB connection
-      console.log("✅ MongoDB connection closed gracefully.");
+      console.log("✅ 😊😊😊 MongoDB connection closed.");
     }
     process.exit(0);
   } catch (err) {

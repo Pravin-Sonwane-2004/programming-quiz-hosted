@@ -155,11 +155,16 @@ h3 {
         padding: 10px;
     }
 }
+/* Logo styling */
+.logo {
+    font-size: 40px; /* Adjust font size of the text */
+    display: flex; /* Align logo and text horizontally */
+    align-items: center; /* Center align items vertically */
+}
 
 /* Logo image styling */
 .logo-image {
-    width: 50px;
-    height: auto;
-    margin-right: 10px;
-    vertical-align: left;
+    width: 50px; /* Decrease the logo width */
+    height: auto; /* Maintain the aspect ratio */
+    margin-right: 10px; /* Space between logo and text */
 }

@@ -27,11 +27,18 @@ body {
 }
 
 /* Logo header styling */
+/* Logo styling */
 .logo {
-    font-size: 32px;
-    font-weight: bold;
-    color: #000000;
-    margin-bottom: 30px;
+    font-size: 30px; /* Adjust font size of the text */
+    display: flex; /* Align logo and text horizontally */
+    align-items: center; /* Center align items vertically */
+}
+
+/* Logo image styling */
+.logo-image {
+    width: 50px; /* Decrease the logo width */
+    height: auto; /* Maintain the aspect ratio */
+    margin-right: 10px; /* Space between logo and text */
 }
 
 /* Input box styling */
