@@ -1,77 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <title>Quiz</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <!-- Main Quiz Section -->
-    <div id="main-content">
-        <!-- Navigation Bar -->
-        <nav>
-            <a href="main.html" id="home-btn">Home</a>
-            <a href="login.html" id="logout-btn" onclick="logout()">Logout</a>
 
-        </nav>
+    <!-- Sliding Ad Section -->
+    <div id="ad-banner" class="ad-banner">
+        <div class="ad-content">
+            <p>Special Offer: Take the Quiz & Win a Prize!</p>
+            <button class="close-btn" onclick="closeAd()">X</button>
+        </div>
+    </div>
 
-        <!-- About Section (Initially Hidden) -->
-        <section id="about-section" style="display: none;">
-            <h2>About</h2>
-            <p>This is Pravin Sonwane's website. Coop with me to explore programming quizzes on various languages like Java, C, C++, SQL, CSS, and Python.</p>
-        </section>
-
-        <!-- Quiz Container -->
-        <div class="quiz-container scrollable-content">
-            <h2 class="quiz-title">Programming Quiz</h2>
-            <h3 id="intro-text">BY PRAVIN SONWANE</h3>
-            <p id="intro-text">Which programming language would you like to quiz on?</p>
-            <div id="language-buttons" class="quiz-buttons">
-                <button class="quiz-button" onclick="startQuiz('Java')">Java</button>
-                <button class="quiz-button" onclick="startQuiz('DSA')">DSA</button>
-                <button class="quiz-button" onclick="startQuiz('C')">C</button>
-                <button class="quiz-button" onclick="startQuiz('CPlusPlus')">C++</button>
-                <button class="quiz-button" onclick="startQuiz('SQL')">SQL</button>
-                <button class="quiz-button" onclick="startQuiz('CSS')">CSS</button>
-                <button class="quiz-button" onclick="startQuiz('Python')">Python</button>
-                <button class="quiz-button" onclick="startQuiz('RandomTechnical')">Random Technical</button>
-                <button class="quiz-button" onclick="startQuiz('LinearAlgebra')">Linear Algebra</button>
-                <button class="quiz-button" onclick="startQuiz('BackendProgramming')">Backend Programming</button>
+    <div class="main-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="logo.png" alt="Logo" class="logo">
+                <h2>Welcome, <span id="user-name">User</span></h2>
             </div>
-        </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
 
-        <!-- Quiz Section -->
-        <div id="quizSection" class="quiz-question"></div>
-        <div class="progress-bar" id="progressBar"></div>
+        <main class="content">
+            <header class="header">
+                <div class="header-left">
+                    <h1>Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <button class="profile-btn" onclick="window.location.href='profile.html'">
+                        <img src="profile-icon.png" alt="Profile Icon" class="profile-icon"> Profile
+                    </button>
 
-        <!-- Performance Section -->
-        <div id="performanceSection" class="performance-container" style="display: none;">
-            <h3>Your Performance</h3>
-            <p id="performanceText"></p>
-            <div id="countdown"></div>
-            <button class="quiz-button" onclick="showPerformance()">Performance</button>
-        </div>
+                    <button class="quiz-btn" onclick="window.location.href='quiz.html'">Start Quiz</button>
+
+                        Start Quiz
+                    </button>
+                </div>
+            </header>
+
+            <section class="main-section">
+                <h2>Welcome to Your Dashboard</h2>
+                <p>This page loads after login. All your activities and information will appear here.</p>
+
+                <div id="user-data">
+                    <!-- User data will appear here -->
+                </div>
+            </section>
+        </main>
     </div>
 
-    <!-- Fireworks Effect Container -->
-    <div id="fireworks" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1000;">
-        <div class="firework"></div>
-        <div class="firework"></div>
-        <div class="firework"></div>
-    </div>
+    <script>
+        // Fetch User Data from Backend
+        fetch('http://localhost:3000/user')
+            .then(response => response.json())
+            .then(data => {
+                // Example: Displaying the first user's name in the dashboard
+                const userNameElement = document.getElementById('user-name');
+                if (data.length > 0) {
+                    userNameElement.textContent = data[0].name;  // Replace with actual user data
+                }
+            })
+            .catch(error => console.error('Error fetching user data:', error));
 
-    <!-- Countdown Timer -->
-    <div class="countdown-timer">
-        <div class="countdown-circle">
-            <div class="countdown-number">3</div> <!-- Default time -->
-        </div>
-    </div>
+        // Close the ad banner
+        function closeAd() {
+            document.getElementById('ad-banner').style.display = 'none';
+        }
+    </script>
 
-    <!-- Response Container -->
-    <div id="response"></div>
-
-    <!-- Scripts -->
-    <script src="scripts.js"></script>
 </body>
+
 </html>
-    

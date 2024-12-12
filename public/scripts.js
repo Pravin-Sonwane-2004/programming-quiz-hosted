@@ -898,6 +898,7 @@ BackendProgramming: [
 
     
 };
+
 let totalQuestions = 30;  // Adjust this to match the number of questions you're using
 let currentQuestionIndex = 0;
 let score = 0;
@@ -908,6 +909,143 @@ let isOptionSelected = false; // Track if an option is selected
 let isCountdownActive = false; // Track if countdown is active
 let userDefinedTime = 10; // Default time for countdown
 let timer;
+
+console.log("JavaScript file loaded successfully!");
+
+
+// Function to shuffle questions
+function shuffleQuestions() {
+    const shuffled = quizData.sort(() => Math.random() - 0.5);
+    return shuffled.slice(0, totalQuestions); // Use 30 questions
+}
+
+// Function to start the quiz
+function startQuiz() {
+    questionsShuffled = shuffleQuestions();
+    currentQuestionIndex = 0;
+    score = 0;
+    selectedAnswers = [];
+    incorrectAnswers = [];
+    
+    // Hide intro and show first question
+    document.getElementById('intro-text').style.display = 'none';
+    document.getElementById('language-buttons').style.display = 'none';
+    document.getElementById('performanceSection').style.display = 'none';
+
+    showQuestion();
+}
+
+// Function to evaluate performance
+function evaluatePerformance() {
+    let performanceMessage;
+    if (score === totalQuestions) {
+        performanceMessage = "Excellent! You answered all questions correctly.";
+    } else if (score >= totalQuestions * 0.8) {
+        performanceMessage = "Good job! You answered most questions correctly.";
+    } else if (score >= totalQuestions * 0.5) {
+        performanceMessage = "You're doing better! Keep it up.";
+    } else {
+        performanceMessage = "Improvement needed. Keep practicing!";
+    }
+    
+    return performanceMessage;
+}
+
+// Function to show final performance
+function showFinalPerformance() {
+    const performanceMessage = evaluatePerformance();
+    const percentage = ((score / totalQuestions) * 100).toFixed(2);
+
+    const resultSection = document.getElementById('performanceSection');
+    resultSection.innerHTML = `
+        <div class="performance-message">
+            <h3>Your Final Performance</h3>
+            <p>${performanceMessage}</p>
+            <p>Final Score: ${score} out of ${totalQuestions} (${percentage}%)</p>
+            <button class="quiz-button" onclick="enterReviewMode()">Review Incorrect Answers</button>
+            <button class="quiz-button" onclick="retakeIncorrectQuestions()">Retake Incorrect Questions</button>
+        </div>
+    `;
+    resultSection.style.display = 'block'; // Show performance section
+    resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// Function to show question
+function showQuestion() {
+    const quizSection = document.getElementById('quizSection');
+    const question = questionsShuffled[currentQuestionIndex];
+
+    if (question) {
+        quizSection.innerHTML = `
+            <div class="quiz-question">
+                <h3>${currentQuestionIndex + 1}. ${question.question}</h3>
+                ${question.options.map(option => `
+                    <div class="option" onclick="selectOption('${option}', '${question.answer}')">${option}</div>
+                `).join('')}
+                <div id="result-message"></div>
+            </div>
+        `;
+    } else {
+        showFinalPerformance(); // End quiz when no more questions
+    }
+}
+
+// Function to select option and check answer
+function selectOption(selected, correctAnswer) {
+    if (isOptionSelected || isCountdownActive) return; // Prevent multiple selections or actions during countdown
+    isOptionSelected = true;
+
+    const resultMessage = document.getElementById('result-message');
+    const currentQuestion = questionsShuffled[currentQuestionIndex];
+
+    // Check the selected answer
+    if (selected === correctAnswer) {
+        score++;
+        resultMessage.innerText = "Correct!!! ";
+        resultMessage.style.color = "green";
+    } else {
+        resultMessage.innerText = `Incorrect! The correct answer is: ${correctAnswer}`;
+        resultMessage.style.color = "red";
+        incorrectAnswers.push(currentQuestion); // Store incorrect answers
+    }
+
+    // Move to the next question after a brief delay
+    setTimeout(() => {
+        currentQuestionIndex++;
+        isOptionSelected = false;
+        if (currentQuestionIndex < totalQuestions) {
+            showQuestion(); // Show the next question
+        } else {
+            showFinalPerformance(); // Show final performance after all questions
+        }
+    }, 2000);
+}
+
+// Function to review incorrect answers
+function enterReviewMode() {
+    const quizSection = document.getElementById('quizSection');
+    quizSection.innerHTML = `
+        <div class="performance-message">
+            <h3>Review Incorrect Answers</h3>
+            ${incorrectAnswers.map((q, i) => `
+                <div class="review-question">
+                    <strong>Q${i + 1}: ${q.question}</strong>
+                    <p>Your Answer: ${selectedAnswers[i]}</p>
+                    <p>Correct Answer: ${q.answer}</p>
+                </div>
+            `).join('')}
+        </div>
+    `;
+}
+
+// Retake incorrect questions
+function retakeIncorrectQuestions() {
+    currentQuestionIndex = 0;
+    questionsShuffled = incorrectAnswers; // Use incorrect answers for retake
+    score = 0;
+    selectedAnswers = [];
+    showQuestion(); // Show the first question from the incorrect ones
+}
 
 // Shuffle Questions Function
 function shuffleQuestions(language) {
@@ -1171,3 +1309,34 @@ function logout() {
     // Redirect to the login page
     window.location.href = 'login.html';
 }
+function submitPerformanceToBackend(score, totalQuestions) {
+    const username = 'testUser'; // You can use the actual username from your login system
+    const percentage = ((score / totalQuestions) * 100).toFixed(2);
+  
+    const performanceData = {
+      username,
+      score,
+      totalQuestions,
+      percentage
+    };
+  
+    // Send data to backend
+    fetch('http://localhost:3000/submit-performance', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(performanceData)
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Performance saved:', data);
+    })
+    .catch(error => {
+      console.error('Error saving performance:', error);
+    });
+  }
+  
+  // Call this function when quiz ends and performance needs to be saved
+  submitPerformanceToBackend(score, totalQuestions);
+  
