@@ -1,48 +1,36 @@
-require("dotenv").config();
-const http = require("http");
-const fs = require("fs");
-const path = require("path");
-const url = require("url");
-const querystring = require("querystring");
-const bcrypt = require("bcrypt");
-const { connectToDatabase, getDb } = require("./database/connection");
+// server/app.js
 
+require('dotenv').config({ path: './config/.env' });
 
 const express = require('express');
 const path = require('path');
-const mongoose = require('mongoose');
-const app = express();
-const questionRoutes = require('./routes/questionsRoutes');  // Include your routes
+const fs = require('fs');
+const bcrypt = require('bcrypt');
+const { connectToDatabase } = require("./database/connection");  // Import the function
 
-// MongoDB connection
-mongoose.connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
-.then(() => {
-    console.log("MongoDB connected");
-})
-.catch((err) => {
-    console.error("MongoDB connection failed", err);
-});
+const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// Call connectToDatabase inside an async function to establish the MongoDB connection
+(async () => {
+  try {
+    await connectToDatabase();
+    console.log("✅ MongoDB connection established.");
+  } catch (err) {
+    console.error("❌ MongoDB connection failed:", err);
+    process.exit(1);
+  }
+})();
 
 // Serve static frontend files
 app.use(express.static(path.join(__dirname, 'client', 'public')));
 
 // API route for quiz questions
+const questionRoutes = require('./routes/questionsRoutes');
 app.use('/api/questions', questionRoutes);
 
-// Catch-all route for SPA (single-page application)
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client', 'public', 'index.html'));
-});
-
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
-
-
+// Your other route handlers (registration, login, etc.)
 /**
  * Serve static files (HTML, CSS, JS, JSON)
  * @param {object} res - HTTP response object.
@@ -71,7 +59,7 @@ const handleRegistration = async (req, res) => {
   req.on("data", (chunk) => (body += chunk));
 
   req.on("end", async () => {
-    const postData = querystring.parse(body);
+    const postData = require('querystring').parse(body);
 
     try {
       const db = getDb();
@@ -83,6 +71,7 @@ const handleRegistration = async (req, res) => {
         return res.end("\u274c User already exists.");
       }
 
+      const bcrypt = require('bcrypt');
       const hashedPassword = await bcrypt.hash(postData.password, 12);
 
       await users.insertOne({
@@ -109,7 +98,7 @@ const handleLogin = async (req, res) => {
   req.on("data", (chunk) => (body += chunk));
 
   req.on("end", async () => {
-    const postData = querystring.parse(body);
+    const postData = require('querystring').parse(body);
 
     try {
       const db = getDb();
@@ -134,34 +123,36 @@ const handleLogin = async (req, res) => {
 /**
  * Main server logic.
  */
+const http = require("http");
+
 const server = http.createServer(async (req, res) => {
-  const parsedUrl = url.parse(req.url);
+  const parsedUrl = require('url').parse(req.url);
   const pathname = parsedUrl.pathname;
 
   if (req.method === "GET") {
     // Serve HTML pages
     if (pathname === "/" || pathname === "/login.html") {
-      return serveStaticFile(res, path.join(__dirname, "public", "login.html"), "text/html");
+      return serveStaticFile(res, path.join(__dirname, "client", "public", "login.html"), "text/html");
     }
     if (pathname === "/register.html") {
-      return serveStaticFile(res, path.join(__dirname, "public", "register.html"), "text/html");
+      return serveStaticFile(res, path.join(__dirname, "client", "public", "register.html"), "text/html");
     }
     if (pathname === "/main.html") {
-      return serveStaticFile(res, path.join(__dirname, "public", "main.html"), "text/html");
+      return serveStaticFile(res, path.join(__dirname, "client", "public", "main.html"), "text/html");
     }
     if (pathname === "/quiz.html") {
-      return serveStaticFile(res, path.join(__dirname, "public", "quiz.html"), "text/html");
+      return serveStaticFile(res, path.join(__dirname, "client", "public", "quiz.html"), "text/html");
     }
 
     // Serve CSS, JS, and JSON files
     if (pathname.endsWith(".css")) {
-      return serveStaticFile(res, path.join(__dirname, "public", pathname), "text/css");
+      return serveStaticFile(res, path.join(__dirname, "client", "public", pathname), "text/css");
     }
     if (pathname.endsWith(".js")) {
-      return serveStaticFile(res, path.join(__dirname, "public", pathname), "application/javascript");
+      return serveStaticFile(res, path.join(__dirname, "client", "public", pathname), "application/javascript");
     }
     if (pathname === "/questions.json") {
-      return serveStaticFile(res, path.join(__dirname, "public", "questions.json"), "application/json");
+      return serveStaticFile(res, path.join(__dirname, "client", "public", "questions.json"), "application/json");
     }
   } else if (req.method === "POST") {
     if (pathname === "/register") {
@@ -176,6 +167,8 @@ const server = http.createServer(async (req, res) => {
   res.writeHead(404, { "Content-Type": "text/plain" });
   res.end("\u274c Not Found");
 });
+const PORT = process.env.PORT || 3000;  // Fallback to 3000 if PORT is not set
+
 
 (async () => {
   await connectToDatabase();
