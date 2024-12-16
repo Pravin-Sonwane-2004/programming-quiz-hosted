@@ -12,23 +12,30 @@
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f4f7fb;
+            margin: 0;
+            padding: 0;
+            display: flex;
         }
 
         /* Sidebar Styles */
         .sidebar {
-            width: 0;
-            height: 100%;
+            width: 250px;
+            height: 100vh;
+            background-color: #343a40;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
             position: fixed;
-            top: 0;
-            left: 0;
-            background-color: #a6a5a8;
-            overflow-x: hidden;
-            transition: 0.3s;
-            padding-top: 60px;
-           }
+        }
+
+        .sidebar-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
         .sidebar-header img {
-            width: 50px;
+            width: 70px;
             border-radius: 50%;
             margin-bottom: 10px;
         }
@@ -38,129 +45,170 @@
             margin: 0;
         }
 
-        .menu-btn {
-            font-size: 30px;
-            cursor: pointer;
-            color: #000000;
-            background: rgb(100, 97, 97);
-            border: rgb(0, 0, 0);
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            z-index: 1111;
+        .sidebar nav ul {
+            list-style: none;
+            padding: 0;
         }
 
-    
+        .sidebar nav ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .sidebar nav ul li a:hover {
+            color: #007bff;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            margin-left: 270px;
+            padding: 40px;
+            width: 100%;
+        }
+
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #fff;
+            background-color: #ffffff;
             padding: 20px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
+            margin-bottom: 30px;
         }
 
-        .header-left h1 {
-            font-size: 24px;
+        .header h1 {
             margin: 0;
+            font-size: 24px;
         }
 
-        .header-right button {
-            font-size: 16px;
-            border: none;
+        .header button {
+            padding: 10px 20px;
             background-color: #007bff;
             color: white;
-            cursor: pointer;
+            border: none;
             border-radius: 5px;
-            transition: background-color 0.3s;
+            cursor: pointer;
+            font-size: 16px;
         }
 
-        .main-section p {
+        .content-section {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .content-section h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .content-section p {
             font-size: 16px;
-            line-height: 1.6;
             color: #333;
         }
-       
+
+        .performance-section {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .performance-section h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .performance-section .score {
+            font-size: 18px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- Sliding Ad Section -->
-    <div id="ad-banner" class="asd-banner">
-        <div class="ad-content">
-            <p>Welcome Coderz welcome!</p>
-            <button class="close-btn" onclick="closeAd()">X</button>
-        </div>
-    </div>
-
-    <!-- Sliding Menu Button (Three Dots) -->
-    <span class="menu-btn" onclick="toggleSidebar()">&#x2022;&#x2022;&#x2022;</span>
-
-    <!-- Sidebar (Hidden initially) -->
-    <aside class="sidebar" id="sidebar">
+    <!-- Sidebar -->
+    <aside class="sidebar">
         <div class="sidebar-header">
             <img src="profile-icon.png" alt="Profile Icon">
-            <h2>Welcome, <span id="user-name">User</span></h2>
+            <h2>Welcome, User</h2>
         </div>
         <nav>
             <ul>
                 <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Profile</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="quiz.html">Start Quiz</a></li>
                 <li><a href="#">Settings</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="login.html">Logout</a></li>
             </ul>
         </nav>
     </aside>
 
     <!-- Main Content -->
-    <div class="main-container" id="main-container">
-        <main class="content">
-            <header class="header">
-                <div class="header-left">
-                    <h1>Dashboard</h1>
-                </div>
-                <div class="header-right">
-                    <button class="profile-btn" onclick="window.location.href='profile.html'">
-                        <img src="profile-icon.png" alt="Profile Icon" class="profile-icon"> Profile
-                    </button>
-                    <button class="quiz-btn" onclick="window.location.href='quiz.html'">Start Quiz</button>
-                </div>
-            </header>
+    <div class="main-content">
+        <header class="header">
+            <h1>Dashboard</h1>
+            <button onclick="window.location.href='quiz.html'">Start Quiz</button>
+        </header>
 
-            <section class="main-section">
-                <h2>Welcome to Your Dashboard</h2>
-                <p>This page loads after login. All your activities and information will appear here.</p>
+        <section class="content-section">
+            <h2>Welcome to Your Dashboard</h2>
+            <p>Here you can view your quiz performance and other details.</p>
+        </section>
 
-                <div id="user-data">
-                    <!-- User data will appear here -->
-                </div>
-            </section>
-        </main>
+        <!-- Performance Section -->
+        <section class="performance-section">
+            <h3>Your Performance</h3>
+            <p id="performanceMessage">You haven't taken any quizzes yet.</p>
+            <div id="scoreSection" class="score" style="display:none;">
+                <p>Score: <span id="scoreValue">0</span> out of <span id="totalQuestions">0</span></p>
+                <p>Percentage: <span id="percentageValue">0</span>%</p>
+            </div>
+            <button class="quiz-button" onclick="viewQuizPerformance()">View Previous Performance</button>
+        </section>
+
     </div>
 
     <script>
-        // Toggle Sidebar on clicking the menu button (three dots)
-        function toggleSidebar() {
-            var sidebar = document.getElementById('sidebar');
-            var mainContainer = document.getElementById('main-container');
+        // Sample performance data (In a real scenario, this would be fetched from the server or localStorage)
+        let score = 20; // Example score
+        let totalQuestions = 30; // Example total questions
+        let percentage = (score / totalQuestions) * 100;
 
-            if (sidebar.style.width === '250px') {
-                sidebar.style.width = '0';
-                mainContainer.style.marginLeft = '0';
+        // Function to display quiz performance
+        function viewQuizPerformance() {
+            const performanceMessage = document.getElementById('performanceMessage');
+            const scoreSection = document.getElementById('scoreSection');
+            const scoreValue = document.getElementById('scoreValue');
+            const totalQuestionsElement = document.getElementById('totalQuestions');
+            const percentageValue = document.getElementById('percentageValue');
+
+            if (score === 0) {
+                performanceMessage.textContent = "You haven't taken any quizzes yet.";
+                scoreSection.style.display = 'none';
             } else {
-                sidebar.style.width = '250px';
-                mainContainer.style.marginLeft = '250px';
+                performanceMessage.textContent = "Here is your quiz performance:";
+                scoreValue.textContent = score;
+                totalQuestionsElement.textContent = totalQuestions;
+                percentageValue.textContent = percentage.toFixed(2);
+                scoreSection.style.display = 'block';
             }
         }
 
-        // Close the ad banner
-        function closeAd() {
-            document.getElementById('ad-banner').style.display = 'none';
-        }
+        // Call the function to display performance data on load
+        viewQuizPerformance();
     </script>
-
 </body>
 
 </html>

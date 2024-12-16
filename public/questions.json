@@ -1,0 +1,421 @@
+{
+    "Java": [
+        {
+                "question": "What is the output of: System.out.println(2 + 3);",
+                "options": ["2", "5", "23", "Error"],
+                "answer": "5",
+                "explanation": "The expression 2 + 3 evaluates to 5."
+              },
+              {
+                "question": "Which of the following is not a Java feature?",
+                "options": ["Object-oriented", "Use of pointers", "Portable", "Dynamic"],
+                "answer": "Use of pointers",
+                "explanation": "Java does not support pointers like C or C++."
+              },
+              {
+                "question": "Which of the following is a valid keyword in Java?",
+                "options": ["include", "import", "using", "define"],
+                "answer": "import",
+                "explanation": "'import' is a keyword used to include other classes or packages."
+              },
+              {
+                "question": "Which keyword is used to define a constant in Java?",
+                "options": ["constant", "final", "const", "static"],
+                "answer": "final",
+                "explanation": "The 'final' keyword is used to define constants in Java."
+              },
+              {
+                "question": "What is the output of: System.out.println('A' + 'B');",
+                "options": ["65", "66", "131", "AB"],
+                "answer": "131",
+                "explanation": "In Java, 'A' and 'B' are characters, and their ASCII values (65 and 66) are summed to produce 131."
+              },
+              {
+                "question": "Which exception is thrown when dividing by zero in Java?",
+                "options": ["NullPointerException", "ArithmeticException", "NumberFormatException", "IOException"],
+                "answer": "ArithmeticException",
+                "explanation": "Dividing by zero in Java results in an ArithmeticException."
+              },
+              {
+                "question": "What is the size of an int data type in Java?",
+                "options": ["8 bits", "16 bits", "32 bits", "64 bits"],
+                "answer": "32 bits",
+                "explanation": "In Java, an int is a 32-bit signed data type."
+              },
+              {
+                "question": "Which of the following is a valid constructor for the class 'Person'?",
+                "options": ["void Person() {}", "int Person() {}", "Person() {}", "Person(void) {}"],
+                "answer": "Person() {}",
+                "explanation": "Constructors do not have a return type, and their name must match the class name."
+              },
+              {
+                "question": "Which of the following is the default value of a boolean variable?",
+                "options": ["null", "true", "false", "0"],
+                "answer": "false",
+                "explanation": "The default value for a boolean variable in Java is 'false'."
+              },
+              {
+                "question": "Which method is used to start a thread in Java?",
+                "options": ["run()", "execute()", "start()", "init()"],
+                "answer": "start()",
+                "explanation": "The 'start()' method is used to begin the execution of a thread."
+              },
+              {
+            
+            "question": "What is the size of int in Java?",
+            "options": ["2 bytes", "4 bytes", "8 bytes", "Depends on JVM"],
+            "answer": "4 bytes",
+            "explanation": "In Java, the int data type is a 32-bit signed two's complement integer, which takes up 4 bytes of memory."
+        },
+        {
+            "question": "Which keyword is used to define a class in Java?",
+            "options": ["class", "Class", "define", "struct"],
+            "answer": "class",
+            "explanation": "The 'class' keyword is used to define a new class in Java."
+        },
+        {
+            "question": "What is the default value of a boolean variable in Java?",
+            "options": ["true", "false", "null", "undefined"],
+            "answer": "false",
+            "explanation": "In Java, the default value of a boolean variable is 'false'."
+        },
+        {
+            "question": "Which of these is not a valid Java data type?",
+            "options": ["byte", "short", "real", "double"],
+            "answer": "real",
+            "explanation": "'real' is not a valid data type in Java. Java uses 'float' or 'double' for real numbers."
+        },
+        {
+            "question": "What does JVM stand for?",
+            "options": ["Java Virtual Machine", "Java Verified Machine", "Java Variable Manager", "Java Value Model"],
+            "answer": "Java Virtual Machine",
+            "explanation": "JVM stands for Java Virtual Machine, which is responsible for running Java bytecode on any platform."
+        },
+        {
+                    "question": "What is the primary purpose of the JVM (Java Virtual Machine)?",
+                    "options": [
+                        "To interpret compiled bytecode",
+                        "To compile Java code into bytecode",
+                        "To execute Java code directly",
+                        "To manage memory allocation"
+                    ],
+                    "answer": "To interpret compiled bytecode",
+                    "explanation": "The JVM interprets the bytecode generated by the Java compiler and executes it, making Java platform-independent."
+                },
+                {
+                    "question": "Which of these is not a feature of Java?",
+                    "options": [
+                        "Object-oriented",
+                        "Platform-independent",
+                        "Supports pointers",
+                        "Garbage collection"
+                    ],
+                    "answer": "Supports pointers",
+                    "explanation": "Java does not support pointers directly to ensure security and simplicity, unlike C or C++."
+                },
+                {
+                    "question": "What is the default value of an int variable in Java?",
+                    "options": ["0", "null", "undefined", "No default value"],
+                    "answer": "0",
+                    "explanation": "In Java, all primitive data types have default values. For 'int', the default value is 0."
+                },
+                {
+                    "question": "What is the purpose of the 'final' keyword in Java?",
+                    "options": [
+                        "To create a constant",
+                        "To prevent inheritance",
+                        "To prevent method overriding",
+                        "All of the above"
+                    ],
+                    "answer": "All of the above",
+                    "explanation": "The 'final' keyword can be used to declare constants, prevent inheritance, and prevent method overriding."
+                },
+                {
+                    "question": "Which Java keyword is used to inherit a class?",
+                    "options": ["inherits", "extends", "implements", "super"],
+                    "answer": "extends",
+                    "explanation": "The 'extends' keyword is used in Java to inherit a class and establish an 'is-a' relationship."
+                },
+                {
+                    "question": "What is the size of a long data type in Java?",
+                    "options": ["4 bytes", "8 bytes", "16 bytes", "Platform-dependent"],
+                    "answer": "8 bytes",
+                    "explanation": "In Java, the long data type is a 64-bit signed integer, and its size is 8 bytes."
+                },
+                {
+                    "question": "What does the 'static' keyword mean in Java?",
+                    "options": [
+                        "A method or variable belongs to the class, not instances",
+                        "The method cannot be overridden",
+                        "The variable cannot be changed",
+                        "The method executes faster"
+                    ],
+                    "answer": "A method or variable belongs to the class, not instances",
+                    "explanation": "The 'static' keyword in Java means that the member belongs to the class itself rather than instances of the class."
+                },
+                {
+                    "question": "Which of the following is a marker interface in Java?",
+                    "options": ["Serializable", "Cloneable", "Remote", "All of the above"],
+                    "answer": "All of the above",
+                    "explanation": "Marker interfaces are interfaces with no methods or fields, used to convey metadata. Serializable, Cloneable, and Remote are examples."
+                },
+                {
+                    "question": "What does the 'super' keyword do in Java?",
+                    "options": [
+                        "Access the parent class constructor",
+                        "Call a method from the parent class",
+                        "Access a parent class variable",
+                        "All of the above"
+                    ],
+                    "answer": "All of the above",
+                    "explanation": "The 'super' keyword in Java is used to access methods, constructors, or variables of the parent class."
+                },
+                {
+                    "question": "What is the purpose of the 'synchronized' keyword in Java?",
+                    "options": [
+                        "To enable multi-threading",
+                        "To ensure that only one thread can access a block of code at a time",
+                        "To terminate a thread",
+                        "To create a thread-safe collection"
+                    ],
+                    "answer": "To ensure that only one thread can access a block of code at a time",
+                    "explanation": "The 'synchronized' keyword ensures that a block of code is accessed by only one thread at a time to avoid race conditions."
+                },
+                {
+                    "question": "What is the default value of a boolean variable in Java?",
+                    "options": ["true", "false", "null", "undefined"],
+                    "answer": "false",
+                    "explanation": "The default value of a boolean variable in Java is 'false'."
+                },
+                {
+                    "question": "Which method is called when an object is garbage collected in Java?",
+                    "options": ["dispose()", "garbageCollect()", "finalize()", "destroy()"],
+                    "answer": "finalize()",
+                    "explanation": "The finalize() method is called by the garbage collector before reclaiming the memory used by an object."
+                },
+                {
+                    "question": "What does the term 'immutable' mean in Java?",
+                    "options": [
+                        "An object cannot be modified after creation",
+                        "An object cannot be deleted",
+                        "An object is thread-safe",
+                        "An object is not garbage collected"
+                    ],
+                    "answer": "An object cannot be modified after creation",
+                    "explanation": "An immutable object, such as a String, cannot be modified after it is created. Modifications result in new objects."
+                },
+                {
+                    "question": "What is the default value of a reference variable in Java?",
+                    "options": ["null", "undefined", "void", "No default value"],
+                    "answer": "null",
+                    "explanation": "In Java, the default value of a reference variable (for instance, an object or array reference) is 'null'."
+                },
+                {
+                    "question": "Which exception is thrown when dividing by zero in Java?",
+                    "options": ["ArithmeticException", "NumberFormatException", "NullPointerException", "IllegalArgumentException"],
+                    "answer": "ArithmeticException",
+                    "explanation": "Dividing by zero in Java throws an ArithmeticException at runtime."
+                },
+                {
+                    "question": "What is the maximum value an int can store in Java?",
+                    "options": ["2^31", "2^31 - 1", "2^32", "2^32 - 1"],
+                    "answer": "2^31 - 1",
+                    "explanation": "In Java, the int type is a 32-bit signed integer. Its range is -2^31 to 2^31 - 1."
+                },
+                {
+                    "question": "What does the 'transient' keyword indicate in Java?",
+                    "options": [
+                        "A variable is not part of serialization",
+                        "A variable is temporary and thread-local",
+                        "A variable cannot be inherited",
+                        "A variable is constant"
+                    ],
+                    "answer": "A variable is not part of serialization",
+                    "explanation": "The 'transient' keyword in Java indicates that a variable should not be serialized."
+                }
+            ],
+    "DSA": [
+        {
+                "question": "What is the time complexity of binary search?",
+                "options": ["O(n)", "O(log n)", "O(n log n)", "O(1)"],
+                "answer": "O(log n)",
+                "explanation": "Binary search divides the problem size by 2 at each step, resulting in O(log n) complexity."
+              },
+              {
+                "question": "Which data structure is used to implement a LIFO mechanism?",
+                "options": ["Queue", "Stack", "Linked List", "Hash Map"],
+                "answer": "Stack",
+                "explanation": "Stack operates on a Last-In-First-Out (LIFO) principle."
+              },
+              {
+                "question": "What is the best case time complexity of quicksort?",
+                "options": ["O(n)", "O(n log n)", "O(log n)", "O(n^2)"],
+                "answer": "O(n log n)",
+                "explanation": "In the best case, quicksort divides the array into two equal parts at each step."
+              },
+              {
+                "question": "Which traversal technique visits nodes in a depth-first manner?",
+                "options": ["Breadth-first Search", "Level-order Traversal", "Depth-first Search", "In-order Traversal"],
+                "answer": "Depth-first Search",
+                "explanation": "Depth-first Search (DFS) explores as far as possible along each branch before backtracking."
+              },
+              {
+                "question": "In a binary tree, how many children can a node have at most?",
+                "options": ["1", "2", "3", "4"],
+                "answer": "2",
+                "explanation": "In a binary tree, each node can have at most two children."
+              },          
+              {
+            "question": "What is the time complexity of inserting an element into a binary heap?",
+            "options": ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+            "answer": "O(log n)",
+            "explanation": "Insertion in a binary heap takes O(log n) due to the need to maintain the heap property."
+        },
+        {
+            "question": "Which algorithm is used to find the shortest path in a graph?",
+            "options": ["Dijkstra's Algorithm", "Prim's Algorithm", "Kruskal's Algorithm", "DFS"],
+            "answer": "Dijkstra's Algorithm",
+            "explanation": "Dijkstra's Algorithm is used to find the shortest path from a source node to all other nodes in a weighted graph."
+        },
+        {
+            "question": "Which data structure is used to implement a stack?",
+            "options": ["Array", "Queue", "Tree", "Graph"],
+            "answer": "Array",
+            "explanation": "Stacks can be implemented using arrays or linked lists."
+        },
+        {
+            "question": "What is the height of a balanced binary tree with n nodes?",
+            "options": ["O(log n)", "O(n)", "O(n^2)", "O(1)"],
+            "answer": "O(log n)",
+            "explanation": "The height of a balanced binary tree is logarithmic with respect to the number of nodes, making it O(log n)."
+        },
+        {
+            "question": "What is the worst-case time complexity of QuickSort?",
+            "options": ["O(n log n)", "O(n^2)", "O(log n)", "O(1)"],
+            "answer": "O(n^2)",
+            "explanation": "The worst-case time complexity of QuickSort is O(n^2) when the pivot selection results in highly unbalanced partitions."
+        }
+    ],
+    "C": [
+        {
+            "question": "Which header file is required to use printf() in C?",
+            "options": ["stdio.h", "stdlib.h", "string.h", "math.h"],
+            "answer": "stdio.h",
+            "explanation": "The stdio.h header file contains declarations for input/output functions such as printf() and scanf()."
+        },
+        {
+            "question": "What is the default value of an uninitialized integer variable in C?",
+            "options": ["0", "undefined", "null", "1"],
+            "answer": "undefined",
+            "explanation": "In C, uninitialized variables have an undefined value as they do not receive a default value."
+        },
+        {
+            "question": "What is the purpose of the 'continue' statement in C?",
+            "options": [
+                "To terminate the program",
+                "To skip the current iteration of a loop",
+                "To exit the loop",
+                "To stop execution temporarily"
+            ],
+            "answer": "To skip the current iteration of a loop",
+            "explanation": "The 'continue' statement skips the current iteration and jumps to the next iteration of the loop."
+        },
+        {
+            "question": "Which operator is used to access the value at the address stored in a pointer?",
+            "options": ["&", "*", "->", "."],
+            "answer": "*",
+            "explanation": "The dereference operator (*) is used to access the value stored at the address held by a pointer."
+        },
+        {
+            "question": "What does the sizeof operator do in C?",
+            "options": [
+                "Returns the number of elements in an array",
+                "Returns the size of a data type or variable in bytes",
+                "Checks the size of memory allocated",
+                "Calculates the total size of a program"
+            ],
+            "answer": "Returns the size of a data type or variable in bytes",
+            "explanation": "The sizeof operator returns the memory size (in bytes) of a data type or variable."
+        },
+                  {
+                    "question": "What is the format specifier for printing a floating-point number in C?",
+                    "options": ["%d", "%f", "%c", "%s"],
+                    "answer": "%f",
+                    "explanation": "The `%f` format specifier is used for printing floating-point numbers in C."
+                  },
+                  {
+                    "question": "Which operator is used to access the value stored at a pointer's address?",
+                    "options": ["&", "*", "->", "."],
+                    "answer": "*",
+                    "explanation": "The `*` operator is the dereference operator used to access the value at a pointer's address."
+                  },
+                  {
+                    "question": "What does the `sizeof` operator return for an `int` on most 32-bit systems?",
+                    "options": ["2", "4", "8", "16"],
+                    "answer": "4",
+                    "explanation": "On most 32-bit systems, the `sizeof(int)` returns 4 bytes."
+                  },
+                  {
+                    "question": "Which of the following is a valid way to declare a constant in C?",
+                    "options": ["const int x = 5;", "int const x;", "#define x 5", "Both A and C"],
+                    "answer": "Both A and C",
+                    "explanation": "In C, you can declare a constant using `const int x = 5;` or a macro with `#define x 5`."
+                  },
+                  {
+                    "question": "What is the output of the following C code?\n\n```c\nint x = 5;\nprintf(\"%d\", x++);\n```\n",
+                    "options": ["5", "6", "Compiler Error", "Undefined Behavior"],
+                    "answer": "5",
+                    "explanation": "`x++` is a post-increment operator, so the value of `x` is printed first (5), then incremented."
+                  }
+                ],
+    "Python": [
+        {
+            "question": "Which keyword is used to define a function in Python?",
+            "options": ["def", "func", "function", "lambda"],
+            "answer": "def",
+            "explanation": "The 'def' keyword is used to define a function in Python."
+        },
+        {
+            "question": "What is the output of len('Python')?",
+            "options": ["6", "7", "8", "5"],
+            "answer": "6",
+            "explanation": "The len() function returns the length of a string. 'Python' has 6 characters."
+        },
+        {
+            "question": "Which of the following is not a Python data type?",
+            "options": ["List", "Tuple", "Array", "Dictionary"],
+            "answer": "Array",
+            "explanation": "Python does not have a built-in 'Array' data type; it uses lists for similar functionality."
+        },
+            {
+              "question": "Which keyword is used to define a function in Python?",
+              "options": ["func", "def", "function", "define"],
+              "answer": "def",
+              "explanation": "In Python, functions are defined using the `def` keyword."
+            },
+            {
+              "question": "What is the output of `print(type(5.0))` in Python?",
+              "options": ["<class 'int'>", "<class 'float'>", "<class 'str'>", "Error"],
+              "answer": "<class 'float'>",
+              "explanation": "`5.0` is a floating-point number, so `type(5.0)` returns `<class 'float'>`."
+            },
+            {
+              "question": "Which method is used to add an element to the end of a list?",
+              "options": ["add()", "append()", "insert()", "extend()"],
+              "answer": "append()",
+              "explanation": "The `append()` method adds an element to the end of a list."
+            },
+            {
+              "question": "What is the correct way to create a tuple with one element?",
+              "options": ["(1)", "(1,)", "{1}", "[1]"],
+              "answer": "(1,)",
+              "explanation": "A single-element tuple must have a comma, e.g., `(1,)`."
+            },
+            {
+              "question": "What is the output of the following Python code?\n\n```python\nx = [1, 2, 3]\nprint(x[::-1])\n```\n",
+              "options": ["[1, 2, 3]", "[3, 2, 1]", "None", "Error"],
+              "answer": "[3, 2, 1]",
+              "explanation": "The slice `[::-1]` reverses the list."
+            }
+    ]
+}

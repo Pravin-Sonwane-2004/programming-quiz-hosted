@@ -4,15 +4,12 @@ const fs = require("fs");
 const path = require("path");
 const url = require("url");
 const querystring = require("querystring");
-const bcrypt = require("bcrypt"); // For hashing passwords
-const { connectToDatabase, getDb } = require("./database/connection"); // Import connection utilities
-const crypto = require("crypto"); // For token generation
-const nodemailer = require("nodemailer"); // For sending emails
-
+const bcrypt = require("bcrypt");
+const { connectToDatabase, getDb } = require("./database/connection");
 const PORT = process.env.PORT || 3000;
 
 /**
- * Serve static files (HTML, CSS, JS)
+ * Serve static files (HTML, CSS, JS, JSON)
  * @param {object} res - HTTP response object.
  * @param {string} filePath - Path to the file.
  * @param {string} contentType - MIME type of the content.
@@ -107,6 +104,7 @@ const server = http.createServer(async (req, res) => {
   const pathname = parsedUrl.pathname;
 
   if (req.method === "GET") {
+    // Serve HTML pages
     if (pathname === "/" || pathname === "/login.html") {
       return serveStaticFile(res, path.join(__dirname, "public", "login.html"), "text/html");
     }
@@ -119,12 +117,16 @@ const server = http.createServer(async (req, res) => {
     if (pathname === "/quiz.html") {
       return serveStaticFile(res, path.join(__dirname, "public", "quiz.html"), "text/html");
     }
-    // Serve CSS and JS files
+
+    // Serve CSS, JS, and JSON files
     if (pathname.endsWith(".css")) {
       return serveStaticFile(res, path.join(__dirname, "public", pathname), "text/css");
     }
     if (pathname.endsWith(".js")) {
       return serveStaticFile(res, path.join(__dirname, "public", pathname), "application/javascript");
+    }
+    if (pathname === "/questions.json") {
+      return serveStaticFile(res, path.join(__dirname, "public", "questions.json"), "application/json");
     }
   } else if (req.method === "POST") {
     if (pathname === "/register") {
@@ -135,6 +137,7 @@ const server = http.createServer(async (req, res) => {
     }
   }
 
+  // If no route matches
   res.writeHead(404, { "Content-Type": "text/plain" });
   res.end("\u274c Not Found");
 });
