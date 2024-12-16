@@ -8,6 +8,20 @@ dotenv.config(); // Load environment variables from .env file
 const uri = process.env.MONGO_URI;
 const dbName = process.env.DB_NAME || "defaultDB";
 
+const mongoose = require('mongoose');
+
+mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+.then(() => {
+    console.log("MongoDB connected successfully");
+})
+.catch((err) => {
+    console.error("Error connecting to MongoDB", err);
+});
+
+
 // Validate MongoDB URI
 if (!uri) {
   console.error("❌ Error: MONGO_URI is not defined in the .env file. Please add it and try again.");

@@ -4,6 +4,23 @@ const User = require('../models/userModel');
 const crypto = require('crypto');
 const bcrypt = require('bcrypt');
 
+
+// In routes/questionsRoutes.js or similar
+const Question = require('../models/questionModel');  // Model to fetch questions from DB
+
+// GET /api/questions - Fetch all quiz questions from DB
+router.get('/', async (req, res) => {
+    try {
+        const questions = await Question.find(); // MongoDB query to fetch questions
+        res.json(questions); // Send back questions as JSON
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching questions" });
+    }
+});
+
+module.exports = router;
+
+
 // POST /reset - Handle password reset completion
 router.post('/reset', async (req, res) => {
     const { token, newPassword } = req.body;

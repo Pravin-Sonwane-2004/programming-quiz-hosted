@@ -6,7 +6,42 @@ const url = require("url");
 const querystring = require("querystring");
 const bcrypt = require("bcrypt");
 const { connectToDatabase, getDb } = require("./database/connection");
-const PORT = process.env.PORT || 3000;
+
+
+const express = require('express');
+const path = require('path');
+const mongoose = require('mongoose');
+const app = express();
+const questionRoutes = require('./routes/questionsRoutes');  // Include your routes
+
+// MongoDB connection
+mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+.then(() => {
+    console.log("MongoDB connected");
+})
+.catch((err) => {
+    console.error("MongoDB connection failed", err);
+});
+
+// Serve static frontend files
+app.use(express.static(path.join(__dirname, 'client', 'public')));
+
+// API route for quiz questions
+app.use('/api/questions', questionRoutes);
+
+// Catch-all route for SPA (single-page application)
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'public', 'index.html'));
+});
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
+
 
 /**
  * Serve static files (HTML, CSS, JS, JSON)

@@ -14,21 +14,24 @@ let userDefinedTime = 3; // Countdown time in seconds
 // Fetch questions from questions.json
 async function loadQuestions() {
     try {
-        const response = await fetch('/questions.json'); // Adjust path if necessary
+        const response = await fetch('/api/questions'); // Change path to your backend API
         if (!response.ok) throw new Error('Failed to load questions');
         questions = await response.json();
-
-        // Check if questions are loaded for each language
-        if (!Object.keys(questions).length) {
-            alert('No questions available for any language.');
-        } else {
-            console.log('Questions loaded successfully:', questions);
-        }
+        // Handle questions
     } catch (error) {
         console.error('Error loading questions:', error);
         alert('Unable to load questions. Please try again later.');
     }
 }
+
+// Old: fetch from client/public/questions.json
+// New: fetch from the backend API
+fetch('/api/questions')
+    .then(response => response.json())
+    .then(data => {
+        // Use the data (questions) to start the quiz
+    })
+    .catch(error => console.error('Error loading questions:', error));
 
 // Shuffle Questions Function
 function shuffleQuestions(language) {
