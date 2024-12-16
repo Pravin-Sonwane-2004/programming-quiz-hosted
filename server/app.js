@@ -121,20 +121,6 @@ function showQuestion() {
 }
 
 
-
-
-// Call connectToDatabase inside an async function to establish the MongoDB connection
-(async () => {
-  try {
-    await connectToDatabase();
-    console.log("✅ MongoDB connection established.");
-  } catch (err) {
-    console.error("❌ MongoDB connection failed:", err);
-    process.exit(1);
-  }
-})();
-
-// Serve static frontend files
 app.use(express.static(path.join(__dirname, 'client', 'public')));
 
 // API route for quiz questions

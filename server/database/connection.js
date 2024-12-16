@@ -12,8 +12,8 @@ if (!uri) {
 }
 
 const client = new MongoClient(uri, {
-  tls: true,               // Enable TLS
-  tlsAllowInvalidCertificates: false, // Ensure certificates are valid
+  tls: true, // Enable TLS
+  minDHSize: 2048, // Enforce a minimum Diffie-Hellman key size for security
 });
 
 let db;
@@ -22,8 +22,7 @@ const connectToDatabase = async () => {
   try {
     await client.connect();
     db = client.db(dbName);
-    console.log("✅ yey 😎😎😎 MongoDB connected successfully!");
-    console.log(`📂 Using database: ${dbName}`);
+    console.log("✅ MongoDB connected successfully!");
   } catch (err) {
     console.error("❌ MongoDB connection failed:", err.message);
     process.exit(1);
@@ -41,7 +40,7 @@ const gracefulShutdown = async () => {
   try {
     if (client) {
       await client.close();
-      console.log("✅ 😊😊😊 MongoDB connection closed.");
+      console.log("✅ MongoDB connection closed.");
     }
     process.exit(0);
   } catch (err) {
