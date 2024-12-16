@@ -1,16 +1,113 @@
 // server/app.js
-
 require('dotenv').config({ path: './config/.env' });
 
 const express = require('express');
 const path = require('path');
-const fs = require('fs');
+const fs = require('fs'); // Declare it only once
 const bcrypt = require('bcrypt');
-const { connectToDatabase } = require("./database/connection");  // Import the function
+const { getDb, connectToDatabase } = require("./database/connection");
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// Fetch questions from questions.json
+async function loadQuestions() {
+  try {
+      const filePath = path.join(__dirname, 'questions.json'); // Adjust path if necessary
+      const data = await fs.promises.readFile(filePath, 'utf-8'); // Use fs.promises
+      questions = JSON.parse(data);
+
+      if (!Object.keys(questions).length) {
+          console.log('No questions available for any language.');
+      } else {
+          console.log('Questions loaded successfully:', questions);
+      }
+  } catch (error) {
+      console.error('Error loading questions:', error.message);
+  }
+}
+
+// Call loadQuestions
+loadQuestions();
+
+
+// Shuffle Questions Function
+function shuffleQuestions(language) {
+  const shuffled = questions[language].sort(() => Math.random() - 0.5); // Shuffle the questions
+  return shuffled.slice(0, totalQuestions); // Return a random set of questions up to totalQuestions (default 30)
+}
+
+// Function to start the quiz based on the selected language
+function startQuiz(language) {
+  currentLanguage = language;
+  currentQuestionIndex = 0;
+  score = 0;
+
+  if (!questions[currentLanguage] || questions[currentLanguage].length === 0) {
+      alert(`No questions available for ${currentLanguage}`);
+      return;
+  }
+
+  // Shuffle questions for the selected language
+  questionsShuffled = shuffleQuestions(language);
+
+  // Reset selected answers
+  selectedAnswers = [];
+
+  // Hide the intro text and language buttons
+  document.getElementById('intro-text').style.display = 'none';
+  document.getElementById('language-buttons').style.display = 'none';
+
+  // Clear previous performance section
+  document.getElementById('performanceSection').style.display = 'none';
+
+  // Show the first question
+  showQuestion();
+}
+
+
+
+// Show the current question with a countdown
+function showQuestion() {
+  const quizSection = document.getElementById('quizSection');
+  quizSection.innerHTML = ''; // Clear previous content
+
+  const question = questionsShuffled[currentQuestionIndex];
+
+  if (!question) {
+      showFinalPerformance(); // Show performance when no more questions are available
+      return;
+  }
+
+  if (isCountdownActive) return; // Prevent multiple countdowns
+
+  // Countdown logic before showing the question
+  let countdown = userDefinedTime;
+  isCountdownActive = true;
+
+  // Display countdown message
+  quizSection.innerHTML = `
+      <div class="countdown-timer">
+          <h3>Get ready! The next question will appear in <span id="countdown">${countdown}</span> seconds...</h3>
+      </div>
+  `;
+
+  // Countdown interval
+  const countdownInterval = setInterval(function() {
+      countdown--;
+      document.getElementById('countdown').textContent = countdown;
+
+      if (countdown === 0) {
+          clearInterval(countdownInterval);
+          isCountdownActive = false; // Countdown ends, reset active state
+          showQuizQuestion(question); // Show the question after countdown
+      }
+  }, 100); // Fixed 1-second countdown interval
+}
+
+
+
 
 // Call connectToDatabase inside an async function to establish the MongoDB connection
 (async () => {
@@ -110,7 +207,7 @@ const handleLogin = async (req, res) => {
         return res.end("\u274c Invalid email or password.");
       }
 
-      res.writeHead(302, { Location: "/main.html" });
+      res.writeHead(302, { Location: "/index.html" });
       res.end();
     } catch (err) {
       console.error("\u274c Login error:", err);
@@ -137,12 +234,13 @@ const server = http.createServer(async (req, res) => {
     if (pathname === "/register.html") {
       return serveStaticFile(res, path.join(__dirname, "client", "public", "register.html"), "text/html");
     }
-    if (pathname === "/main.html") {
-      return serveStaticFile(res, path.join(__dirname, "client", "public", "main.html"), "text/html");
+    if (pathname === "/index.html") {
+      return serveStaticFile(res, path.join(__dirname, "client", "public", "index.html"), "text/html");
     }
     if (pathname === "/quiz.html") {
       return serveStaticFile(res, path.join(__dirname, "client", "public", "quiz.html"), "text/html");
     }
+
 
     // Serve CSS, JS, and JSON files
     if (pathname.endsWith(".css")) {
