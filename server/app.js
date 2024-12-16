@@ -1,9 +1,10 @@
 // server/app.js
+
 require('dotenv').config({ path: './config/.env' });
 
 const express = require('express');
 const path = require('path');
-const fs = require('fs'); // Declare it only once
+const fs = require('fs');
 const bcrypt = require('bcrypt');
 const { getDb, connectToDatabase } = require("./database/connection");
 
@@ -11,25 +12,37 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Global variables
+let questions = {};
+let currentLanguage = '';
+let currentQuestionIndex = 0;
+let score = 0;
+let totalQuestions = 30; // Adjust this to match the number of questions you're using
+let questionsShuffled = [];
+let selectedAnswers = [];
+let incorrectAnswers = []; // Array to store incorrectly answered questions
+let isOptionSelected = false; // Track if an option is selected
+let isCountdownActive = false; // Track if countdown is active
+let userDefinedTime = 3; // Countdown time in seconds
+
 // Fetch questions from questions.json
 async function loadQuestions() {
   try {
-      const filePath = path.join(__dirname, 'questions.json'); // Adjust path if necessary
-      const data = await fs.promises.readFile(filePath, 'utf-8'); // Use fs.promises
-      questions = JSON.parse(data);
+      const response = await fetch('/questions.json'); // Adjust path if necessary
+      if (!response.ok) throw new Error('Failed to load questions');
+      questions = await response.json();
 
+      // Check if questions are loaded for each language
       if (!Object.keys(questions).length) {
-          console.log('No questions available for any language.');
+          alert('No questions available for any language.');
       } else {
           console.log('Questions loaded successfully:', questions);
       }
   } catch (error) {
-      console.error('Error loading questions:', error.message);
+      console.error('Error loading questions:', error);
+      alert('Unable to load questions. Please try again later.');
   }
 }
-
-// Call loadQuestions
-loadQuestions();
 
 
 // Shuffle Questions Function
@@ -38,7 +51,8 @@ function shuffleQuestions(language) {
   return shuffled.slice(0, totalQuestions); // Return a random set of questions up to totalQuestions (default 30)
 }
 
-// Function to start the quiz based on the selected language
+// Function to start the quiz based on the selected languagegit push origin main
+
 function startQuiz(language) {
   currentLanguage = language;
   currentQuestionIndex = 0;
