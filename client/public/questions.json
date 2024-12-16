@@ -1,0 +1,21 @@
+{
+  "Java": [
+      {
+          "question": "What is 2 + 2?",
+          "options": ["3", "4", "5", "6"],
+          "answer": "4"
+      },
+      {
+          "question": "What is 5 + 5?",
+          "options": ["8", "9", "10", "11"],
+          "answer": "10"
+      }
+  ],
+  "DSA": [
+      {
+          "question": "What is an array?",
+          "options": ["A list", "A tree", "A graph", "A queue"],
+          "answer": "A list"
+      }
+  ]
+}
