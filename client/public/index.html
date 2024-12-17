@@ -5,135 +5,200 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Responsive Dashboard</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Global Styles */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f7fb;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
+/* General Styles */
+body {
+    background: linear-gradient(135deg, #74ebd5, #9face6, #74ebd5); /* Smooth gradient background */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
-        /* Sidebar Styles */
-        .sidebar {
-            width: 250px;
-            height: 100vh;
-            background-color: #343a40;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
-            position: fixed;
-        }
+/* Nav Styles */
+nav {
+    background-color: #333;
+    color: rgb(60, 157, 174);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
 
-        .sidebar-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+nav a {
+    color: rgb(34, 196, 217);
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+    font-size: 1.2em;
+}
 
-        .sidebar-header img {
-            width: 70px;
-            border-radius: 50%;
-            margin-bottom: 10px;
-        }
+nav a:hover {
+    color: #ffcc00;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    font-weight: bold;
+}
 
-        .sidebar-header h2 {
-            font-size: 20px;
-            margin: 0;
-        }
+/* Quiz Container */
+.quiz-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    padding: 20px;
+}
 
-        .sidebar nav ul {
-            list-style: none;
-            padding: 0;
-        }
+.quiz-title {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
 
-        .sidebar nav ul li {
-            margin: 15px 0;
-        }
+.quiz-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
 
-        .sidebar nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            transition: color 0.3s;
-        }
+.quiz-button {
+    padding: 15px 30px;
+    background: linear-gradient(145deg, #a3c7d0, #ffffff);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 5px 5px 15px #b8b8b8, -5px -5px 15px #ffffff;
+    transition: all 0.3s ease;
+}
 
-        .sidebar nav ul li a:hover {
-            color: #007bff;
-        }
+.quiz-button:hover {
+    box-shadow: 0 0 30px rgba(0, 123, 255, 0.7);
+    transform: translateY(-3px);
+    background-color: #e0e0e0;
+}
 
-        /* Main Content Styles */
-        .main-content {
-            margin-left: 270px;
-            padding: 40px;
-            width: 100%;
-        }
+/* Quiz Question */
+.quiz-question {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
 
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #ffffff;
-            padding: 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            margin-bottom: 30px;
-        }
+/* Options */
+.option {
+    display: block;
+    width: 90%;
+    max-width: 300px;
+    padding: 15px 20px;
+    margin: 10px auto;
+    border-radius: 25px;
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    color: #333;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
 
-        .header h1 {
-            margin: 0;
-            font-size: 24px;
-        }
+.option:hover {
+    box-shadow: 0 0 30px rgba(0, 96, 199, 0.7);
+    background-color: #f0f2ff;
+    transform: scale(1.05);
+}
 
-        .header button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
+/* Performance Message */
+.performance-message {
+    background-color: #4da6ff;
+    padding: 30px;
+    margin-top: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    color: #333;
+}
 
-        .content-section {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-        }
+/* Progress Bar */
+.progress-bar-container {
+    width: 80%;
+    background-color: #ddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
 
-        .content-section h2 {
-            font-size: 22px;
-            margin-bottom: 15px;
-        }
+.progress-bar {
+    width: 0;
+    height: 20px;
+    background-color: #4CAF50;
+    border-radius: 10px;
+    transition: width 0.4s ease;
+}
 
-        .content-section p {
-            font-size: 16px;
-            color: #333;
-        }
+/* Spinner */
+.spinner {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+    display: none;
+}
 
-        .performance-section {
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-        }
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
 
-        .performance-section h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
+/* Error Message */
+.error-message {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
 
-        .performance-section .score {
-            font-size: 18px;
-            margin-top: 10px;
-        }
-    </style>
+/* Responsive Styles for Small Screens */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav a {
+        margin: 10px 0;
+        font-size: 1em;
+    }
+
+    .quiz-container {
+        width: 95%;
+        height: auto;
+        padding: 10px;
+    }
+
+    .quiz-title {
+        font-size: 2em;
+    }
+
+    .quiz-button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .option {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+}
+</style>
 </head>
 
 <body>
@@ -149,7 +214,6 @@
                 <li><a href="#">Dashboard</a></li>
                 <li><a href="profile.html">Profile</a></li>
                 <li><a href="quiz.html">Start Quiz</a></li>
-                <li><a href="#">Settings</a></li>
                 <li><a href="login.html">Logout</a></li>
             </ul>
         </nav>

@@ -1,47 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Quiz</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Programming Quiz</title>
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="quiz.css">
 </head>
 <body>
-    <!-- Main Quiz Section -->
+    <!-- Main Content Container -->
     <div id="main-content">
         <!-- Navigation Bar -->
-        <nav>
-            <a href="index.html" id="home-btn">Home</a>
-            <a href="login.html" id="logout-btn" onclick="logout()">Logout</a>
-
+        <nav class="navbar">
+            <a href="index.html" id="home-btn" class="nav-link">Home</a>
+            <a href="login.html" id="logout-btn" class="nav-link" onclick="logout()">Logout</a>
         </nav>
 
-        <!-- About Section (Initially Hidden) -->
+        <!-- About Section (Hidden by Default) -->
         <section id="about-section" style="display: none;">
             <h2>About</h2>
-            <p>This is Pravin Sonwane's website. Coop with me to explore programming quizzes on various languages like Java, C, C++, SQL, CSS, and Python.</p>
+            <p>
+                Welcome to <strong>Pravin Sonwane's</strong> website. Explore programming quizzes on various languages like
+                Java, C, C++, SQL, CSS, Python, and more.
+            </p>
         </section>
 
-        <!-- Quiz Container -->
-        <div class="quiz-container scrollable-content">
+        <!-- Quiz Introduction -->
+        <div class="quiz-container">
             <h2 class="quiz-title">Programming Quiz</h2>
-            <h3 id="intro-text">BY PRAVIN SONWANE</h3>
-            <p id="intro-text">Which programming language would you like to quiz on?</p>
+            <h3 class="quiz-subtitle">BY PRAVIN SONWANE</h3>
+            <p class="quiz-intro">Which programming language would you like to quiz on?</p>
+
+            <!-- Language Selection Buttons -->
             <div id="language-buttons" class="quiz-buttons">
                 <button class="quiz-button" onclick="startQuiz('Java')">Java</button>
                 <button class="quiz-button" onclick="startQuiz('Python')">Python</button>
                 <button class="quiz-button" onclick="startQuiz('C')">C</button>
-                <button class="quiz-button" onclick="startQuiz('CPlusPlus')">C++</button>
+                <button class="quiz-button" onclick="startQuiz('C++')">C++</button>
                 <button class="quiz-button" onclick="startQuiz('DSA')">DSA</button>
                 <button class="quiz-button" onclick="startQuiz('SQL')">SQL</button>
-                <button class="quiz-button" onclick="startQuiz('javascript')">JavaScript</button>
+                <button class="quiz-button" onclick="startQuiz('JavaScript')">JavaScript</button>
                 <button class="quiz-button" onclick="startQuiz('CSS')">CSS</button>
                 <button class="quiz-button" onclick="startQuiz('RandomTechnical')">Random Technical</button>
-                </div>
+            </div>
         </div>
 
         <!-- Quiz Section -->
-        <div id="quizSection" class="quiz-question"></div>
-        <div class="progress-bar" id="progressBar"></div>
+        <section id="quizSection" class="quiz-question"></section>
+        <div id="progressBar" class="progress-bar"></div>
 
         <!-- Performance Section -->
         <div id="performanceSection" class="performance-container" style="display: none;">
@@ -50,27 +57,26 @@
             <div id="countdown"></div>
             <button class="quiz-button" onclick="showPerformance()">Performance</button>
         </div>
-    </div>
 
-    <!-- Fireworks Effect Container -->
-    <div id="fireworks" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1000;">
-        <div class="firework"></div>
-        <div class="firework"></div>
-        <div class="firework"></div>
-    </div>
-
-    <!-- Countdown Timer -->
-    <div class="countdown-timer">
-        <div class="countdown-circle">
-            <div class="countdown-number">3</div> <!-- Default time -->
+        <!-- Fireworks Effect -->
+        <div id="fireworks" class="fireworks" style="display: none;">
+            <div class="firework"></div>
+            <div class="firework"></div>
+            <div class="firework"></div>
         </div>
-    </div>
 
-    <!-- Response Container -->
-    <div id="response"></div>
+        <!-- Countdown Timer -->
+        <div class="countdown-timer">
+            <div class="countdown-circle">
+                <div class="countdown-number">3</div> <!-- Default timer -->
+            </div>
+        </div>
+
+        <!-- Response Section -->
+        <div id="response"></div>
+    </div>
 
     <!-- Scripts -->
     <script src="scripts.js"></script>
 </body>
 </html>
-    

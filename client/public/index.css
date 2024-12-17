@@ -1,0 +1,148 @@
+/* Reset Default Browser Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General Body Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(135deg, #74ebd5, #9face6);
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* General Container */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Header Section */
+header {
+    background-color: #333;
+    padding: 15px 0;
+    color: #fff;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+/* Navigation Links */
+nav a {
+    color: #74ebd5;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 1.2em;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+nav a:hover {
+    color: #ffcc00;
+    text-shadow: 0px 0px 5px #ffcc00;
+    font-weight: bold;
+}
+
+/* Section Styles */
+section {
+    margin: 20px 0;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+section h2 {
+    font-size: 2em;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+section p {
+    font-size: 1.1em;
+    color: #666;
+}
+
+/* Buttons */
+button {
+    padding: 10px 20px;
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background-color: #74ebd5;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Footer Section */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+footer a {
+    color: #9face6;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #ffcc00;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    nav a {
+        font-size: 1em;
+        margin: 0 10px;
+    }
+
+    section h2 {
+        font-size: 1.8em;
+    }
+
+    section p {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    nav a {
+        font-size: 0.9em;
+    }
+
+    button {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+}

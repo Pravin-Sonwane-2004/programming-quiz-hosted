@@ -19,29 +19,48 @@ body {
 /* Container styling */
 .container {
     background: #fff;
-    padding: 40px;
+    padding: 50px; /* Adjust padding to maintain balance */
     border-radius: 12px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     text-align: center;
     width: 100%;
-    max-width: 400px; /* Limit the width for both desktop and mobile */
+    max-width: 450px; /* Adjust container width */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    margin-top: 20px; /* Move container higher */
 }
 
 /* Logo header styling */
 .logo {
-    font-size: 32px;
-    font-weight: bold;
-    color: #000000;
-    margin-bottom: 10px;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    justify-content: center;
 }
 
-h3 {
-    font-size: 18px;  /* Adjust font size */
-    color: #333;  /* Darker gray for text color */
-    margin-bottom: 20px; /* Space between heading and form */
+.logo-image {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+/* Login box styling */
+.logreg-box {
+    margin-bottom: 20px; /* Add some space between form and "Sign Up" link */
+}
+
+.form-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Sign In Heading */
+h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
 }
 
 /* Input box styling */
@@ -52,11 +71,11 @@ h3 {
 
 .input-box input {
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     border: 1px solid #ccc;
     border-radius: 4px;
     outline: none;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .input-box label {
@@ -65,7 +84,7 @@ h3 {
     left: 12px;
     background: #fff;
     padding: 0 5px;
-    font-size: 14px;
+    font-size: 16px;
     color: #000000;
 }
 
@@ -92,8 +111,8 @@ h3 {
 .remember-forget {
     display: flex;
     justify-content: space-between;
-    font-size: 14px;
-    margin: 15px 0;
+    font-size: 16px;
+    margin: 20px 0;
 }
 
 /* Button styling */
@@ -102,15 +121,21 @@ h3 {
     background: #04ead6;
     color: white;
     border: none;
-    padding: 12px;
+    padding: 16px;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
     transition: background 0.3s;
 }
 
 .btn:hover {
     background: #0037ff;
+}
+
+/* Sign Up Redirect styling */
+.login-register {
+    font-size: 16px;
+    margin-top: 20px; /* Move the "Sign Up" text a bit lower */
 }
 
 /* Social media icons styling */
@@ -123,19 +148,20 @@ h3 {
 .social-icons a {
     margin: 0 10px;
     color: #0635c1;
-    font-size: 24px; /* Icon size */
+    font-size: 24px;
     transition: transform 0.3s;
 }
 
 .social-icons a:hover {
-    transform: scale(1.2); /* Enlarge on hover */
+    transform: scale(1.2);
 }
 
 /* Mobile adjustments */
 @media (max-width: 768px) {
     .container {
-        width: 90%; /* Full width for mobile */
-        padding: 20px; /* Add padding for smaller screens */
+        width: 90%;
+        padding: 20px;
+        margin-top: 30px; /* Ensure enough space at the top */
     }
 
     h3 {
@@ -147,24 +173,11 @@ h3 {
     }
 
     .input-box input {
-        font-size: 14px;
+        font-size: 16px;
     }
 
     .btn {
-        font-size: 14px;
-        padding: 10px;
+        font-size: 16px;
+        padding: 14px;
     }
-}
-/* Logo styling */
-.logo {
-    font-size: 40px; /* Adjust font size of the text */
-    display: flex; /* Align logo and text horizontally */
-    align-items: center; /* Center align items vertically */
-}
-
-/* Logo image styling */
-.logo-image {
-    width: 50px; /* Decrease the logo width */
-    height: auto; /* Maintain the aspect ratio */
-    margin-right: 10px; /* Space between logo and text */
 }
