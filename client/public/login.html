@@ -18,13 +18,10 @@
         </h2>
         <div id="success-message" style="color: green; display: none; text-align: center; margin-bottom: 20px;"></div>
 
-<!-- Your login form code here -->
-
-
         <!-- Login Form -->
         <div class="logreg-box">
             <div class="form-box login">
-                <form action="/login" method="POST" id="loginForm">
+                <form id="loginForm">
                     <h2>Sign In</h2>
 
                     <!-- Error Message -->
@@ -73,16 +70,7 @@
     </div>
 
     <script>
-          // Check if there's a 'message' query parameter in the URL
-          const urlParams = new URLSearchParams(window.location.search);
-        const message = urlParams.get('message');
-
-        if (message) {
-            // Display the message if it exists in the URL
-            const messageContainer = document.getElementById('success-message');
-            messageContainer.textContent = message;
-            messageContainer.style.display = 'block';
-        }
+        // Toggle password visibility
         function togglePasswordVisibility() {
             const passwordField = document.getElementById('password');
             const lockIcon = document.getElementById('lockIcon');
@@ -97,10 +85,12 @@
         }
 
         document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault();  // Prevent the form from submitting normally
+            
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             const errorMessage = document.getElementById('error-message');
-
+            
             // Reset error display
             errorMessage.style.display = 'none';
 
@@ -108,7 +98,6 @@
             if (!validateEmail(email)) {
                 errorMessage.textContent = 'Please enter a valid email address.';
                 errorMessage.style.display = 'block';
-                event.preventDefault();
                 return;
             }
 
@@ -116,21 +105,17 @@
             if (password.length < 6) {
                 errorMessage.textContent = 'Password must be at least 6 characters long.';
                 errorMessage.style.display = 'block';
-                event.preventDefault();
+                return;
             }
+
+            // If validation is passed, redirect to main.html
+            window.location.href = 'main.html';
         });
 
         function validateEmail(email) {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return emailRegex.test(email);
         }
-
-    if (message) {
-        // Display the message if it exists in the URL
-        const messageContainer = document.getElementById('success-message');
-        messageContainer.textContent = message;
-        messageContainer.style.display = 'block';
-    }
     </script>
 </body>
 
