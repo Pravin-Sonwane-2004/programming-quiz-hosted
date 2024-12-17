@@ -1,21 +1,1043 @@
 {
-  "Java": [
-      {
-          "question": "What is 2 + 2?",
-          "options": ["3", "4", "5", "6"],
-          "answer": "4"
-      },
-      {
-          "question": "What is 5 + 5?",
-          "options": ["8", "9", "10", "11"],
-          "answer": "10"
-      }
-  ],
-  "DSA": [
-      {
-          "question": "What is an array?",
-          "options": ["A list", "A tree", "A graph", "A queue"],
-          "answer": "A list"
-      }
-  ]
-}
+    "Java": [
+        {
+            "question": "What is Java?",
+            "options": ["Programming Language", "Fruit", "Car", "None of the above"],
+            "answer": "Programming Language"
+        },
+        {
+            "question": "Which keyword is used to define a class in Java?",
+            "options": ["class", "define", "function", "object"],
+            "answer": "class"
+        },
+        {
+            "question": "What is the default value of a boolean variable in Java?",
+            "options": ["true", "false", "0", "undefined"],
+            "answer": "false"
+        },
+        {
+            "question": "Which method is used to start a thread in Java?",
+            "options": ["run()", "start()", "execute()", "init()"],
+            "answer": "start()"
+        },
+        {
+            "question": "What is the purpose of the 'static' keyword in Java?",
+            "options": ["To define a constant", "To create an instance of a class", "To make a method or variable associated with the class", "To initialize variables"],
+            "answer": "To make a method or variable associated with the class"
+        },
+        {
+            "question": "What is an interface in Java?",
+            "options": ["A class", "A collection of methods", "A way to define constants", "A way to inherit functionality from multiple classes"],
+            "answer": "A collection of methods"
+        },
+        {
+            "question": "Which collection class is part of the Java Collections Framework?",
+            "options": ["ArrayList", "HashTable", "LinkedList", "All of the above"],
+            "answer": "All of the above"
+        },
+        {
+            "question": "Which of the following is used to handle exceptions in Java?",
+            "options": ["throw", "throws", "try-catch", "catch-except"],
+            "answer": "try-catch"
+        },
+        {
+            "question": "What is the difference between '==' and 'equals()' in Java?",
+            "options": ["'==' compares object references, equals() compares object values", "'==' compares object values, equals() compares object references", "'==' and equals() are the same", "'==' checks if objects are equal in memory"],
+            "answer": "'==' compares object references, equals() compares object values"
+        },
+        {
+            "question": "Which of the following is used for dynamic method dispatch in Java?",
+            "options": ["Method overloading", "Method overriding", "Abstract classes", "Interfaces"],
+            "answer": "Method overriding"
+        },
+        {
+            "question": "What does the 'final' keyword do in Java?",
+            "options": ["Makes a variable constant", "Prevents method overriding", "Prevents inheritance", "All of the above"],
+            "answer": "All of the above"
+        },
+        {
+            "question": "What is the return type of the main method in Java?",
+            "options": ["void", "String", "int", "boolean"],
+            "answer": "void"
+        },
+        {
+            "question": "Which of the following is a valid data type in Java?",
+            "options": ["int", "float", "char", "All of the above"],
+            "answer": "All of the above"
+        },
+        {
+            "question": "What is the size of a byte in Java?",
+            "options": ["8 bits", "16 bits", "32 bits", "64 bits"],
+            "answer": "8 bits"
+        },
+        {
+            "question": "Which operator is used for concatenation in Java?",
+            "options": ["+", "-", "*", "/"],
+            "answer": "+"
+        },
+        {
+            "question": "Which of the following is not a primitive data type in Java?",
+            "options": ["int", "String", "float", "char"],
+            "answer": "String"
+        },
+        {
+            "question": "What is the default value of an instance variable in Java?",
+            "options": ["null", "0", "false", "undefined"],
+            "answer": "null"
+        },
+        {
+            "question": "Which method is used to obtain the length of an array in Java?",
+            "options": ["size()", "length()", "length[]", "getSize()"],
+            "answer": "length()"
+        },
+        {
+            "question": "What does the 'super' keyword do in Java?",
+            "options": ["Refers to the superclass", "Refers to the current class", "Used to call methods of the current class", "None of the above"],
+            "answer": "Refers to the superclass"
+        },
+        {
+            "question": "Which of the following is a valid access modifier in Java?",
+            "options": ["public", "private", "protected", "All of the above"],
+            "answer": "All of the above"
+        },
+        {
+            "question": "What is the purpose of the 'this' keyword in Java?",
+            "options": ["Refers to the current object", "Refers to the superclass", "Used to access static variables", "None of the above"],
+            "answer": "Refers to the current object"
+        },
+        {
+            "question": "Which of the following is used to create a new instance of a class in Java?",
+            "options": ["new", "create", "init", "instance"],
+            "answer": "new"
+        },
+        {
+            "question": "What is the default value of an integer variable in Java?",
+            "options": ["0", "null", "undefined", "false"],
+            "answer": "0"
+        },
+        {
+            "question": "Which collection interface does the 'HashMap' class implement?",
+            "options": ["Map", "List", "Set", "Queue"],
+            "answer": "Map"
+        },
+        {
+            "question": "Which of the following is used to declare a constant in Java?",
+            "options": ["final", "const", "immutable", "constant"],
+            "answer": "final"
+        },
+        {
+            "question": "Which method in Java is used to compare two strings?",
+            "options": ["compareTo()", "equals()", "compare()", "isEqual()"],
+            "answer": "equals()"
+        },
+        {
+            "question": "What is an abstract class in Java?",
+            "options": ["A class that can be instantiated", "A class that cannot be instantiated", "A class that only contains static methods", "A class that contains only constructors"],
+            "answer": "A class that cannot be instantiated"
+        },
+        {
+            "question": "What is the output of the following code? int[] arr = {1, 2, 3}; System.out.println(arr[1]);",
+            "options": ["1", "2", "3", "Error"],
+            "answer": "2"
+        },
+        {
+            "question": "Which operator is used to create a new instance of an object in Java?",
+            "options": ["new", "create", "instantiate", "object"],
+            "answer": "new"
+        }
+    ],
+    "Python": [
+        {
+            "question": "Which of the following is used to define a function in Python?",
+            "options": ["def", "function", "create", "define"],
+            "answer": "def"
+        },
+        {
+            "question": "What is the output of the following Python code? print(type(3))",
+            "options": ["<class 'int'>", "<type 'int'>", "int", "3"],
+            "answer": "<class 'int'>"
+        },
+        {
+            "question": "Which of the following is used to import a module in Python?",
+            "options": ["import module", "use module", "include module", "require module"],
+            "answer": "import module"
+        },
+        {
+            "question": "Which function is used to get the length of a list in Python?",
+            "options": ["len()", "length()", "size()", "count()"],
+            "answer": "len()"
+        },
+        {
+            "question": "Which of the following methods can be used to remove an element from a list in Python?",
+            "options": ["remove()", "delete()", "pop()", "All of the above"],
+            "answer": "All of the above"
+        },
+        {
+            "question": "How do you create a dictionary in Python?",
+            "options": ["d = {}", "d = []", "d = ()", "d = dict()"],
+            "answer": "d = {}"
+        },
+        {
+            "question": "What is the default value of a variable in Python?",
+            "options": ["None", "0", "undefined", "empty string"],
+            "answer": "None"
+        },
+        {
+            "question": "Which operator is used to concatenate strings in Python?",
+            "options": ["+", "-", "*", "/"],
+            "answer": "+"
+        },
+        {
+            "question": "What is the output of the following Python code? print(2 ** 3)",
+            "options": ["8", "6", "5", "3"],
+            "answer": "8"
+        },
+        {
+            "question": "Which of the following is used to define a class in Python?",
+            "options": ["class", "object", "define", "function"],
+            "answer": "class"
+        },
+        {
+            "question": "What is the correct syntax to access a value from a dictionary in Python?",
+            "options": ["dict[key]", "dict.key", "dict{key}", "dict->key"],
+            "answer": "dict[key]"
+        },
+        {
+            "question": "Which function is used to return the type of an object in Python?",
+            "options": ["type()", "object()", "kind()", "typeof()"],
+            "answer": "type()"
+        },
+        {
+            "question": "What will the following Python code print? print('Hello, World!'.upper())",
+            "options": ["HELLO, WORLD!", "hello, world!", "Hello, World!", "None of the above"],
+            "answer": "HELLO, WORLD!"
+        },
+        {
+            "question": "Which of the following is used to handle exceptions in Python?",
+            "options": ["try-except", "throw-catch", "try-finally", "None of the above"],
+            "answer": "try-except"
+        },
+        {
+            "question": "Which of the following is used to open a file in Python?",
+            "options": ["open()", "file()", "openfile()", "read()"],
+            "answer": "open()"
+        },
+        {
+            "question": "Which method can be used to add an item to the end of a list in Python?",
+            "options": ["append()", "insert()", "add()", "extend()"],
+            "answer": "append()"
+        },
+        {
+            "question": "Which of the following is a valid list comprehension in Python?",
+            "options": ["[x for x in range(5)]", "for x in range(5): [x]", "range(5)[x]", "None of the above"],
+            "answer": "[x for x in range(5)]"
+        },
+        {
+            "question": "Which of the following is the correct way to create a set in Python?",
+            "options": ["set()", "[]", "{}", "()"],
+            "answer": "set()"
+        },
+        {
+            "question": "Which Python library is used for working with dataframes?",
+            "options": ["pandas", "numpy", "matplotlib", "scikit-learn"],
+            "answer": "pandas"
+        },
+        {
+            "question": "What does the 'continue' statement do in Python?",
+            "options": ["Skips the current iteration and continues to the next", "Exits the loop", "Pauses the loop", "None of the above"],
+            "answer": "Skips the current iteration and continues to the next"
+        },
+        {
+            "question": "What does the 'pass' statement do in Python?",
+            "options": ["Does nothing", "Terminates the loop", "Pauses the program", "None of the above"],
+            "answer": "Does nothing"
+        }
+    ],
+
+        "C": [
+            {
+                "question": "Which of the following is the correct syntax to declare a pointer in C?",
+                "options": ["pointer p;", "int *p;", "pointer int p;", "int p*;"],
+                "answer": "int *p;"
+            },
+            {
+                "question": "What is the size of an int in C?",
+                "options": ["2 bytes", "4 bytes", "8 bytes", "Depends on the compiler"],
+                "answer": "4 bytes"
+            },
+            {
+                "question": "Which function is used to allocate memory dynamically in C?",
+                "options": ["malloc()", "free()", "calloc()", "realloc()"],
+                "answer": "malloc()"
+            },
+            {
+                "question": "Which of the following is used to return multiple values from a function in C?",
+                "options": ["Array", "Pointer", "Structure", "Union"],
+                "answer": "Structure"
+            },
+            {
+                "question": "Which of the following is the correct syntax for a for loop in C?",
+                "options": ["for (int i = 0; i < 10; i++) {}", "for int i = 0 to 10 {}", "for (int i; i < 10; i++)", "for i in range(10)"],
+                "answer": "for (int i = 0; i < 10; i++) {}"
+            },
+            {
+                "question": "What is the default value of a static variable in C?",
+                "options": ["0", "null", "undefined", "garbage value"],
+                "answer": "0"
+            },
+            {
+                "question": "Which function is used to find the length of a string in C?",
+                "options": ["strlen()", "length()", "sizeof()", "strlength()"],
+                "answer": "strlen()"
+            },
+            {
+                "question": "Which header file is required to use the malloc() function?",
+                "options": ["stdio.h", "stdlib.h", "string.h", "math.h"],
+                "answer": "stdlib.h"
+            },
+            {
+                "question": "Which of the following is used to exit a program in C?",
+                "options": ["exit()", "quit()", "stop()", "return 0;"],
+                "answer": "exit()"
+            },
+            {
+                "question": "What is the difference between '==' and '=' in C?",
+                "options": ["'==' is an assignment operator, '=' is a comparison operator", "'==' is a comparison operator, '=' is an assignment operator", "'==' and '=' are the same", "'==' is used in functions"],
+                "answer": "'==' is a comparison operator, '=' is an assignment operator"
+            },
+            {
+                "question": "Which of the following is a valid pointer declaration in C?",
+                "options": ["int *ptr;", "pointer int ptr;", "int ptr;", "pointer ptr;"],
+                "answer": "int *ptr;"
+            },
+            {
+                "question": "Which function is used to open a file in C?",
+                "options": ["open()", "fopen()", "fileopen()", "openFile()"],
+                "answer": "fopen()"
+            },
+            {
+                "question": "What is the correct syntax for declaring a structure in C?",
+                "options": ["struct myStruct {}", "structure myStruct {}", "struct { } myStruct;", "struct myStruct = { }"],
+                "answer": "struct myStruct {}"
+            },
+            {
+                "question": "Which of the following is used to free dynamically allocated memory in C?",
+                "options": ["free()", "delete()", "clear()", "deallocate()"],
+                "answer": "free()"
+            },
+            {
+                "question": "What does the 'const' keyword do in C?",
+                "options": ["Defines a constant value", "Defines a constant pointer", "Prevents a variable from being modified", "All of the above"],
+                "answer": "All of the above"
+            },
+            {
+                "question": "Which operator is used to access members of a structure in C?",
+                "options": [".", "->", "&", "*"],
+                "answer": "."
+            },
+            {
+                "question": "Which of the following is the correct syntax for a while loop in C?",
+                "options": ["while (condition) {}", "while condition {}", "while {} condition", "while : condition"],
+                "answer": "while (condition) {}"
+            },
+            {
+                "question": "What is the purpose of the 'break' statement in C?",
+                "options": ["Exits the current loop", "Terminates the program", "Pauses the loop", "None of the above"],
+                "answer": "Exits the current loop"
+            },
+            {
+                "question": "What is the output of the following code? printf('%d', 5 + 2 * 3);",
+                "options": ["11", "21", "15", "7"],
+                "answer": "11"
+            },
+            {
+                "question": "Which of the following is used to get the address of a variable in C?",
+                "options": ["&", "*", "#", "@@"],
+                "answer": "&"
+            }
+        ],
+            "C++": [
+                {
+                    "question": "Which of the following is used to declare a reference in C++?",
+                    "options": ["&", "*", "ref", "this"],
+                    "answer": "&"
+                },
+                {
+                    "question": "What is the correct way to declare a class in C++?",
+                    "options": ["class ClassName {}", "class: ClassName {}", "class {ClassName}", "class ClassName = {};"],
+                    "answer": "class ClassName {}"
+                },
+                {
+                    "question": "Which of the following is the base class of all classes in C++?",
+                    "options": ["Object", "Base", "std::Object", "None of the above"],
+                    "answer": "None of the above"
+                },
+                {
+                    "question": "Which keyword is used for inheritance in C++?",
+                    "options": ["extends", "super", "implements", "public"],
+                    "answer": "public"
+                },
+                {
+                    "question": "Which operator is used to define a pointer in C++?",
+                    "options": ["&", "*", "->", "::"],
+                    "answer": "*"
+                },
+                {
+                    "question": "Which of the following is a feature of object-oriented programming in C++?",
+                    "options": ["Encapsulation", "Polymorphism", "Inheritance", "All of the above"],
+                    "answer": "All of the above"
+                },
+                {
+                    "question": "What does the 'new' keyword do in C++?",
+                    "options": ["Allocates memory dynamically", "Deallocates memory", "Creates an object", "Declares a pointer"],
+                    "answer": "Allocates memory dynamically"
+                },
+                {
+                    "question": "Which function is used to deallocate memory allocated by 'new' in C++?",
+                    "options": ["delete", "free", "delete[]", "del"],
+                    "answer": "delete"
+                },
+                {
+                    "question": "What is the use of 'virtual' keyword in C++?",
+                    "options": ["To declare a class", "To create a constant", "To indicate polymorphism", "To define a constructor"],
+                    "answer": "To indicate polymorphism"
+                },
+                {
+                    "question": "Which of the following is a C++ container?",
+                    "options": ["vector", "list", "map", "All of the above"],
+                    "answer": "All of the above"
+                },
+                {
+                    "question": "What is the function of the 'this' pointer in C++?",
+                    "options": ["Points to the current object", "Points to the base class", "Points to the constructor", "Points to the last created object"],
+                    "answer": "Points to the current object"
+                },
+                {
+                    "question": "Which of the following is used to overload operators in C++?",
+                    "options": ["operator", "function", "method", "none of the above"],
+                    "answer": "operator"
+                },
+                {
+                    "question": "Which of the following is true about destructors in C++?",
+                    "options": ["They are called when the object is created", "They are called automatically when the object goes out of scope", "They are called when the object is copied", "None of the above"],
+                    "answer": "They are called automatically when the object goes out of scope"
+                },
+                {
+                    "question": "Which of the following is the default access modifier for members of a class in C++?",
+                    "options": ["public", "protected", "private", "None of the above"],
+                    "answer": "private"
+                },
+                {
+                    "question": "What is the syntax to define a default constructor in C++?",
+                    "options": ["ClassName()", "ConstructorName()", "default ClassName()", "None of the above"],
+                    "answer": "ClassName()"
+                },
+                {
+                    "question": "Which of the following is true about a static member of a class in C++?",
+                    "options": ["It is shared by all instances of the class", "It can only be accessed through an instance", "It can only be accessed inside a method", "None of the above"],
+                    "answer": "It is shared by all instances of the class"
+                },
+                {
+                    "question": "What is a pure virtual function in C++?",
+                    "options": ["A function that is not defined", "A function that must be overridden in a derived class", "A function that does not return anything", "A function with no parameters"],
+                    "answer": "A function that must be overridden in a derived class"
+                },
+                {
+                    "question": "What is the correct syntax to declare a constant in C++?",
+                    "options": ["const int x = 5;", "int const x = 5;", "constant int x = 5;", "const x = 5;"],
+                    "answer": "const int x = 5;"
+                },
+                {
+                    "question": "Which of the following types is used to represent text in C++?",
+                    "options": ["char", "string", "char[]", "string[]"],
+                    "answer": "string"
+                },
+                {
+                    "question": "What is the output of the following code snippet? cout << 5 + 2 * 3;",
+                    "options": ["11", "21", "7", "15"],
+                    "answer": "11"
+                },
+                {
+                    "question": "What is the purpose of the 'static' keyword in C++?",
+                    "options": ["To define a constant", "To create a static memory location", "To prevent function overriding", "To limit the scope of a variable"],
+                    "answer": "To limit the scope of a variable"
+                },
+                {
+                    "question": "Which of the following is used to implement exception handling in C++?",
+                    "options": ["try-catch", "throw-catch", "try-throw", "throw-try"],
+                    "answer": "try-catch"
+                }
+            ],
+            "DSA": [
+                {
+                    "question": "What is the time complexity of binary search?",
+                    "options": ["O(1)", "O(n)", "O(log n)", "O(n^2)"],
+                    "answer": "O(log n)"
+                },
+                {
+                    "question": "What is the space complexity of quicksort?",
+                    "options": ["O(1)", "O(n)", "O(log n)", "O(n^2)"],
+                    "answer": "O(log n)"
+                },
+                {
+                    "question": "Which of the following is a linear data structure?",
+                    "options": ["Array", "Tree", "Graph", "None of the above"],
+                    "answer": "Array"
+                },
+                {
+                    "question": "What is the time complexity of bubble sort?",
+                    "options": ["O(n)", "O(n^2)", "O(log n)", "O(1)"],
+                    "answer": "O(n^2)"
+                },
+                {
+                    "question": "What is a stack data structure?",
+                    "options": ["FIFO", "LIFO", "Sorted list", "None of the above"],
+                    "answer": "LIFO"
+                },
+                {
+                    "question": "Which sorting algorithm has the best average case time complexity?",
+                    "options": ["QuickSort", "BubbleSort", "MergeSort", "InsertionSort"],
+                    "answer": "QuickSort"
+                },
+                {
+                    "question": "Which data structure is used in breadth-first search?",
+                    "options": ["Queue", "Stack", "Tree", "Linked List"],
+                    "answer": "Queue"
+                },
+                {
+                    "question": "What is a priority queue?",
+                    "options": ["A queue with FIFO order", "A queue with LIFO order", "A queue where each element is assigned a priority", "A queue with random order"],
+                    "answer": "A queue where each element is assigned a priority"
+                },
+                {
+                    "question": "What is the time complexity of insertion in an unsorted array?",
+                    "options": ["O(1)", "O(n)", "O(log n)", "O(n^2)"],
+                    "answer": "O(1)"
+                },
+                {
+                    "question": "Which of the following is a non-linear data structure?",
+                    "options": ["Linked List", "Array", "Tree", "Stack"],
+                    "answer": "Tree"
+                },
+                {
+                    "question": "What is the space complexity of merge sort?",
+                    "options": ["O(1)", "O(n)", "O(log n)", "O(n^2)"],
+                    "answer": "O(n)"
+                },
+                {
+                    "question": "Which of the following is a greedy algorithm?",
+                    "options": ["Dijkstra's algorithm", "Prim's algorithm", "Kruskall's algorithm", "All of the above"],
+                    "answer": "All of the above"
+                },
+                {
+                    "question": "What is the time complexity of searching in a balanced binary search tree?",
+                    "options": ["O(n)", "O(log n)", "O(n^2)", "O(1)"],
+                    "answer": "O(log n)"
+                },
+                {
+                    "question": "What is the purpose of the 'visited' array in DFS?",
+                    "options": ["To mark the nodes that have been visited", "To store the nodes to visit", "To calculate the shortest path", "To store the adjacency list"],
+                    "answer": "To mark the nodes that have been visited"
+                },
+                {
+                    "question": "What is a hash table used for?",
+                    "options": ["Sorting data", "Storing key-value pairs", "Implementing priority queues", "Graph traversal"],
+                    "answer": "Storing key-value pairs"
+                },
+                {
+                    "question": "What is the time complexity of accessing an element in an array?",
+                    "options": ["O(1)", "O(log n)", "O(n)", "O(n^2)"],
+                    "answer": "O(1)"
+                },
+                {
+                    "question": "Which of the following is a divide and conquer algorithm?",
+                    "options": ["MergeSort", "QuickSort", "Binary Search", "All of the above"],
+                    "answer": "All of the above"
+                },
+                {
+                    "question": "Which algorithm is used to find the shortest path in a graph?",
+                    "options": ["Dijkstra's algorithm", "Floyd-Warshall algorithm", "Bellman-Ford algorithm", "All of the above"],
+                    "answer": "All of the above"
+                },
+                {
+                    "question": "What is a graph?",
+                    "options": ["A set of nodes and edges", "A set of nodes", "A collection of elements", "None of the above"],
+                    "answer": "A set of nodes and edges"
+                },
+                {
+                    "question": "What is a heap data structure?",
+                    "options": ["A complete binary tree", "A tree with a specific order property", "A priority queue implementation", "All of the above"],
+                    "answer": "All of the above"
+                },
+                {
+                    "question": "Which of the following is true about quicksort?",
+                    "options": ["It has a worst-case time complexity of O(n^2)", "It is always faster than merge sort", "It has a space complexity of O(n)", "It requires additional space for sorting"],
+                    "answer": "It has a worst-case time complexity of O(n^2)"
+                },
+                {
+                    "question": "Which data structure is used in depth-first search (DFS)?",
+                    "options": ["Queue", "Stack", "Heap", "Array"],
+                    "answer": "Stack"
+                },
+                {
+                    "question": "What is the best case time complexity of quicksort?",
+                    "options": ["O(n^2)", "O(n log n)", "O(n)", "O(log n)"],
+                    "answer": "O(n log n)"
+                }
+            ],
+            "SQL": [
+                {
+                    "question": "Which SQL keyword is used to retrieve data from a database?",
+                    "options": ["GET", "SELECT", "FETCH", "RETRIEVE"],
+                    "answer": "SELECT"
+                },
+                {
+                    "question": "Which of the following is a valid SQL data type?",
+                    "options": ["VARCHAR", "STRING", "TEXT", "CHARACTER"],
+                    "answer": "VARCHAR"
+                },
+                {
+                    "question": "What is the purpose of the SQL JOIN clause?",
+                    "options": ["Combines rows from multiple tables", "Filters rows from a single table", "Sorts data", "Defines columns in a table"],
+                    "answer": "Combines rows from multiple tables"
+                },
+                {
+                    "question": "What is the correct syntax for a SELECT query in SQL?",
+                    "options": ["SELECT column_name FROM table_name;", "SELECT * FROM table_name;", "SELECT column_name;", "FROM table_name SELECT column_name;"],
+                    "answer": "SELECT * FROM table_name;"
+                },
+                {
+                    "question": "What does the SQL 'WHERE' clause do?",
+                    "options": ["Defines the order of results", "Filters rows based on a condition", "Groups rows", "Combines multiple tables"],
+                    "answer": "Filters rows based on a condition"
+                },
+                {
+                    "question": "Which of the following is used to delete data from a table in SQL?",
+                    "options": ["DELETE", "REMOVE", "DROP", "CLEAR"],
+                    "answer": "DELETE"
+                },
+                {
+                    "question": "What is the purpose of the 'GROUP BY' clause in SQL?",
+                    "options": ["To order results", "To group rows that share a property", "To filter rows", "To join tables"],
+                    "answer": "To group rows that share a property"
+                },
+                {
+                    "question": "Which SQL statement is used to update data in a table?",
+                    "options": ["UPDATE", "MODIFY", "CHANGE", "SET"],
+                    "answer": "UPDATE"
+                },
+                {
+                    "question": "What is the purpose of the 'HAVING' clause in SQL?",
+                    "options": ["To filter data after a GROUP BY", "To group data", "To filter data before a GROUP BY", "None of the above"],
+                    "answer": "To filter data after a GROUP BY"
+                },
+                {
+                    "question": "Which of the following is used to define a primary key in SQL?",
+                    "options": ["PRIMARY KEY", "UNIQUE KEY", "NOT NULL", "FOREIGN KEY"],
+                    "answer": "PRIMARY KEY"
+                },
+                {
+                    "question": "What is the default sort order of the 'ORDER BY' clause in SQL?",
+                    "options": ["Ascending", "Descending", "Unsorted", "Random"],
+                    "answer": "Ascending"
+                },
+                {
+                    "question": "What is the use of the SQL 'DISTINCT' keyword?",
+                    "options": ["Removes duplicates from results", "Orders results", "Limits rows", "Combines multiple tables"],
+                    "answer": "Removes duplicates from results"
+                },
+                {
+                    "question": "Which SQL keyword is used to sort the result-set in descending order?",
+                    "options": ["ORDER BY DESC", "SORT DESC", "BY DESC", "DESC ORDER BY"],
+                    "answer": "ORDER BY DESC"
+                },
+                {
+                    "question": "Which of the following SQL commands is used to create a table?",
+                    "options": ["CREATE TABLE", "ADD TABLE", "MAKE TABLE", "DEFINE TABLE"],
+                    "answer": "CREATE TABLE"
+                },
+                {
+                    "question": "Which SQL function is used to count the number of rows in a table?",
+                    "options": ["COUNT()", "TOTAL()", "SUM()", "NUM()"],
+                    "answer": "COUNT()"
+                },
+                {
+                    "question": "Which of the following is used to combine two tables based on a related column?",
+                    "options": ["JOIN", "MERGE", "COMBINE", "CONNECT"],
+                    "answer": "JOIN"
+                },
+                {
+                    "question": "Which of the following is a correct statement for creating an index in SQL?",
+                    "options": ["CREATE INDEX index_name ON table_name (column_name);", "CREATE TABLE index_name ON column_name;", "ADD INDEX index_name;", "None of the above"],
+                    "answer": "CREATE INDEX index_name ON table_name (column_name);"
+                },
+                {
+                    "question": "Which SQL clause is used to specify conditions for filtering rows?",
+                    "options": ["WHERE", "HAVING", "ORDER BY", "GROUP BY"],
+                    "answer": "WHERE"
+                },
+                {
+                    "question": "What does the SQL 'LIMIT' clause do?",
+                    "options": ["Limits the number of rows returned", "Limits the values in a column", "Limits the number of columns returned", "None of the above"],
+                    "answer": "Limits the number of rows returned"
+                },
+                {
+                    "question": "What is the default data type for a column in SQL if no data type is specified?",
+                    "options": ["VARCHAR", "TEXT", "INT", "NULL"],
+                    "answer": "NULL"
+                }
+            ],
+                "javascript": [
+                    {
+                        "question": "Which of the following is used to declare a variable in JavaScript?",
+                        "options": ["var", "let", "const", "All of the above"],
+                        "answer": "All of the above"
+                    },
+                    {
+                        "question": "What does `NaN` stand for in JavaScript?",
+                        "options": ["Not a Number", "Null and None", "Number and Null", "None of the Above"],
+                        "answer": "Not a Number"
+                    },
+                    {
+                        "question": "Which method is used to add a new element to an array in JavaScript?",
+                        "options": ["push()", "add()", "append()", "insert()"],
+                        "answer": "push()"
+                    },
+                    {
+                        "question": "How do you write a comment in JavaScript?",
+                        "options": ["<!-- comment -->", "// comment", "/* comment */", "// and /* */"],
+                        "answer": "// and /* */"
+                    },
+                    {
+                        "question": "What is the output of `console.log(typeof null)`?",
+                        "options": ["object", "null", "undefined", "string"],
+                        "answer": "object"
+                    },
+                    {
+                        "question": "Which symbol is used for strict equality in JavaScript?",
+                        "options": ["==", "===", "!=", "!=="],
+                        "answer": "==="
+                    },
+                    {
+                        "question": "What is the purpose of the `Array.prototype.map` method?",
+                        "options": [
+                            "To filter array elements",
+                            "To modify each element in an array and return a new array",
+                            "To combine all elements into a single string",
+                            "To remove elements from an array"
+                        ],
+                        "answer": "To modify each element in an array and return a new array"
+                    },
+                    {
+                        "question": "Which function is used to parse a string into a JSON object?",
+                        "options": ["JSON.stringify", "JSON.parse", "parseJSON", "stringifyJSON"],
+                        "answer": "JSON.parse"
+                    },
+                    {
+                        "question": "How do you create an object in JavaScript?",
+                        "options": [
+                            "let obj = {}",
+                            "let obj = []",
+                            "let obj = ()",
+                            "let obj = newObject()"
+                        ],
+                        "answer": "let obj = {}"
+                    },
+                    {
+                        "question": "What is the output of `console.log(2 + '2')`?",
+                        "options": ["4", "22", "Error", "NaN"],
+                        "answer": "22"
+                    },
+                    {
+                        "question": "How can you convert a string to an integer in JavaScript?",
+                        "options": ["parseInt()", "Number()", "Both", "None"],
+                        "answer": "Both"
+                    },
+                    {
+                        "question": "What is the keyword used to declare a constant variable?",
+                        "options": ["var", "let", "const", "constant"],
+                        "answer": "const"
+                    },
+                    {
+                        "question": "Which method can be used to find the length of a string?",
+                        "options": [".length()", ".size()", ".length", ".count()"],
+                        "answer": ".length"
+                    },
+                    {
+                        "question": "What will `console.log(1 == '1')` output?",
+                        "options": ["true", "false", "undefined", "Error"],
+                        "answer": "true"
+                    },
+                    {
+                        "question": "What is the output of `console.log(typeof [])`?",
+                        "options": ["array", "object", "undefined", "function"],
+                        "answer": "object"
+                    },
+                    {
+                        "question": "Which loop will execute at least once?",
+                        "options": ["for loop", "while loop", "do-while loop", "None of the above"],
+                        "answer": "do-while loop"
+                    },
+                    {
+                        "question": "How can you stop a loop in JavaScript?",
+                        "options": ["stop", "exit", "break", "return"],
+                        "answer": "break"
+                    },
+                    {
+                        "question": "What is the purpose of `this` keyword in JavaScript?",
+                        "options": [
+                            "It refers to the previous object",
+                            "It refers to the current object",
+                            "It refers to the global object",
+                            "It refers to the parent object"
+                        ],
+                        "answer": "It refers to the current object"
+                    },
+                    {
+                        "question": "Which of these methods can be used to copy an array?",
+                        "options": ["Array.copy()", "arr.slice()", "arr.clone()", "arr.duplicate()"],
+                        "answer": "arr.slice()"
+                    },
+                    {
+                        "question": "What will `console.log(!!0)` output?",
+                        "options": ["true", "false", "undefined", "Error"],
+                        "answer": "false"
+                    },
+                    {
+                        "question": "What is the default value of a declared variable without initialization?",
+                        "options": ["null", "0", "undefined", "NaN"],
+                        "answer": "undefined"
+                    },
+                    {
+                        "question": "Which operator checks both value and type?",
+                        "options": ["==", "===", "!=", "!=="],
+                        "answer": "==="
+                    },
+                    {
+                        "question": "What does `isNaN('5')` return?",
+                        "options": ["true", "false", "undefined", "NaN"],
+                        "answer": "false"
+                    },
+                    {
+                        "question": "How can you convert an array to a string?",
+                        "options": ["toString()", "join()", "Both", "None"],
+                        "answer": "Both"
+                    },
+                    {
+                        "question": "What does `JSON.stringify` do?",
+                        "options": [
+                            "Converts a string to JSON",
+                            "Converts a JSON object to string",
+                            "Parses JSON",
+                            "None of the above"
+                        ],
+                        "answer": "Converts a JSON object to string"
+                    },
+                    {
+                        "question": "What is the use of `let` in JavaScript?",
+                        "options": [
+                            "Declare a global variable",
+                            "Declare a block-scoped variable",
+                            "Declare a constant",
+                            "Declare a function"
+                        ],
+                        "answer": "Declare a block-scoped variable"
+                    },
+                    {
+                        "question": "How do you check if a variable is `null`?",
+                        "options": ["typeof variable == 'null'", "variable === null", "variable == null", "typeof variable === 'object'"],
+                        "answer": "variable === null"
+                    }
+                ],            
+                    "CSS": [
+                        {
+                            "question": "Which CSS property is used to change the text color?",
+                            "options": ["color", "font-color", "text-color", "background-color"],
+                            "answer": "color"
+                        },
+                        {
+                            "question": "Which property is used to change the background color of an element in CSS?",
+                            "options": ["background-color", "background", "color", "bg-color"],
+                            "answer": "background-color"
+                        },
+                        {
+                            "question": "What does the CSS 'box-sizing' property do?",
+                            "options": ["Defines how the width and height of an element are calculated", "Changes the size of the text inside an element", "Controls the padding of an element", "Sets the margin of an element"],
+                            "answer": "Defines how the width and height of an element are calculated"
+                        },
+                        {
+                            "question": "Which CSS property controls the layout of columns in a multi-column layout?",
+                            "options": ["column-count", "columns", "multi-columns", "column-layout"],
+                            "answer": "column-count"
+                        },
+                        {
+                            "question": "Which of the following is a valid CSS selector for targeting an element with an ID of 'header'?",
+                            "options": ["#header", ".header", "header", "header#"],
+                            "answer": "#header"
+                        },
+                        {
+                            "question": "Which of the following is used to change the font style in CSS?",
+                            "options": ["font-style", "text-style", "font-family", "text-family"],
+                            "answer": "font-style"
+                        },
+                        {
+                            "question": "Which of the following CSS properties is used to set the space between words?",
+                            "options": ["letter-spacing", "word-spacing", "line-height", "word-indent"],
+                            "answer": "word-spacing"
+                        },
+                        {
+                            "question": "How do you make a background image repeat in CSS?",
+                            "options": ["background-repeat: repeat;", "background-image: repeat;", "background: repeat;", "repeat: true;"],
+                            "answer": "background-repeat: repeat;"
+                        },
+                        {
+                            "question": "Which of the following is used to create a flexible layout in CSS?",
+                            "options": ["flexbox", "grid", "float", "block"],
+                            "answer": "flexbox"
+                        },
+                        {
+                            "question": "Which CSS property is used to specify the space between an element's border and content?",
+                            "options": ["padding", "margin", "border-spacing", "spacing"],
+                            "answer": "padding"
+                        },
+                        {
+                            "question": "Which of the following CSS properties is used to control the visibility of an element?",
+                            "options": ["visibility", "display", "opacity", "color"],
+                            "answer": "visibility"
+                        },
+                        {
+                            "question": "What does the CSS 'z-index' property do?",
+                            "options": ["Controls the stacking order of elements", "Changes the font size of an element", "Defines the visibility of an element", "Sets the opacity of an element"],
+                            "answer": "Controls the stacking order of elements"
+                        },
+                        {
+                            "question": "Which of the following is used to specify the width of a border in CSS?",
+                            "options": ["border-width", "border-size", "border-style", "width"],
+                            "answer": "border-width"
+                        },
+                        {
+                            "question": "What is the default value of the 'position' property in CSS?",
+                            "options": ["static", "relative", "absolute", "fixed"],
+                            "answer": "static"
+                        },
+                        {
+                            "question": "How do you create a responsive web design using CSS?",
+                            "options": ["Using media queries", "Using flexbox", "Using grid layout", "All of the above"],
+                            "answer": "All of the above"
+                        },
+                        {
+                            "question": "Which of the following is used to apply a shadow effect to an element in CSS?",
+                            "options": ["box-shadow", "shadow-effect", "text-shadow", "all of the above"],
+                            "answer": "box-shadow"
+                        },
+                        {
+                            "question": "Which of the following CSS properties is used to set the font size?",
+                            "options": ["font-size", "text-size", "size", "text-font"],
+                            "answer": "font-size"
+                        },
+                        {
+                            "question": "Which of the following properties is used to change the display behavior of an element in CSS?",
+                            "options": ["display", "visibility", "position", "float"],
+                            "answer": "display"
+                        },
+                        {
+                            "question": "How do you center an element horizontally in CSS?",
+                            "options": ["margin: 0 auto;", "center: true;", "align: center;", "margin: center;"],
+                            "answer": "margin: 0 auto;"
+                        },
+                        {
+                            "question": "Which CSS property is used to create a hover effect on links?",
+                            "options": [":hover", ":focus", ":active", ":link"],
+                            "answer": ":hover"
+                        }
+                    ],
+                                   
+                "RandomTechnical": [
+                    {
+                        "question": "What does the term 'cloud computing' refer to?",
+                        "options": ["Storing and accessing data over the internet", "A method of backup storage", "A type of local server", "All of the above"],
+                        "answer": "Storing and accessing data over the internet"
+                    },
+                    {
+                        "question": "Which of the following is a version control system?",
+                        "options": ["Git", "Apache", "Docker", "Nginx"],
+                        "answer": "Git"
+                    },
+                    {
+                        "question": "What is the purpose of an API?",
+                        "options": ["To interact with hardware", "To store data", "To allow software components to communicate", "To deploy applications"],
+                        "answer": "To allow software components to communicate"
+                    },
+                    {
+                        "question": "What is the function of a firewall in networking?",
+                        "options": ["To block unauthorized access", "To route data packets", "To encrypt data", "To compress data"],
+                        "answer": "To block unauthorized access"
+                    },
+                    {
+                        "question": "Which of the following is an example of a NoSQL database?",
+                        "options": ["MongoDB", "MySQL", "Oracle", "PostgreSQL"],
+                        "answer": "MongoDB"
+                    },
+                    {
+                        "question": "What is the purpose of containerization in DevOps?",
+                        "options": ["To deploy applications in isolated environments", "To store data in cloud servers", "To manage version control", "To optimize CPU usage"],
+                        "answer": "To deploy applications in isolated environments"
+                    },
+                    {
+                        "question": "Which of the following protocols is used for secure communication over the internet?",
+                        "options": ["HTTPS", "HTTP", "FTP", "SMTP"],
+                        "answer": "HTTPS"
+                    },
+                    {
+                        "question": "Which of the following is an example of an operating system?",
+                        "options": ["Linux", "Windows", "macOS", "All of the above"],
+                        "answer": "All of the above"
+                    },
+                    {
+                        "question": "Which of the following is a valid cloud service provider?",
+                        "options": ["Amazon Web Services", "Google Cloud", "Microsoft Azure", "All of the above"],
+                        "answer": "All of the above"
+                    },
+                    {
+                        "question": "Which of the following is used to style web pages?",
+                        "options": ["CSS", "HTML", "JavaScript", "None of the above"],
+                        "answer": "CSS"
+                    },
+                    {
+                        "question": "What does the term 'Big Data' refer to?",
+                        "options": ["Massive volumes of structured and unstructured data", "A type of database", "A network protocol", "A storage medium"],
+                        "answer": "Massive volumes of structured and unstructured data"
+                    },
+                    {
+                        "question": "Which of the following is an example of a machine learning framework?",
+                        "options": ["TensorFlow", "PyTorch", "scikit-learn", "All of the above"],
+                        "answer": "All of the above"
+                    },
+                    {
+                        "question": "Which of the following is an example of a version control hosting platform?",
+                        "options": ["GitHub", "Jira", "DockerHub", "Slack"],
+                        "answer": "GitHub"
+                    },
+                    {
+                        "question": "Which of the following is a commonly used programming language for web development?",
+                        "options": ["Python", "JavaScript", "Java", "All of the above"],
+                        "answer": "All of the above"
+                    },
+                    {
+                        "question": "Which of the following is used to deploy web applications?",
+                        "options": ["Heroku", "AWS Lambda", "Netlify", "All of the above"],
+                        "answer": "All of the above"
+                    },
+                    {
+                        "question": "What is continuous integration in DevOps?",
+                        "options": ["The practice of merging code changes frequently", "The practice of deploying applications continuously", "The practice of managing infrastructure", "None of the above"],
+                        "answer": "The practice of merging code changes frequently"
+                    },
+                    {
+                        "question": "Which of the following is used for creating databases?",
+                        "options": ["SQL", "MongoDB", "SQLite", "All of the above"],
+                        "answer": "All of the above"
+                    }
+                ]            
+        }
+        

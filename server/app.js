@@ -6,17 +6,17 @@ const path = require("path");
 const url = require("url");
 const querystring = require("querystring");
 const bcrypt = require("bcrypt");
+const mime = require("mime-types"); // To handle MIME types dynamically
 const { connectToDatabase, getDb } = require("./database/connection");
 
 const PORT = process.env.PORT || 3000;
 
 /**
- * Serve static files (HTML, CSS, JS, JSON)
+ * Serve static files (HTML, CSS, JS, JSON) dynamically based on file extension.
  * @param {object} res - HTTP response object.
  * @param {string} filePath - Path to the file.
- * @param {string} contentType - MIME type of the content.
  */
-const serveStaticFile = (res, filePath, contentType) => {
+const serveStaticFile = (res, filePath) => {
   const fullPath = path.join(__dirname, "..", "client", "public", filePath); // Adjusted path to `client/public`
   
   fs.readFile(fullPath, (err, data) => {
@@ -27,6 +27,8 @@ const serveStaticFile = (res, filePath, contentType) => {
       res.writeHead(statusCode, { "Content-Type": "text/plain" });
       return res.end(message);
     }
+
+    const contentType = mime.lookup(filePath) || "application/octet-stream";
     res.writeHead(200, { "Content-Type": contentType });
     res.end(data);
   });
@@ -69,6 +71,10 @@ const handleRegistration = async (req, res) => {
     }
   });
 };
+
+/**
+ * Handle login logic.
+ */
 const handleLogin = async (req, res) => {
   let body = "";
   req.on("data", (chunk) => (body += chunk));
@@ -115,22 +121,13 @@ const server = http.createServer(async (req, res) => {
   if (req.method === "GET") {
     // Serve HTML pages
     if (htmlPaths[pathname]) {
-      return serveStaticFile(res, htmlPaths[pathname], "text/html");
+      return serveStaticFile(res, htmlPaths[pathname]);
     }
 
-    // Serve CSS files
-    if (pathname.endsWith(".css")) {
-      return serveStaticFile(res, pathname, "text/css");
-    }
-
-    // Serve JS files
-    if (pathname.endsWith(".js")) {
-      return serveStaticFile(res, pathname, "application/javascript");
-    }
-
-    // Serve JSON files (e.g., questions.json)
-    if (pathname === "/questions.json") {
-      return serveStaticFile(res, "questions.json", "application/json");
+    // Serve other static files dynamically
+    const extension = path.extname(pathname);
+    if ([".css", ".js", ".json"].includes(extension)) {
+      return serveStaticFile(res, pathname);
     }
   } else if (req.method === "POST") {
     if (pathname === "/register") {

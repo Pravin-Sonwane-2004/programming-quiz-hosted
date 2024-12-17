@@ -11,86 +11,60 @@ let isOptionSelected = false; // Track if an option is selected
 let isCountdownActive = false; // Track if countdown is active
 let userDefinedTime = 3; // Countdown time in seconds
 
-async function loadQuestions(language) {
+// Fetch questions from questions.json
+async function loadQuestions() {
     try {
-        const response = await fetch('/questions.json'); // Adjust if file path differs
+        const response = await fetch('/questions.json'); // Adjust path if necessary
         if (!response.ok) throw new Error('Failed to load questions');
-        
-        const data = await response.json();
-        console.log("Loaded questions data:", data); // Debugging log
+        questions = await response.json();
 
-        if (Array.isArray(data)) {
-            console.log("Received an array of questions.");
-        } else if (typeof data === 'object') {
-            console.log("Received an object of questions by language.");
+        // Check if questions are loaded for each language
+        if (!Object.keys(questions).length) {
+            alert('No questions available for any language.');
+        } else {
+            console.log('Questions loaded successfully:', questions);
         }
-
-        questions = groupQuestionsByLanguage(data); // Group questions by language
-        console.log("Grouped questions:", questions); // Debugging log
-
-        const languageQuestions = questions[language];
-        console.log(`Questions for ${language}:`, languageQuestions); // Debugging log
-        
-        if (!languageQuestions || languageQuestions.length === 0) {
-            throw new Error('No questions found for this language');
-        }
-
-        startQuizWithQuestions(languageQuestions);
     } catch (error) {
-        console.error('Error loading questions:', error.message);
-        document.getElementById('response').textContent = 'Unable to load questions. Please try again later.';
+        console.error('Error loading questions:', error);
+        alert('Unable to load questions. Please try again later.');
     }
-}
-
-// Helper function to group questions by language
-function groupQuestionsByLanguage(questionsArray) {
-    const grouped = {};
-    questionsArray.forEach(q => {
-        if (!grouped[q.language]) grouped[q.language] = [];
-        grouped[q.language].push(q);
-    });
-    console.log("Grouped questions:", grouped); // Debugging log
-    return grouped;
 }
 
 // Shuffle Questions Function
 function shuffleQuestions(language) {
-    if (!questions[language]) {
-        console.error(`No questions available for language: ${language}`);
-        return [];  // Return an empty array if no questions exist for the language
-    }
-
     const shuffled = questions[language].sort(() => Math.random() - 0.5); // Shuffle the questions
     return shuffled.slice(0, totalQuestions); // Return a random set of questions up to totalQuestions (default 30)
 }
 
 // Function to start the quiz based on the selected language
 function startQuiz(language) {
-    console.log("Starting quiz for language:", language); // Debugging log
-
     currentLanguage = language;
     currentQuestionIndex = 0;
     score = 0;
-    selectedAnswers = [];
-    incorrectAnswers = [];
+
+    if (!questions[currentLanguage] || questions[currentLanguage].length === 0) {
+        alert(`No questions available for ${currentLanguage}`);
+        return;
+    }
 
     // Shuffle questions for the selected language
     questionsShuffled = shuffleQuestions(language);
 
-    if (questionsShuffled.length === 0) {
-        alert(`No questions available for ${currentLanguage}`);
-        return;
-    }
+    // Reset selected answers
+    selectedAnswers = [];
 
     // Hide the intro text and language buttons
     document.getElementById('intro-text').style.display = 'none';
     document.getElementById('language-buttons').style.display = 'none';
 
+    // Clear previous performance section
+    document.getElementById('performanceSection').style.display = 'none';
+
     // Show the first question
     showQuestion();
 }
 
-// Function to display the quiz question
+// Show the current question with a countdown
 function showQuestion() {
     const quizSection = document.getElementById('quizSection');
     quizSection.innerHTML = ''; // Clear previous content
@@ -98,82 +72,195 @@ function showQuestion() {
     const question = questionsShuffled[currentQuestionIndex];
 
     if (!question) {
-        showFinalPerformance();
+        showFinalPerformance(); // Show performance when no more questions are available
         return;
     }
 
-    // Display question and options
+    if (isCountdownActive) return; // Prevent multiple countdowns
+
+    // Countdown logic before showing the question
+    let countdown = userDefinedTime;
+    isCountdownActive = true;
+
+    // Display countdown message
+    quizSection.innerHTML = `
+        <div class="countdown-timer">
+            <h3>Get ready! The next question will appear in <span id="countdown">${countdown}</span> seconds...</h3>
+        </div>
+    `;
+
+    // Countdown interval
+    const countdownInterval = setInterval(function() {
+        countdown--;
+        document.getElementById('countdown').textContent = countdown;
+
+        if (countdown === 0) {
+            clearInterval(countdownInterval);
+            isCountdownActive = false; // Countdown ends, reset active state
+            showQuizQuestion(question); // Show the question after countdown
+        }
+    }, 1000); // Changed from 100 to 1000 for a 1-second interval
+}
+
+// Function to display the quiz question after countdown
+function showQuizQuestion(question) {
+    const quizSection = document.getElementById('quizSection');
     quizSection.innerHTML = `
         <div class="quiz-question">
             <h3>${currentQuestionIndex + 1}. ${question.question}</h3>
             ${question.options.map(option => `
-                <div class="option" onclick="selectOption('${option}', '${question.answer}')">${option}</div>
+                <div class="option" id="option-${option}" onclick="selectOption('${option}', '${question.answer}')">${option}</div>
             `).join('')}
+            <div id="result-message"></div>
+        </div>
+    `;
+    updateProgressBar(currentQuestionIndex + 1, totalQuestions); // Update progress bar
+    quizSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// Progress bar initialization
+function updateProgressBar(current, total) {
+    const progressBar = document.getElementById('progressBar');
+    const progress = (current / total) * 100;
+    progressBar.style.width = `${progress}%`;
+}
+
+// Function to select an option
+function selectOption(selected, correctAnswer) {
+    if (isOptionSelected || isCountdownActive) return; // Prevent multiple selections or actions during countdown
+    isOptionSelected = true; // Mark that an option is selected
+
+    const resultMessage = document.getElementById('result-message');
+    const currentQuestion = questionsShuffled[currentQuestionIndex];
+
+    // Check the selected answer
+    if (selected === correctAnswer) {
+        score++;
+        resultMessage.innerText = "Correct!!! ";
+        resultMessage.style.color = "green";
+    } else {
+        resultMessage.innerText = `Incorrect! The correct answer is: ${correctAnswer}`;
+        resultMessage.style.color = "red";
+        
+        // Add to incorrectAnswers if the answer is wrong
+        incorrectAnswers.push({
+            question: currentQuestion.question,
+            options: currentQuestion.options,
+            correctAnswer: currentQuestion.answer,
+            selectedAnswer: selected
+        });
+    }
+
+    // Move to the next question after 2 seconds
+    setTimeout(() => {
+        currentQuestionIndex++;
+        isOptionSelected = false; // Reset option selection flag
+        if (currentQuestionIndex % 5 === 0 && currentQuestionIndex < totalQuestions) {
+            showIntermediatePerformance(); // Show performance after every 5 questions
+        } else if (currentQuestionIndex < totalQuestions) {
+            showQuestion(); // Show the next question after countdown
+        } else {
+            showFinalPerformance(); // Show final performance after all questions
+        }
+    }, 2000);
+}
+
+// Function to evaluate performance based on score
+function evaluatePerformance(score, totalAnswered) {
+    let performanceMessage;
+    const percentage = (score / totalAnswered) * 100;
+
+    if (percentage === 100) {
+        performanceMessage = "Excellent! You answered all questions correctly.";
+    } else if (percentage >= 80) {
+        performanceMessage = "Good job! You answered most questions correctly.";
+    } else if (percentage >= 50) {
+        performanceMessage = "You're doing better! Keep it up.";
+    } else {
+        performanceMessage = "Improvement needed. Keep practicing!";
+    }
+    return performanceMessage;
+}
+
+// Function to show intermediate performance after every 5 questions
+function showIntermediatePerformance() {
+    const quizSection = document.getElementById('quizSection');
+    const performanceMessage = evaluatePerformance(score, currentQuestionIndex);  // Display up to the current question number
+    const percentage = ((score / currentQuestionIndex) * 100).toFixed(2); // Calculate percentage
+
+    quizSection.innerHTML = `
+        <div class="performance-message">
+            <h3>Your Performance Till Now</h3>
+            <p>${performanceMessage}</p>
+            <p>Current Score: ${score} out of ${currentQuestionIndex} (${percentage}%)</p>
+            <button class="quiz-button" onclick="showQuestion()">Continue Quiz</button>
         </div>
     `;
 }
 
-// Other functions like selectOption(), showFinalPerformance() etc.
-
-
-// Function to handle selecting an option
-function selectOption(selectedOption, correctAnswer) {
-    if (isOptionSelected) return; // Prevent multiple selections
-
-    isOptionSelected = true;
-    selectedAnswers.push(selectedOption);
-
-    // Check if the selected answer is correct
-    if (selectedOption === correctAnswer) {
-        score++;
-    } else {
-        incorrectAnswers.push({ question: questionsShuffled[currentQuestionIndex], selectedOption, correctAnswer });
-    }
-
-    // Move to the next question after a short delay
-    setTimeout(() => {
-        isOptionSelected = false;
-        currentQuestionIndex++;
-        showQuestion();
-    }, 1000);
-}
-
-// Function to go to the next question
-function nextQuestion() {
-    currentQuestionIndex++;
-    showQuestion();
-}
-
-// Function to display performance at the end of the quiz
+// Function to show final performance at the end
 function showFinalPerformance() {
-    const performanceSection = document.getElementById('performanceSection');
-    performanceSection.style.display = 'block';
-    const performanceText = document.getElementById('performanceText');
+    const performanceMessage = evaluatePerformance(score, currentQuestionIndex);
+    const percentage = ((score / currentQuestionIndex) * 100).toFixed(2); // Calculate final percentage
 
-    performanceText.innerHTML = `
-        <p>You completed the quiz!</p>
-        <p>Your score: ${score} / ${totalQuestions}</p>
-        <p>Incorrect answers:</p>
-        <ul>
-            ${incorrectAnswers.map(incorrect => `
-                <li>
-                    <strong>Question:</strong> ${incorrect.question.question} <br>
-                    <strong>Your Answer:</strong> ${incorrect.selectedOption} <br>
-                    <strong>Correct Answer:</strong> ${incorrect.correctAnswer}
-                </li>
-            `).join('')}
-        </ul>
+    const resultSection = document.getElementById('performanceSection');
+    resultSection.innerHTML = `
+        <div class="performance-message">
+            <h3>Your Final Performance</h3>
+            <p>${performanceMessage}</p>
+            <p>Final Score: ${score} out of ${currentQuestionIndex} (${percentage}%)</p>
+            <button class="quiz-button" onclick="enterReviewMode()">Review Incorrect Answers</button>
+            <button class="quiz-button" onclick="retakeIncorrectQuestions()">Retake Incorrect Questions</button> <!-- Retake button -->
+        </div>
     `;
+    resultSection.style.display = 'block'; // Show performance section
+    resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// Define the logout function
-function logout() {
-    console.log("Logging out...");  // For debugging
-    window.location.href = 'login.html';  // Redirect to the login page after logging out
+// Function to enter review mode for incorrect answers
+function enterReviewMode() {
+    const quizSection = document.getElementById('quizSection');
+    quizSection.innerHTML = ''; // Clear previous content
+
+    const reviewMessage = document.createElement('h3');
+    reviewMessage.textContent = "Review Incorrect Answers";
+    quizSection.appendChild(reviewMessage);
+
+    // Loop through incorrect answers and display them
+    incorrectAnswers.forEach((incorrect, index) => {
+        const questionElement = document.createElement('div');
+        questionElement.className = 'review-question';
+        questionElement.innerHTML = `
+            <h4>${index + 1}. ${incorrect.question}</h4>
+            <p>Your Answer: ${incorrect.selectedAnswer}</p>
+            <p>Correct Answer: ${incorrect.correctAnswer}</p>
+            <p>Options: ${incorrect.options.join(', ')}</p>
+        `;
+        quizSection.appendChild(questionElement);
+    });
+
+    const restartButton = document.createElement('button');
+    restartButton.className = 'quiz-button';
+    restartButton.textContent = 'Back to Quiz';
+    restartButton.onclick = () => showFinalPerformance();  // Go back to final performance
+    quizSection.appendChild(restartButton);
+}
+
+// Retake incorrect questions
+function retakeIncorrectQuestions() {
+    currentQuestionIndex = 0; // Reset to the first question
+    score = 0; // Reset score
+
+    // Shuffle incorrect answers for retake
+    questionsShuffled = incorrectAnswers.sort(() => Math.random() - 0.5);
+
+    // Reset incorrectAnswers array for a fresh start
+    incorrectAnswers = [];
+
+    showQuestion(); // Start retaking questions
 }
 
 // Initialize the app
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("DOM Loaded"); // Debugging log
-    loadQuestions('Java'); // Load questions for Java initially (or dynamically based on user selection)
+    loadQuestions();
 });
