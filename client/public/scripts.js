@@ -11,6 +11,31 @@ let isOptionSelected = false; // Track if an option is selected
 let isCountdownActive = false; // Track if countdown is active
 let userDefinedTime = 3; // Countdown time in seconds
 
+// Fetch questions from questions.json
+async function loadQuestions() {
+    try {
+        const response = await fetch('/questions.json'); // Adjust path if necessary
+        if (!response.ok) throw new Error('Failed to load questions');
+        questions = await response.json();
+
+        // Check if questions are loaded for each language
+        if (!Object.keys(questions).length) {
+            alert('No questions available for any language.');
+        } else {
+            console.log('Questions loaded successfully:', questions);
+        }
+    } catch (error) {
+        console.error('Error loading questions:', error);
+        alert('Unable to load questions. Please try again later.');
+    }
+}
+
+// Shuffle Questions Function
+function shuffleQuestions(language) {
+    const shuffled = questions[language].sort(() => Math.random() - 0.5); // Shuffle the questions
+    return shuffled.slice(0, totalQuestions); // Return a random set of questions up to totalQuestions (default 30)
+}
+
 // Function to start the quiz based on the selected language
 function startQuiz(language) {
     currentLanguage = language;
@@ -36,34 +61,7 @@ function startQuiz(language) {
     document.getElementById('performanceSection').style.display = 'none';
 
     // Show the first question
-    showQuestion();  // Ensures the first question appears immediately
-}
-
-
-
-// Fetch questions from questions.json
-async function loadQuestions() {
-    try {
-        const response = await fetch('/questions.json'); // Adjust path if necessary
-        if (!response.ok) throw new Error('Failed to load questions');
-        questions = await response.json();
-
-        // Check if questions are loaded for each language
-        if (!Object.keys(questions).length) {
-            alert('No questions available for any language.');
-        } else {
-            console.log('Questions loaded successfully:', questions);
-        }
-    } catch (error) {
-        console.error('Error loading questions:', error);
-        alert('Unable to load questions. Please try again later.');
-    }
-}
-
-// Shuffle Questions Function
-function shuffleQuestions(language) {
-    const shuffled = questions[language].sort(() => Math.random() - 0.5); // Shuffle the questions
-    return shuffled.slice(0, totalQuestions); // Return a random set of questions up to totalQuestions (default 30)
+    showQuestion();
 }
 
 // Show the current question with a countdown
@@ -266,49 +264,3 @@ function retakeIncorrectQuestions() {
 document.addEventListener('DOMContentLoaded', () => {
     loadQuestions();
 });
-
-
-// End the quiz and show performance
-function endQuiz() {
-    clearInterval(countdownTimer);  // Stop countdown
-    showPerformance();
-    triggerFireworks();  // Show fireworks if all questions are correct
-}
-
-function answerQuestion(selectedAnswer) {
-    const correctAnswer = questions[currentQuestionIndex].answer;
-    if (selectedAnswer === correctAnswer) {
-        correctAnswers++;
-    }
-
-    // Update progress
-    progress += 100 / totalQuestions;
-    document.getElementById('progressBar').style.width = `${progress}%`;
-
-    // Move to next question or show performance
-    currentQuestionIndex++;
-    if (currentQuestionIndex < totalQuestions) {
-        displayQuestion();
-    } else {
-        endQuiz();
-    }
-}
-
-
-// Trigger fireworks effect
-function triggerFireworks() {
-    document.getElementById('fireworks').style.display = 'block';
-    setTimeout(() => {
-        document.getElementById('fireworks').style.display = 'none';
-    }, 3000); // Hide after 3 seconds
-}
-
-// Retake the quiz
-function retakeQuiz() {
-    location.reload(); // Reload the page to restart the quiz
-}
-
-// Go back to homepage
-function goHome() {
-    window.location.href = 'index.html'; // Redirect to homepage
-}
