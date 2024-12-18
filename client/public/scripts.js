@@ -162,7 +162,7 @@ function selectOption(selected, correctAnswer) {
         } else {
             showFinalPerformance(); // Show final performance after all questions
         }
-    }, 300);
+    }, 1000);
 }
 
 // Function to evaluate performance based on score
