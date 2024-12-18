@@ -9,7 +9,7 @@ let selectedAnswers = [];
 let incorrectAnswers = []; // Array to store incorrectly answered questions
 let isOptionSelected = false; // Track if an option is selected
 let isCountdownActive = false; // Track if countdown is active
-let userDefinedTime = 3; // Countdown time in seconds
+let userDefinedTime = 2; // Countdown time in seconds
 
 // Fetch questions from questions.json
 async function loadQuestions() {
@@ -99,7 +99,7 @@ function showQuestion() {
             isCountdownActive = false; // Countdown ends, reset active state
             showQuizQuestion(question); // Show the question after countdown
         }
-    }, 1000); // Changed from 100 to 1000 for a 1-second interval
+    }, 200); // Changed from 100 to 1000 for a 1-second interval
 }
 
 // Function to display the quiz question after countdown
@@ -155,14 +155,14 @@ function selectOption(selected, correctAnswer) {
     setTimeout(() => {
         currentQuestionIndex++;
         isOptionSelected = false; // Reset option selection flag
-        if (currentQuestionIndex % 5 === 0 && currentQuestionIndex < totalQuestions) {
+        if (currentQuestionIndex % 15 === 0 && currentQuestionIndex < totalQuestions) {
             showIntermediatePerformance(); // Show performance after every 5 questions
         } else if (currentQuestionIndex < totalQuestions) {
             showQuestion(); // Show the next question after countdown
         } else {
             showFinalPerformance(); // Show final performance after all questions
         }
-    }, 2000);
+    }, 100);
 }
 
 // Function to evaluate performance based on score
