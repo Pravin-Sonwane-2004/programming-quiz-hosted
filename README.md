@@ -1,4 +1,4 @@
-Programming Quiz Hosted
+<h>Programming Quiz Hosted</h>
 Welcome to the Programming Quiz Hosted project! This platform is a robust solution for programming enthusiasts to test and enhance their knowledge through interactive quizzes on various programming languages and concepts. Designed with a modern tech stack, it offers a seamless experience for both users and administrators.
 
 Table of Contents
