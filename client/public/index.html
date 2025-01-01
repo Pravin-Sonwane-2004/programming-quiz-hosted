@@ -5,265 +5,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Dashboard</title>
-    <link rel="stylesheet" href="index.css">
-    <style>
-        /* Global Styles */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f7fb;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        /* Sidebar Styles */
-        .sidebar {
-            width: 250px;
-            height: 100vh;
-            background-color: #343a40;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
-            position: fixed;
-            transition: all 0.3s ease;
-        }
-
-        .sidebar-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .sidebar-header img {
-            width: 70px;
-            border-radius: 50%;
-            margin-bottom: 10px;
-        }
-
-        .sidebar-header h2 {
-            font-size: 20px;
-            margin: 0;
-        }
-
-        .sidebar nav ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .sidebar nav ul li {
-            margin: 15px 0;
-        }
-
-        .sidebar nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            transition: color 0.3s;
-        }
-
-        .sidebar nav ul li a:hover {
-            color: #007bff;
-        }
-
-        /* Main Content Styles */
-        .main-content {
-            margin-left: 270px;
-            padding: 40px;
-            width: calc(100% - 270px);
-            transition: margin-left 0.3s ease, width 0.3s ease;
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #ffffff;
-            padding: 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            margin-bottom: 30px;
-        }
-
-        .header h1 {
-            margin: 0;
-            font-size: 24px;
-        }
-
-        .header button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .content-section,
-        .performance-section {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-
-        .content-section h2,
-        .performance-section h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
-        }
-
-        .content-section p,
-        .performance-section p {
-            font-size: 16px;
-            color: #333;
-        }
-
-        /* Mobile Styles */
-        @media (max-width: 768px) {
-            .sidebar {
-                position: static;
-                width: 100%;
-                height: auto;
-                flex-direction: row;
-                justify-content: space-around;
-                padding: 10px 0;
-            }
-
-            .sidebar-header {
-                display: none;
-            }
-
-            .sidebar nav ul {
-                display: flex;
-                flex-wrap: wrap;
-                margin: 0;
-            }
-
-            .sidebar nav ul li {
-                margin: 0 10px;
-            }
-
-            .main-content {
-                margin-left: 0;
-                width: 100%;
-                padding: 20px;
-            }
-
-            .header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-
-            .header h1 {
-                font-size: 20px;
-            }
-
-            .header button {
-                font-size: 14px;
-                padding: 8px 15px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .sidebar nav ul li a {
-                font-size: 16px;
-            }
-
-            .header h1 {
-                font-size: 18px;
-            }
-
-            .header button {
-                font-size: 12px;
-                padding: 6px 10px;
-            }
-
-            .content-section h2,
-            .performance-section h3 {
-                font-size: 18px;
-            }
-        }
-    </style>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
 
 <body>
-
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <div class="sidebar-header">
-            <img src="profile-icon.png" alt="Profile Icon">
-            <h2>Welcome, User</h2>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#">Dashboard</a></li>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">CodingNinja</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
                 <li><a href="profile.html">Profile</a></li>
-                <li><a href="quiz.html">Start Quiz</a></li>
-                <li><a href="#">Settings</a></li>
-                <li><a href="login.html">Logout</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
             </ul>
-        </nav>
-    </aside>
+        </div>
+    </nav>
 
     <!-- Main Content -->
-    <div class="main-content">
-        <header class="header">
-            <h1>Dashboard</h1>
-            <button onclick="window.location.href='quiz.html'">Start Quiz</button>
-        </header>
+    <main class="main-content">
+        <div class="container">
+            <h1>Welcome to the Dashboard</h1>
+            <p>Explore our features and improve your coding skills.</p>
 
-        <section class="content-section">
-            <h2>Welcome to Your Dashboard</h2>
-            <p>Here you can view your quiz performance and other details.</p>
-        </section>
+            <!-- Features Section -->
+            <section class="features">
+                <div class="feature">
+                    <i class="bx bx-code-alt"></i>
+                    <h3>Interactive Quizzes</h3>
+                    <p>Test your knowledge with our interactive quizzes.</p>
+                </div>
+                <div class="feature">
+                    <i class="bx bx-user"></i>
+                    <h3>User Profiles</h3>
+                    <p>Manage your profile and track your progress.</p>
+                </div>
+                <div class="feature">
+                    <i class="bx bx-stats"></i>
+                    <h3>Statistics</h3>
+                    <p>View detailed statistics of your quiz performance.</p>
+                </div>
+            </section>
+        </div>
+    </main>
 
-        <!-- Performance Section -->
-        <section class="performance-section">
-            <h3>Your Performance</h3>
-            <p id="performanceMessage">You haven't taken any quizzes yet.</p>
-            <div id="scoreSection" class="score" style="display:none;">
-                <p>Score: <span id="scoreValue">0</span> out of <span id="totalQuestions">0</span></p>
-                <p>Percentage: <span id="percentageValue">0</span>%</p>
-            </div>
-            <button class="quiz-button" onclick="viewQuizPerformance()">View Previous Performance</button>
-        </section>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 Hello Coderz. All rights reserved.</p>
+        </div>
+    </footer>
 
-    </div>
-
-    <script>
-        // Sample performance data (In a real scenario, this would be fetched from the server or localStorage)
-        let score = 20; // Example score
-        let totalQuestions = 30; // Example total questions
-        let percentage = (score / totalQuestions) * 100;
-
-        // Function to display quiz performance
-        function viewQuizPerformance() {
-            const performanceMessage = document.getElementById('performanceMessage');
-            const scoreSection = document.getElementById('scoreSection');
-            const scoreValue = document.getElementById('scoreValue');
-            const totalQuestionsElement = document.getElementById('totalQuestions');
-            const percentageValue = document.getElementById('percentageValue');
-
-            if (score === 0) {
-                performanceMessage.textContent = "You haven't taken any quizzes yet.";
-                scoreSection.style.display = 'none';
-            } else {
-                performanceMessage.textContent = "Here is your quiz performance:";
-                scoreValue.textContent = score;
-                totalQuestionsElement.textContent = totalQuestions;
-                percentageValue.textContent = percentage.toFixed(2);
-                scoreSection.style.display = 'block';
-            }
-        }
-
-        // Call the function to display performance data on load
-        viewQuizPerformance();
-    </script>
+    <script src="scripts.js"></script>
 </body>
 
 </html>
