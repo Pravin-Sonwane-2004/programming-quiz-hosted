@@ -1,6 +1,3 @@
-/* General Reset */
-* 
-
 /* Global Styles */
 body {
     font-family: 'Arial', sans-serif;
@@ -8,609 +5,106 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-}
-
-/* Sidebar Styles */
-.sidebar {
-    width: 250px;
-    height: 100vh;
-    background: linear-gradient(135deg, #343a40, #495057);
-    color: white;
-    display: flex;
     flex-direction: column;
-    padding: 20px;
-    position: fixed;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    transition: width 0.3s;
+    min-height: 100vh;
 }
 
-.sidebar:hover {
-    width: 270px;
+/* Container */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.sidebar-header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.sidebar-header img {
-    width: 70px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-    border: 2px solid white;
-}
-
-.sidebar-header h2 {
-    font-size: 20px;
-    margin: 0;
-}
-
-.sidebar nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.sidebar nav ul li {
-    margin: 15px 0;
-    transition: transform 0.2s;
-}
-
-.sidebar nav ul li:hover {
-    transform: translateX(10px);
-}
-
-.sidebar nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    display: block;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background 0.3s, color 0.3s;
-}
-
-.sidebar nav ul li a:hover {
-    background-color: #007bff;
-    color: white;
-}
-
-/* Main Content Styles */
-.main-content {
-    margin-left: 270px;
-    padding: 40px;
-    width: 100%;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #ffffff;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    margin-bottom: 30px;
-}
-
-.header h1 {
-    margin: 0;
-    font-size: 24px;
-}
-
-.header button {
-    padding: 10px 20px;
-    background: linear-gradient(135deg, #007bff, #0056b3);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: transform 0.2s, background 0.3s;
-}
-
-.header button:hover {
-    transform: scale(1.1);
-    background: linear-gradient(135deg, #0056b3, #004085);
-}
-
-/* Content Section Styles */
-.content-section {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-    transition: transform 0.3s;
-}
-
-.content-section:hover {
-    transform: translateY(-5px);
-}
-
-.content-section h2 {
-    font-size: 22px;
-    margin-bottom: 15px;
-    color: #343a40;
-}
-
-.content-section p {
-    font-size: 16px;
-    color: #555;
-}
-
-/* Performance Section Styles */
-.performance-section {
-    background: linear-gradient(135deg, #e9ecef, #f8f9fa);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-    transition: box-shadow 0.3s;
-}
-
-.performance-section:hover {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-.performance-section h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: #343a40;
-}
-
-.performance-section .score {
-    font-size: 18px;
-    margin-top: 10px;
-    color: #495057;
-}
-
-.performance-section button.quiz-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: transform 0.2s, background 0.3s;
-}
-
-.performance-section button.quiz-button:hover {
-    transform: scale(1.1);
-    background-color: #0056b3;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .sidebar {
-        width: 200px;
-    }
-
-    .main-content {
-        margin-left: 220px;
-        padding: 20px;
-    }
-
-    .header h1 {
-        font-size: 20px;
-    }
-
-    .header button {
-        font-size: 14px;
-        padding: 8px 16px;
-    }
-
-    .content-section h2 {
-        font-size: 18px;
-    }
-
-    .performance-section h3 {
-        font-size: 18px;
-    }
-
-
-
-.main-container {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    flex: 1;
-}
-
-.sidebar {
-    background-color: #2C3E50;
+/* Navigation Bar */
+.navbar {
+    background-color: #333;
     color: #fff;
-    width: 250px;
-    padding: 20px;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    padding: 10px 0;
 }
 
-.sidebar-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.sidebar-header .logo {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 10px;
-}
-
-.sidebar-header h2 {
-    font-size: 18px;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    margin: 15px 0;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #ecf0f1;
-    font-size: 16px;
-    display: block;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-nav ul li a:hover {
-    background-color: #34495E;
-}
-
-.content {
-    margin-left: 250px;
-    padding: 20px;
-    flex: 1;
-    background-color: #fff;
-}
-
-.header {
+.navbar .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background-color: #ecf0f1;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.header-left h1 {
+.navbar .logo {
     font-size: 24px;
+    font-weight: bold;
 }
 
-.profile-btn, .quiz-btn {
-    background-color: #3498db;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-left: 10px;
-}
-
-.profile-btn:hover, .quiz-btn:hover {
-    background-color: #2980b9;
-}
-
-.profile-icon {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-}
-
-.main-section {
-    margin-top: 20px;
-}
-
-h2 {
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-
-#questions {
-    margin-top: 20px;
-}
-
-#questions p {
-    font-size: 18px;
-    margin: 10px 0;
-}
-
-/* Sliding Ad Section */
-.ad-banner {
-    background-color: #f39c12;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    display: block;
-    animation: slideDown 1s ease-in-out;
-}
-
-.ad-content p {
-    font-size: 16px;
-    margin: 0;
-}
-
-.close-btn {
-    background-color: transparent;
-    border: none;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
-    padding: 5px 10px;
-    margin-left: 15px;
-}
-.performance-message {
-    text-align: center;
-    padding: 20px;
-    margin-top: 20px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.performance-message h3 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-}
-
-.performance-message p {
-    font-size: 1.2rem;
-    margin: 10px 0;
-}
-
-.quiz-button {
-    padding: 10px 20px;
-    margin-top: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.quiz-button:hover {
-    background-color: #45a049;
-}
-
-@keyframes slideDown {
-    from {
-        top: -50px;
-    }
-    to {
-        top: 0;
-    }
-}
-/* Global Styles */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f7fb;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-/* Sidebar Styles */
-.sidebar {
-    width: 250px;
-    height: 100vh;
-    background: linear-gradient(135deg, #343a40, #495057);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    position: fixed;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    transition: width 0.3s;
-}
-
-.sidebar:hover {
-    width: 270px;
-}
-
-.sidebar-header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.sidebar-header img {
-    width: 70px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-    border: 2px solid white;
-}
-
-.sidebar-header h2 {
-    font-size: 20px;
-    margin: 0;
-}
-
-.sidebar nav ul {
+.navbar .nav-links {
     list-style: none;
-    padding: 0;
-    margin: 0;
+    display: flex;
+    gap: 20px;
 }
 
-.sidebar nav ul li {
-    margin: 15px 0;
-    transition: transform 0.2s;
+.navbar .nav-links li {
+    display: inline;
 }
 
-.sidebar nav ul li:hover {
-    transform: translateX(10px);
-}
-
-.sidebar nav ul li a {
-    color: white;
+.navbar .nav-links a {
+    color: #fff;
     text-decoration: none;
-    font-size: 18px;
-    display: block;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background 0.3s, color 0.3s;
+    font-size: 16px;
 }
 
-.sidebar nav ul li a:hover {
-    background-color: #007bff;
-    color: white;
+.navbar .nav-links a:hover {
+    text-decoration: underline;
 }
 
-/* Main Content Styles */
+/* Main Content */
 .main-content {
-    margin-left: 270px;
-    padding: 40px;
-    width: 100%;
+    flex: 1;
+    padding: 40px 0;
 }
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #ffffff;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    margin-bottom: 30px;
+.main-content h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
 }
 
-.header h1 {
-    margin: 0;
-    font-size: 24px;
-}
-
-.header button {
-    padding: 10px 20px;
-    background: linear-gradient(135deg, #007bff, #0056b3);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: transform 0.2s, background 0.3s;
-}
-
-.header button:hover {
-    transform: scale(1.1);
-    background: linear-gradient(135deg, #0056b3, #004085);
-}
-
-/* Content Section Styles */
-.content-section {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-    transition: transform 0.3s;
-}
-
-.content-section:hover {
-    transform: translateY(-5px);
-}
-
-.content-section h2 {
-    font-size: 22px;
-    margin-bottom: 15px;
-    color: #343a40;
-}
-
-.content-section p {
-    font-size: 16px;
-    color: #555;
-}
-
-/* Performance Section Styles */
-.performance-section {
-    background: linear-gradient(135deg, #e9ecef, #f8f9fa);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-    transition: box-shadow 0.3s;
-}
-
-.performance-section:hover {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-.performance-section h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: #343a40;
-}
-
-.performance-section .score {
+.main-content p {
     font-size: 18px;
-    margin-top: 10px;
-    color: #495057;
+    margin-bottom: 40px;
 }
 
-.performance-section button.quiz-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+/* Features Section */
+.features {
+    display: flex;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+.feature {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1;
+}
+
+.feature i {
+    font-size: 48px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.feature h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.feature p {
     font-size: 16px;
-    transition: transform 0.2s, background 0.3s;
 }
 
-.performance-section button.quiz-button:hover {
-    transform: scale(1.1);
-    background-color: #0056b3;
+/* Footer */
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
 }
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .sidebar {
-        width: 200px;
-    }
-
-    .main-content {
-        margin-left: 220px;
-        padding: 20px;
-    }
-
-    .header h1 {
-        font-size: 20px;
-    }
-
-    .header button {
-        font-size: 14px;
-        padding: 8px 16px;
-    }
-
-    .content-section h2 {
-        font-size: 18px;
-    }
-
-    .performance-section h3 {
-        font-size: 18px;
-    }
-}
-
-}
-
