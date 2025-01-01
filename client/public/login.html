@@ -14,12 +14,9 @@
     <div class="container">
         <!-- Logo and Header -->
         <h2 class="logo">
-             Hello Coderz
+            Hello Coderz
         </h2>
         <div id="success-message" style="color: green; display: none; text-align: center; margin-bottom: 20px;"></div>
-
-<!-- Your login form code here -->
-
 
         <!-- Login Form -->
         <div class="logreg-box">
@@ -73,8 +70,8 @@
     </div>
 
     <script>
-          // Check if there's a 'message' query parameter in the URL
-          const urlParams = new URLSearchParams(window.location.search);
+        // Check if there's a 'message' query parameter in the URL
+        const urlParams = new URLSearchParams(window.location.search);
         const message = urlParams.get('message');
 
         if (message) {
@@ -83,6 +80,7 @@
             messageContainer.textContent = message;
             messageContainer.style.display = 'block';
         }
+
         function togglePasswordVisibility() {
             const passwordField = document.getElementById('password');
             const lockIcon = document.getElementById('lockIcon');
@@ -124,13 +122,6 @@
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return emailRegex.test(email);
         }
-
-    if (message) {
-        // Display the message if it exists in the URL
-        const messageContainer = document.getElementById('success-message');
-        messageContainer.textContent = message;
-        messageContainer.style.display = 'block';
-    }
     </script>
 </body>
 
