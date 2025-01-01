@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="profile.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="main-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="imagee.png" alt="Logo" class="logo">
+                <h2>User Profile</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li><a href="login.html">Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="profile-content">
+            <h1>Welcome, <span id="username">User</span></h1>
+            <div class="profile-details">
+                <h2>Profile Details</h2>
+                <p><strong>Email:</strong> <span id="email">user@example.com</span></p>
+                <p><strong>Joined:</strong> <span id="joinedDate">01/01/2023</span></p>
+            </div>
+
+            <div class="performance-section">
+                <h2>Performance</h2>
+                <div id="performanceData">
+                    <!-- Performance data will be loaded here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchUserProfile();
+        });
+
+        function fetchUserProfile() {
+            fetch('/api/user/profile')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('username').textContent = data.username;
+                    document.getElementById('email').textContent = data.email;
+                    document.getElementById('joinedDate').textContent = new Date(data.joinedDate).toLocaleDateString();
+                    loadPerformanceData(data.performance);
+                })
+                .catch(error => console.error('Error fetching user profile:', error));
+        }
+
+        function loadPerformanceData(performance) {
+            const performanceSection = document.getElementById('performanceData');
+            performanceSection.innerHTML = '';
+            performance.forEach(item => {
+                const div = document.createElement('div');
+                div.classList.add('performance-item');
+                div.innerHTML = `
+                    <h3>${item.quizTitle}</h3>
+                    <p><strong>Score:</strong> ${item.score}</p>
+                    <p><strong>Date:</strong> ${new Date(item.date).toLocaleDateString()}</p>
+                `;
+                performanceSection.appendChild(div);
+            });
+        }
+    </script>
+</body>
+
+</html>
