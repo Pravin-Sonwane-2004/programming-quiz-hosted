@@ -8,6 +8,61 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
+/* Big Button Styling */
+.big-button-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.big-button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 20px;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 25px; /* Make the button rounded */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 5px 5px 15px #b8b8b8, -5px -5px 15px #ffffff;
+}
+
+.big-button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 0 30px rgba(0, 123, 255, 0.7);
+    transform: translateY(-3px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .main-content h1 {
+        font-size: 28px;
+    }
+
+    .main-content p {
+        font-size: 16px;
+    }
+
+    .features {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .feature {
+        margin-bottom: 20px;
+    }
+}
+
+@media (min-width: 769px) {
+    .features {
+        display: flex;
+        gap: 20px;
+    }
+}
 
 /* Container */
 .container {
