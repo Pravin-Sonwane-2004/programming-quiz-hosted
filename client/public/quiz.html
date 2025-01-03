@@ -4,17 +4,63 @@
     <title>Quiz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="quiz.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <style>
+        .dark-mode {
+            background-color: black;
+            color: white;
+        }
+        .dark-mode .navbar, .dark-mode .footer {
+            background-color: #333;
+        }
+        .dark-mode .quiz-button {
+            background-color: #555;
+            color: white;
+        }
+        .dark-mode .quiz-question {
+            background-color: #222;
+            color: white;
+        }
+        #dark-mode-toggle {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #dark-mode-toggle:hover {
+            background-color: #0056b3;
+        }
+        body.dark-mode #dark-mode-toggle {
+            background-color: #333;
+            color: #fff;
+        }
+        body.dark-mode #dark-mode-toggle:hover {
+            background-color: #555;
+        }
+    </style>
 </head>
 <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">CodingNinja</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+            </ul>
+            <button id="dark-mode-toggle">Toggle Dark Mode</button>
+        </div>
+    </nav>
+
     <!-- Main Quiz Section -->
     <div id="main-content">
-        <!-- Navigation Bar -->
-        <nav>
-            <a href="index.html" id="home-btn">Home</a>
-            <a href="login.html" id="logout-btn" onclick="logout()">Logout</a>
-
-        </nav>
-
         <!-- About Section (Initially Hidden) -->
         <section id="about-section" style="display: none;">
             <h2>About</h2>
@@ -29,7 +75,7 @@
             <div id="language-buttons" class="quiz-buttons">
                 <button class="quiz-button" onclick="startQuiz('Java')">Java</button>
                 <button class="quiz-button" onclick="startQuiz('C')">C</button>
-                <button class="quiz-button" onclick="startQuiz('CPlusPlus')">C++</button>
+                <button class="quiz-button" onclick="startQuiz('C++')">C++</button>
                 <button class="quiz-button" onclick="startQuiz('Python')">Python</button>
                 <button class="quiz-button" onclick="startQuiz('DSA')">DSA</button>
                 <button class="quiz-button" onclick="startQuiz('SQL')">SQL</button>
@@ -69,8 +115,25 @@
     <!-- Response Container -->
     <div id="response"></div>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Hello Coderz. All rights reserved.</p>
+        </div>
+    </footer>
+
     <!-- Scripts -->
     <script src="scripts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButton = document.getElementById('dark-mode-toggle');
+            toggleButton.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                document.querySelectorAll('.footer').forEach(footer => {
+                    footer.classList.toggle('dark-mode');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
-    

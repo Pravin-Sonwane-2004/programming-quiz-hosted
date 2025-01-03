@@ -13,6 +13,23 @@ body {
     text-align: center;
     margin: 20px 0;
 }
+/* filepath: /C:/programming-quiz-hosted/client/public/styles.css */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.navbar.dark-mode {
+    background-color: #1e1e1e;
+}
+
+.nav-links a.dark-mode {
+    color: #ffffff;
+}
+
+.main-content.dark-mode {
+    background-color: #1e1e1e;
+}
 
 .big-button {
     display: inline-block;
@@ -162,4 +179,94 @@ body {
     color: #fff;
     text-align: center;
     padding: 20px 0;
+}
+
+body.dark-mode .navbar {
+    background-color: #1e1e1e;
+}
+
+body.dark-mode .quiz-container {
+    background-color: #1e1e1e;
+}
+
+body.dark-mode .quiz-button {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+body.dark-mode .footer {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+/* Add any other elements that need dark mode styling */
+
+/* Ensure the questions container is always displayed and text color is appropriate */
+.questions-container {
+    display: block; /* Ensure the container is always displayed */
+    color: #000; /* Ensure text color is black for visibility */
+}
+
+/* Dark mode styles for questions container */
+body.dark-mode .questions-container {
+    color: #fff; /* Ensure text color is white for visibility in dark mode */
+}
+
+/* Styles for quiz questions and options */
+.quiz-question {
+    background-color: #fff; /* White background for light mode */
+    color: #000000; /* Black text color for light mode */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .quiz-question {
+    background-color: #1e1e1e; /* Dark background for dark mode */
+    color: #fff; /* White text color for dark mode */
+}
+
+.option {
+    background-color: #f4f7fb; /* Light background for options in light mode */
+    color: #000; /* Black text color for options in light mode */
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+body.dark-mode .option {
+    background-color: #ebdfdf; /* Dark background for options in dark mode */
+    color: #000000; /* White text color for options in dark mode */
+}
+
+/* Styles for dark mode toggle button */
+#dark-mode-toggl {
+    background-color: #007bff;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#dark-mode-toggl:hover {
+    background-color: #0056b3;
+}
+
+/* Dark mode styles for the toggle button */
+body.dark-mode #dark-mode-toggl {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark-mode #dark-mode-toggl:hover {
+    background-color: #555;
+}
+
+body.dark-mode .feature {
+    color: #ffffff; /* Change text color to black in dark mode */
+    background-color: #000; /* Change background color to black in dark mode */
+    color: #fff; /* Change text color to white in dark mode */
 }

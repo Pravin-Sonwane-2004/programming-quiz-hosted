@@ -151,11 +151,14 @@ function selectOption(selected, correctAnswer) {
         });
     }
 
+    const optionContainer = document.getElementById(`option-${selected}`);
+    optionContainer.style.color = 'white'; // Change text color to white after clicking
+
     // Move to the next question after 2 seconds
     setTimeout(() => {
         currentQuestionIndex++;
         isOptionSelected = false; // Reset option selection flag
-        if (currentQuestionIndex % 15 === 0 && currentQuestionIndex < totalQuestions) {
+        if (currentQuestionIndex % 25 === 0 && currentQuestionIndex < totalQuestions) {
             showIntermediatePerformance(); // Show performance after every 5 questions
         } else if (currentQuestionIndex < totalQuestions) {
             showQuestion(); // Show the next question after countdown
@@ -171,13 +174,19 @@ function evaluatePerformance(score, totalAnswered) {
     const percentage = (score / totalAnswered) * 100;
 
     if (percentage === 100) {
-        performanceMessage = "Excellent! You answered all questions correctly.";
+        performanceMessage = "Excellent! You answered all questions correctly. Keep up the great work!";
+    } else if (percentage >= 90) {
+        performanceMessage = "Great job! You have a strong understanding of the material.";
     } else if (percentage >= 80) {
-        performanceMessage = "Good job! You answered most questions correctly.";
+        performanceMessage = "Good job! You answered most questions correctly. A little more practice and you'll be perfect.";
+    } else if (percentage >= 70) {
+        performanceMessage = "Nice effort! You're getting there. Keep studying and you'll improve even more.";
+    } else if (percentage >= 60) {
+        performanceMessage = "You're doing okay, but there's room for improvement. Keep practicing!";
     } else if (percentage >= 50) {
-        performanceMessage = "You're doing better! Keep it up.";
+        performanceMessage = "You're getting better! Keep working on it and you'll see more progress.";
     } else {
-        performanceMessage = "Improvement needed. Keep practicing!";
+        performanceMessage = "Improvement needed. Don't give up, keep practicing and you'll get better!";
     }
     return performanceMessage;
 }
@@ -238,6 +247,57 @@ function enterReviewMode() {
         `;
         quizSection.appendChild(questionElement);
     });
+    
+// filepath: /C:/programming-quiz-hosted/client/public/scripts.js
+document.addEventListener('DOMContentLoaded', () => {
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+
+    if (isDarkMode) {
+        document.body.classList.add('dark-mode');
+        document.querySelector('.navbar').classList.add('dark-mode');
+        document.querySelectorAll('.nav-links a').forEach(link => link.classList.add('dark-mode'));
+        document.querySelector('.main-content').classList.add('dark-mode');
+        document.querySelectorAll('.quiz-button').forEach(button => button.style.color = 'black'); // Change quiz button text color
+    }
+
+    darkModeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        document.querySelector('.navbar').classList.toggle('dark-mode');
+        document.querySelectorAll('.nav-links a').forEach(link => link.classList.toggle('dark-mode'));
+        document.querySelector('.main-content').classList.toggle('dark-mode');
+        document.querySelectorAll('.quiz-button').forEach(button => {
+            if (document.body.classList.contains('dark-mode')) {
+                button.style.color = 'black'; // Change quiz button text color to black
+            } else {
+                button.style.color = ''; // Reset to default color
+            }
+        });
+
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', isDarkMode);
+    });
+
+    document.querySelector('.big-button').addEventListener('click', function() {
+        // ...existing code...
+        
+        // Ensure questions container is not hidden
+        const questionsContainer = document.querySelector('.questions-container');
+        if (questionsContainer) {
+            questionsContainer.style.display = 'block';
+        }
+
+        // Ensure text color is appropriate for visibility
+        if (document.body.classList.contains('dark-mode')) {
+            questionsContainer.style.color = '#fff';
+        } else {
+            questionsContainer.style.color = '#000';
+        }
+    
+        // ...existing code...
+    });
+});
+
 
     const restartButton = document.createElement('button');
     restartButton.className = 'quiz-button';
