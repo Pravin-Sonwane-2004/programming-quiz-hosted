@@ -1,81 +1,120 @@
-<!DOCTYPE html>
-<html lang="en">
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Page</title>
-    <link rel="stylesheet" href="profile.css">
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-</head>
+.main-container {
+    display: flex;
+}
 
-<body>
-    <div class="main-container">
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <img src="imagee.png" alt="Logo" class="logo">
-                <h2>User Profile</h2>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Dashboard</a></li>
-                    <li><a href="profile.html">Profile</a></li>
-                    <li><a href="#">Settings</a></li>
-                    <li><a href="login.html">Logout</a></li>
-                </ul>
-            </nav>
-        </aside>
+.sidebar {
+    width: 250px;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
 
-        <main class="profile-content">
-            <h1>Welcome, <span id="username">User</span></h1>
-            <div class="profile-details">
-                <h2>Profile Details</h2>
-                <p><strong>Email:</strong> <span id="email">user@example.com</span></p>
-                <p><strong>Joined:</strong> <span id="joinedDate">01/01/2023</span></p>
-            </div>
+.sidebar .sidebar-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-            <div class="performance-section">
-                <h2>Performance</h2>
-                <div id="performanceData">
-                    <!-- Performance data will be loaded here -->
-                </div>
-            </div>
-        </main>
-    </div>
+.sidebar .logo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+}
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            fetchUserProfile();
-        });
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+}
 
-        function fetchUserProfile() {
-            fetch('/api/user/profile')
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('username').textContent = data.username;
-                    document.getElementById('email').textContent = data.email;
-                    document.getElementById('joinedDate').textContent = new Date(data.joinedDate).toLocaleDateString();
-                    loadPerformanceData(data.performance);
-                })
-                .catch(error => console.error('Error fetching user profile:', error));
-        }
+.sidebar nav ul li {
+    margin: 10px 0;
+}
 
-        function loadPerformanceData(performance) {
-            const performanceSection = document.getElementById('performanceData');
-            performanceSection.innerHTML = '';
-            performance.forEach(item => {
-                const div = document.createElement('div');
-                div.classList.add('performance-item');
-                div.innerHTML = `
-                    <h3>${item.quizTitle}</h3>
-                    <p><strong>Score:</strong> ${item.score}</p>
-                    <p><strong>Date:</strong> ${new Date(item.date).toLocaleDateString()}</p>
-                `;
-                performanceSection.appendChild(div);
-            });
-        }
-    </script>
-</body>
+.sidebar nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
 
-</html>
+.sidebar nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.profile-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.profile-content h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.profile-details,
+.performance-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.profile-details h2,
+.performance-section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.profile-details p,
+.performance-section p {
+    font-size: 16px;
+    color: #666;
+}
+
+#dark-mode-toggle {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+#dark-mode-toggle:hover {
+    background-color: #0056b3;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode .sidebar {
+    background-color: #1f1f1f;
+}
+
+body.dark-mode .profile-details,
+body.dark-mode .performance-section {
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+}
+
+body.dark-mode #dark-mode-toggle {
+    background-color: #0056b3;
+}
+
+body.dark-mode #dark-mode-toggle:hover {
+    background-color: #003f7f;
+}

@@ -22,8 +22,7 @@
                 <li><a href="login.html">Login</a></li>
                 <li><a href="register.html">Register</a></li>
             </ul>
-            <button id="dark-mode-toggl">Toggle Dark Mode</button>
-       
+            <button id="dark-mode-toggle">Toggle Dark Mode</button>
         </div>
     </nav>
 
@@ -37,6 +36,7 @@
             <div class="big-button-container">
                 <a href="quiz.html" class="big-button">Start Quiz</a>
             </div>
+
             <!-- Features Section -->
             <section class="features">
                 <div class="feature">
@@ -66,18 +66,30 @@
     </footer>
 
     <script src="scripts.js"></script>
-    <script>
-        const toggleButton = document.getElementById('dark-mode-toggl');
-        toggleButton.addEventListener('click', () => {
+    <!-- Add this before closing </body> tag -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        
+        // Check if dark mode was previously enabled
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            document.querySelector('.navbar').classList.add('dark-mode');
+            document.querySelectorAll('.nav-links a').forEach(link => link.classList.add('dark-mode'));
+            document.querySelector('.main-content').classList.add('dark-mode');
+        }
+
+        darkModeToggle.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
-            document.querySelectorAll('.feature').forEach(feature => {
-                feature.classList.toggle('dark-mode');
-            });
-            document.querySelectorAll('.footer').forEach(footer => {
-                footer.classList.toggle('dark-mode');
-            });
+            document.querySelector('.navbar').classList.toggle('dark-mode');
+            document.querySelectorAll('.nav-links a').forEach(link => link.classList.toggle('dark-mode'));
+            document.querySelector('.main-content').classList.toggle('dark-mode');
+            
+            // Save preference to localStorage
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
         });
-    </script>
+    });
+</script>
 </body>
 
 </html>

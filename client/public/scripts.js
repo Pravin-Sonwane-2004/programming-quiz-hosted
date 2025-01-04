@@ -296,6 +296,15 @@ document.addEventListener('DOMContentLoaded', () => {
     
         // ...existing code...
     });
+
+    document.getElementById('toggleButton').addEventListener('click', function() {
+        document.body.classList.toggle('toggled');
+    });
+
+
+    document.getElementById('toggleButton').addEventListener('click', function() {
+        document.body.classList.toggle('toggled');
+    });
 });
 
 

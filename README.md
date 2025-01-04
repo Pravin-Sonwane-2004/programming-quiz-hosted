@@ -1,4 +1,3 @@
-
 ---
 
 # Programming Quiz Hosted
@@ -11,7 +10,7 @@ Welcome to the **Programming Quiz Hosted** project! This platform is a robust so
 
 ## Table of Contents
 
--[Checkout live project](#https://hosting-zqt8.onrender.com)
+- [Checkout live project](#https://hosting-zqt8.onrender.com)
 - [About the Project](#about-the-project)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
@@ -186,8 +185,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ```text
 MIT License
 
-Copyright (c) 2024 Pravin
-
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -202,19 +199,5 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 ```
-
----
-
-## Contact
-
-For any questions or suggestions:
-
-- **Email**: pravinson222@gmail.com
-- **YouTube**: [Programming with Pravin](https://youtube.com/@programmingwithpravin?si=5iCZX5ykjgYa5Fn4e)
-- **Instagram**: [its.pravin.2004](https://instagram.com/its.pravin.2004)
-
----

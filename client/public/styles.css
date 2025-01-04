@@ -1,13 +1,29 @@
-/* Global Styles */
+/* Color Variables */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --light-bg: #b5b5b5;
+    --dark-bg: #1a1a1a;
+    --light-text: #ffffff;
+    --dark-text: #2c3e50;
+    --navbar-light: #b7b7b7;
+    --navbar-dark: #222831;
+    --transition-speed: 0.3s;
+}
+/* Base Styles */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f7fb;
+    background-color: var(--light-bg);
+    color: var(--dark-text);
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    transition: all var(--transition-speed) ease;
 }
+
 /* Big Button Styling */
 .big-button-container {
     text-align: center;
@@ -15,20 +31,21 @@ body {
 }
 /* filepath: /C:/programming-quiz-hosted/client/public/styles.css */
 body.dark-mode {
-    background-color: #121212;
-    color: #ffffff;
+    background-color: var(--dark-bg);
+    color: var(--light-text);
 }
 
 .navbar.dark-mode {
-    background-color: #1e1e1e;
+    background-color: var(--navbar-dark);
+    color: var(--light-text);
 }
 
 .nav-links a.dark-mode {
-    color: #ffffff;
+    color: var(--light-text);
 }
 
 .main-content.dark-mode {
-    background-color: #1e1e1e;
+    background-color: var(--dark-bg);
 }
 
 .big-button {
@@ -36,10 +53,10 @@ body.dark-mode {
     padding: 15px 30px;
     font-size: 20px;
     color: #fff;
-    background-color: #007bff;
+    background-color: var(--secondary-color);
     border-radius: 25px; /* Make the button rounded */
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all var(--transition-speed) ease;
     box-shadow: 5px 5px 15px #b8b8b8, -5px -5px 15px #ffffff;
 }
 
@@ -90,9 +107,11 @@ body.dark-mode {
 
 /* Navigation Bar */
 .navbar {
-    background-color: #333;
-    color: #fff;
+    background-color: var(--navbar-light);
+    color: var(--dark-text);
     padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all var(--transition-speed) ease;
 }
 
 .navbar .container {
@@ -104,6 +123,8 @@ body.dark-mode {
 .navbar .logo {
     font-size: 24px;
     font-weight: bold;
+    color: var(--dark-text);
+    text-decoration: none;
 }
 
 .navbar .nav-links {
@@ -117,9 +138,10 @@ body.dark-mode {
 }
 
 .navbar .nav-links a {
-    color: #fff;
+    color: var(--dark-text);
     text-decoration: none;
     font-size: 16px;
+    transition: all var(--transition-speed) ease;
 }
 
 .navbar .nav-links a:hover {
@@ -130,6 +152,8 @@ body.dark-mode {
 .main-content {
     flex: 1;
     padding: 40px 0;
+    background-color: var(--light-bg);
+    transition: all var(--transition-speed) ease;
 }
 
 .main-content h1 {
@@ -156,11 +180,12 @@ body.dark-mode {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
     flex: 1;
+    transition: all var(--transition-speed) ease;
 }
 
 .feature i {
     font-size: 48px;
-    color: #333;
+    color: var(--primary-color);
     margin-bottom: 10px;
 }
 
@@ -171,22 +196,24 @@ body.dark-mode {
 
 .feature p {
     font-size: 16px;
+    color: var(--dark-text);
 }
 
 /* Footer */
 .footer {
-    background-color: #333;
-    color: #fff;
+    background-color: var(--navbar-light);
+    color: var(--dark-text);
     text-align: center;
     padding: 20px 0;
+    transition: all var(--transition-speed) ease;
 }
 
 body.dark-mode .navbar {
-    background-color: #1e1e1e;
+    background-color: var(--navbar-dark);
 }
 
 body.dark-mode .quiz-container {
-    background-color: #1e1e1e;
+    background-color: var(--dark-bg);
 }
 
 body.dark-mode .quiz-button {
@@ -195,8 +222,8 @@ body.dark-mode .quiz-button {
 }
 
 body.dark-mode .footer {
-    background-color: #1e1e1e;
-    color: #ffffff;
+    background-color: var(--navbar-dark);
+    color: var(--light-text);
 }
 
 /* Add any other elements that need dark mode styling */
@@ -222,7 +249,7 @@ body.dark-mode .questions-container {
 }
 
 body.dark-mode .quiz-question {
-    background-color: #1e1e1e; /* Dark background for dark mode */
+    background-color: var(--dark-bg); /* Dark background for dark mode */
     color: #fff; /* White text color for dark mode */
 }
 
@@ -241,32 +268,45 @@ body.dark-mode .option {
 }
 
 /* Styles for dark mode toggle button */
-#dark-mode-toggl {
-    background-color: #007bff;
-    color: #000000;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+#dark-mode-toggle {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 2px solid var(--secondary-color);
+    background-color: transparent;
+    color: var(--secondary-color);
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all var(--transition-speed) ease;
 }
 
-#dark-mode-toggl:hover {
-    background-color: #0056b3;
+#dark-mode-toggle:hover {
+    background-color: var(--secondary-color);
+    color: white;
 }
 
 /* Dark mode styles for the toggle button */
-body.dark-mode #dark-mode-toggl {
-    background-color: #333;
-    color: #fff;
+body.dark-mode #dark-mode-toggle {
+    border-color: var(--light-text);
+    color: var(--light-text);
 }
 
-body.dark-mode #dark-mode-toggl:hover {
-    background-color: #555;
+body.dark-mode #dark-mode-toggle:hover {
+    background-color: var(--light-text);
+    color: var(--dark-bg);
 }
 
-body.dark-mode .feature {
+body.dark-mode.feature {
     color: #ffffff; /* Change text color to black in dark mode */
     background-color: #000; /* Change background color to black in dark mode */
     color: #fff; /* Change text color to white in dark mode */
+}
+
+body.dark-mode .feature {
+    background-color: var(--navbar-dark);
+    color: var(--light-text);
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .big-button {
+    background-color: #3366cc;
+    color: #ffffff;
 }

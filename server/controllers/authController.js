@@ -31,4 +31,3 @@ const loginUser = async (req, res) => {
 
 // Export the controllers
 module.exports = { registerUser, loginUser };
-  
