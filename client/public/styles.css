@@ -118,6 +118,7 @@ body.dark-mode {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .navbar .logo {
@@ -131,10 +132,13 @@ body.dark-mode {
     list-style: none;
     display: flex;
     gap: 20px;
+    padding: 0;
+    margin: 0;
 }
 
 .navbar .nav-links li {
     display: inline;
+    margin-left: 20px;
 }
 
 .navbar .nav-links a {
@@ -146,6 +150,12 @@ body.dark-mode {
 
 .navbar .nav-links a:hover {
     text-decoration: underline;
+}
+
+#menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
 }
 
 /* Main Content */
@@ -166,11 +176,16 @@ body.dark-mode {
     margin-bottom: 40px;
 }
 
+.main-content .container {
+    padding: 20px;
+}
+
 /* Features Section */
 .features {
     display: flex;
     gap: 20px;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .feature {
@@ -179,7 +194,8 @@ body.dark-mode {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    flex: 1;
+    flex: 1 1 calc(33.333% - 40px);
+    box-sizing: border-box;
     transition: all var(--transition-speed) ease;
 }
 
@@ -197,6 +213,12 @@ body.dark-mode {
 .feature p {
     font-size: 16px;
     color: var(--dark-text);
+}
+
+@media (max-width: 768px) {
+    .feature {
+        flex: 1 1 100%;
+    }
 }
 
 /* Footer */
@@ -310,3 +332,26 @@ body.dark-mode .big-button {
     background-color: #3366cc;
     color: #ffffff;
 }
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .navbar .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    #menu-toggle {
+        display: block;
+    }
+    #dark-mode-toggle {
+        margin-top: 10px;
+    }
+}
+
+/* ...existing code... */

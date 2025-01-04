@@ -317,6 +317,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleButton = document.getElementById('dark-mode-toggle');
+    toggleButton.addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+    });
+
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    menuToggle.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+    });
+
+    const navItems = document.querySelectorAll('.nav-links a');
+    navItems.forEach(item => {
+        item.addEventListener('click', function() {
+            navLinks.classList.remove('active');
+        });
+    });
+});
+
 
     const restartButton = document.createElement('button');
     restartButton.className = 'quiz-button';
