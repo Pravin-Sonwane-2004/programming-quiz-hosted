@@ -102,13 +102,23 @@ function showQuestion() {
     }, 200); // Changed from 100 to 1000 for a 1-second interval
 }
 
+// Utility function to shuffle an array
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
 // Function to display the quiz question after countdown
 function showQuizQuestion(question) {
     const quizSection = document.getElementById('quizSection');
+    const shuffledOptions = shuffleArray([...question.options]); // Shuffle the options
     quizSection.innerHTML = `
         <div class="quiz-question">
             <h3>${currentQuestionIndex + 1}. ${question.question}</h3>
-            ${question.options.map(option => `
+            ${shuffledOptions.map(option => `
                 <div class="option" id="option-${option}" onclick="selectOption('${option}', '${question.answer}')">${option}</div>
             `).join('')}
             <div id="result-message"></div>
