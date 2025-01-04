@@ -37,11 +37,11 @@ body.dark-mode {
 
 .navbar.dark-mode {
     background-color: var(--navbar-dark);
-    color: var(--light-text);
+    color: var (--light-text);
 }
 
-.nav-links a.dark-mode {
-    color: var(--light-text);
+.nav-links a {
+    color: var(--dark-text);
 }
 
 .main-content.dark-mode {
@@ -352,6 +352,16 @@ body.dark-mode .big-button {
     #dark-mode-toggle {
         margin-top: 10px;
     }
+}
+
+/* ...existing code... */
+
+body.dark-mode .nav-links a {
+    color: var(--light-text);
+}
+
+body.light-mode .nav-links a {
+    color: var(--dark-text);
 }
 
 /* ...existing code... */

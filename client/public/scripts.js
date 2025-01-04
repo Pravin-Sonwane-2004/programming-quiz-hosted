@@ -1,3 +1,46 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const isDarkMode = localStorage.getItem('darkMode') !== 'false'; // Default to dark mode
+
+    if (isDarkMode) {
+        document.body.classList.add('dark-mode');
+        document.querySelector('.navbar').classList.add('dark-mode');
+        document.querySelectorAll('.nav-links a').forEach(link => link.classList.add('dark-mode'));
+        document.querySelector('.main-content').classList.add('dark-mode');
+        document.querySelectorAll('.quiz-button').forEach(button => button.style.color = 'black'); // Change quiz button text color
+    }
+
+    darkModeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        document.querySelector('.navbar').classList.toggle('dark-mode');
+        document.querySelectorAll('.nav-links a').forEach(link => link.classList.toggle('dark-mode'));
+        document.querySelector('.main-content').classList.toggle('dark-mode');
+        document.querySelectorAll('.quiz-button').forEach(button => {
+            if (document.body.classList.contains('dark-mode')) {
+                button.style.color = 'black'; // Change quiz button text color to black
+            } else {
+                button.style.color = ''; // Reset to default color
+            }
+        });
+
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', isDarkMode ? 'true' : 'false');
+    });
+
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    menuToggle.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+    });
+
+    const navItems = document.querySelectorAll('.nav-links a');
+    navItems.forEach(item => {
+        item.addEventListener('click', function() {
+            navLinks.classList.remove('active');
+        });
+    });
+});
+
 // Global variables
 let questions = {};
 let currentLanguage = '';
@@ -20,13 +63,12 @@ async function loadQuestions() {
 
         // Check if questions are loaded for each language
         if (!Object.keys(questions).length) {
-            alert('No questions available for any language.');
+            console.log('No questions available for any language.');
         } else {
             console.log('Questions loaded successfully:', questions);
         }
     } catch (error) {
         console.error('Error loading questions:', error);
-        alert('Unable to load questions. Please try again later.');
     }
 }
 
@@ -99,7 +141,7 @@ function showQuestion() {
             isCountdownActive = false; // Countdown ends, reset active state
             showQuizQuestion(question); // Show the question after countdown
         }
-    }, 200); // Changed from 100 to 1000 for a 1-second interval
+    }, 100); // 1-second interval
 }
 
 // Utility function to shuffle an array
@@ -168,14 +210,14 @@ function selectOption(selected, correctAnswer) {
     setTimeout(() => {
         currentQuestionIndex++;
         isOptionSelected = false; // Reset option selection flag
-        if (currentQuestionIndex % 25 === 0 && currentQuestionIndex < totalQuestions) {
+        if (currentQuestionIndex % 15 === 0 && currentQuestionIndex < totalQuestions) {
             showIntermediatePerformance(); // Show performance after every 5 questions
         } else if (currentQuestionIndex < totalQuestions) {
             showQuestion(); // Show the next question after countdown
         } else {
             showFinalPerformance(); // Show final performance after all questions
         }
-    }, 1000);
+    }, 100);
 }
 
 // Function to evaluate performance based on score
@@ -257,86 +299,6 @@ function enterReviewMode() {
         `;
         quizSection.appendChild(questionElement);
     });
-    
-// filepath: /C:/programming-quiz-hosted/client/public/scripts.js
-document.addEventListener('DOMContentLoaded', () => {
-    const darkModeToggle = document.getElementById('dark-mode-toggle');
-    const isDarkMode = localStorage.getItem('darkMode') === 'true';
-
-    if (isDarkMode) {
-        document.body.classList.add('dark-mode');
-        document.querySelector('.navbar').classList.add('dark-mode');
-        document.querySelectorAll('.nav-links a').forEach(link => link.classList.add('dark-mode'));
-        document.querySelector('.main-content').classList.add('dark-mode');
-        document.querySelectorAll('.quiz-button').forEach(button => button.style.color = 'black'); // Change quiz button text color
-    }
-
-    darkModeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        document.querySelector('.navbar').classList.toggle('dark-mode');
-        document.querySelectorAll('.nav-links a').forEach(link => link.classList.toggle('dark-mode'));
-        document.querySelector('.main-content').classList.toggle('dark-mode');
-        document.querySelectorAll('.quiz-button').forEach(button => {
-            if (document.body.classList.contains('dark-mode')) {
-                button.style.color = 'black'; // Change quiz button text color to black
-            } else {
-                button.style.color = ''; // Reset to default color
-            }
-        });
-
-        const isDarkMode = document.body.classList.contains('dark-mode');
-        localStorage.setItem('darkMode', isDarkMode);
-    });
-
-    document.querySelector('.big-button').addEventListener('click', function() {
-        // ...existing code...
-        
-        // Ensure questions container is not hidden
-        const questionsContainer = document.querySelector('.questions-container');
-        if (questionsContainer) {
-            questionsContainer.style.display = 'block';
-        }
-
-        // Ensure text color is appropriate for visibility
-        if (document.body.classList.contains('dark-mode')) {
-            questionsContainer.style.color = '#fff';
-        } else {
-            questionsContainer.style.color = '#000';
-        }
-    
-        // ...existing code...
-    });
-
-    document.getElementById('toggleButton').addEventListener('click', function() {
-        document.body.classList.toggle('toggled');
-    });
-
-
-    document.getElementById('toggleButton').addEventListener('click', function() {
-        document.body.classList.toggle('toggled');
-    });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    const toggleButton = document.getElementById('dark-mode-toggle');
-    toggleButton.addEventListener('click', function() {
-        document.body.classList.toggle('dark-mode');
-    });
-
-    const menuToggle = document.getElementById('menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    menuToggle.addEventListener('click', function() {
-        navLinks.classList.toggle('active');
-    });
-
-    const navItems = document.querySelectorAll('.nav-links a');
-    navItems.forEach(item => {
-        item.addEventListener('click', function() {
-            navLinks.classList.remove('active');
-        });
-    });
-});
-
 
     const restartButton = document.createElement('button');
     restartButton.className = 'quiz-button';
@@ -350,8 +312,14 @@ function retakeIncorrectQuestions() {
     currentQuestionIndex = 0; // Reset to the first question
     score = 0; // Reset score
 
-    // Shuffle incorrect answers for retake
-    questionsShuffled = incorrectAnswers.sort(() => Math.random() - 0.5);
+    // Use incorrectAnswers array for retake
+    questionsShuffled = incorrectAnswers.map(incorrect => ({
+        question: incorrect.question,
+        options: incorrect.options,
+        answer: incorrect.correctAnswer
+    }));
+
+    totalQuestions = questionsShuffled.length; // Update totalQuestions to the number of incorrect questions
 
     // Reset incorrectAnswers array for a fresh start
     incorrectAnswers = [];
