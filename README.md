@@ -1,133 +1,154 @@
-# Programming Quiz Hosted
+# 🎯 Programming Quiz Hosted
 
-A modern web application for hosting and taking programming quizzes on various languages and topics. Built with a clean, user-friendly interface using HTML, CSS, and JavaScript.
+A modern, responsive web application for taking and hosting programming quizzes across multiple technologies. Designed with a focus on user experience, performance tracking, and accessibility.
 
----
 
-## 🚀 Features
+## 🚀 Key Features
 
-- User registration and login
-- Profile management
-- Interactive quizzes on Java, C, C++, Python, SQL, CSS, DSA, JavaScript, and more
-- Performance tracking and statistics
-- Responsive design (works on desktop and mobile)
-- Social and portfolio links
-- Dark mode toggle
+### 👤 User Management
+- Secure user **registration**, **login**, and **logout**
+- **Profile dashboard** with quiz stats and recent activity
+- Password reset functionality
+
+### 🧠 Quiz System
+- Wide range of topics: **Java, C, C++, Python, SQL, CSS, JavaScript, DSA**
+- Randomized questions with scoring
+- Real-time answer validation
+- Completion summary with performance tracking
+
+### 🌙 UI/UX
+- Fully **responsive** layout (mobile + desktop)
+- **Dark Mode** and **Light Mode** toggle
+- Intuitive navigation bar with route-based highlighting
+
+### 🌐 Social & Developer Links
+- Direct links to GitHub, LinkedIn, YouTube, Instagram, and Portfolio
+- Footer includes **Buy Me a Coffee** support link
 
 ---
 
 ## 📸 Screenshots
 
-<!--
-Add screenshots here
+| Sign Up Page | Login Page |
+|-------------|------------|
+| ![Signup Screenshot](screenshots/signup.png) | ![Login Screenshot](screenshots/login.png) |
 
-![Dashboard Screenshot](screenshots/dashboard.png)
-![Quiz Screenshot](screenshots/quiz.png)
--->
+| Main Page | Quiz Page |
+|-----------|-----------|
+| ![Main Screenshot](screenshots/main.png) | ![Quiz Screenshot](screenshots/quiz.png) |
+
+| Dark Mode | Light Mode |
+|-----------|------------|
+| ![Dark Mode](screenshots/dark.png) | ![Light Mode](screenshots/light.png) |
+
+| Quiz Sample |
+|-------------|
+| ![1st Quiz Screenshot](screenshots/1quiz.png) |
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** HTML, CSS, JavaScript (Vanilla)
-- **Icons:** [Boxicons](https://boxicons.com/), [Tabler Icons](https://tabler.io/icons)
-- **Other:** Node.js (for optional local development), Vercel (for portfolio)
+### 🔧 Frontend
+- **HTML5**, **CSS3**, **JavaScript**
+- Responsive design with Flexbox/Grid
+- Icon Libraries: [Boxicons](https://boxicons.com/), [Tabler Icons](https://tabler.io/icons)
+
+### 🌍 Deployment
+- **Node.js** for development server
+- **Vercel** for frontend hosting
+
+### 🧪 Testing
+- Manual QA testing in Chrome, Firefox, Edge
+- Jest setup configured (basic)
 
 ---
 
-## 🔗 All Links
+## 🔗 Developer & Social Links
 
-- **Portfolio:** [portfolio-react-app-rho.vercel.app](https://portfolio-react-app-rho.vercel.app/)
-- **GitHub:** [Pravin-Sonwane-2004](https://github.com/Pravin-Sonwane-2004)
-- **Buy Me a Coffee:** [buymeacoffee.com/devpravin](https://buymeacoffee.com/devpravin)
-- **Instagram:** [@its.pravin.2004](https://www.instagram.com/its.pravin.2004)
-- **YouTube:** [ProgrammingWithPravin](https://www.youtube.com/@ProgrammingWithPravin)
-- **LinkedIn:** [pravin-sonwane-079a621ba](https://www.linkedin.com/in/pravin-sonwane-079a621ba/)
+- **🌐 Portfolio:** [portfolio-react-app-rho.vercel.app](https://portfolio-react-app-rho.vercel.app/)
+- **💻 GitHub:** [github.com/Pravin-Sonwane-2004](https://github.com/Pravin-Sonwane-2004)
+- **☕ Buy Me a Coffee:** [buymeacoffee.com/devpravin](https://buymeacoffee.com/devpravin)
+- **📷 Instagram:** [@its.pravin.2004](https://www.instagram.com/its.pravin.2004)
+- **🎥 YouTube:** [ProgrammingWithPravin](https://www.youtube.com/@ProgrammingWithPravin)
+- **💼 LinkedIn:** [pravin-sonwane-079a621ba](https://www.linkedin.com/in/pravin-sonwane-079a621ba/)
 
 ---
 
 ## 🧑‍💻 Getting Started
 
-### Prerequisites
-- Node.js and npm (optional, for running a local server)
+### ⚙️ Prerequisites
 
-### Installation & Running Locally
+- [Node.js](https://nodejs.org/en/) (for running local development server)
+- Any modern browser (for static serving)
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/Pravin-Sonwane-2004/programming-quiz-hosted.git
-   cd programming-quiz-hosted
-   ```
-2. **Serve the app locally:**
-   - You can use any static server, e.g. [live-server](https://www.npmjs.com/package/live-server):
-   ```bash
-   npm install -g live-server
-   cd client/public
-   live-server
-   ```
-   - Or simply open `client/public/index.html` in your browser.
+### 🚀 Installation & Running Locally
 
----
+# Clone the repository
+git clone https://github.com/Pravin-Sonwane-2004/programming-quiz-hosted.git
+cd programming-quiz-hosted
 
-## 📚 User Manual
+# Install live server globally if needed
+npm install -g live-server
+npm install
 
-### 1. Registration & Login
-- Go to the **Sign Up** page to create a new account. Fill in your name, email, and password.
-- Already have an account? Use the **Login** page to sign in with your credentials.
-- Forgot your password? Use the **Forgot Password** link on the login page to reset it.
+# Navigate to public directory and start
+cd client/public
+live-server
+Alternatively, open client/public/index.html manually in a browser.
 
-### 2. Navigating the Dashboard
-- After logging in, you will land on the **Dashboard**.
-- Use the navigation bar to access **Home**, **Profile**, **Quiz**, **Login**, and **Register** pages.
-- Your profile icon and performance stats are accessible from the **Profile** page.
 
-### 3. Taking Quizzes
-- Click the **Start Quiz** button or select a quiz topic from the dashboard.
-- Choose from topics like Java, C, C++, Python, SQL, CSS, DSA, JavaScript, and more.
-- Answer the questions. Your progress and score will be tracked automatically.
+make sure before running you have configured these credentials in .env file   
+ive used cluster mongo db here you can use whatever you want but for this project mongodb is best fit  
 
-### 4. Viewing Performance
-- After completing a quiz, view your performance summary.
-- Go to the **Profile** page to see your quiz history and statistics.
+SESSION_SECRET=ADDYOURSESSIONKEY
+MONGO_URI=mongodb+srv://pdb:HM1lIOeNvtd0eUX2@cluster0.0ffrb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+DB_NAME=yourdbname  # Change this if you want to use a different database name on Atlas
+PORT=3000
 
-### 5. Dark Mode
-- Use the **Toggle Dark Mode** button in the navigation bar to switch between light and dark themes.
-- Your preference is saved for future visits.
 
-### 6. Social & Portfolio Links
-- Find quick links to your **Portfolio**, **GitHub**, **Instagram**, **YouTube**, **LinkedIn**, and **Buy Me a Coffee** in the footer of every page.
-- Click any icon to visit the respective page in a new tab.
+📚 User Guide
+1. 🔐 Registration & Login
+Go to Sign Up page → enter name, email, and password
 
----
+After login, you'll land on the Dashboard
 
-## 🤝 Contributing
+Reset password via Forgot Password link if needed
 
-Contributions, issues, and feature requests are welcome!
+2. 🧭 Navigation
+Navbar gives quick access to: Home, Profile, Quiz, Login, Signup
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/YourFeature`)
-3. Commit your changes (`git commit -m 'Add some feature'`)
-4. Push to the branch (`git push origin feature/YourFeature`)
-5. Open a pull request
+Profile icon leads to user details and performance data
 
----
+3. 📝 Taking a Quiz
+Choose a quiz category like Java, C++, Python, etc.
 
-## 📄 License
+Answer each question; your score updates as you progress
 
-This project is licensed under the MIT License.
+4. 📊 Tracking Performance
+View your recent quiz results in the Profile section
 
----
+Performance data is stored per session
 
-## 🙏 Acknowledgements
+5. 🌓 Dark Mode
+Use toggle button in navbar to switch between Light and Dark mode
 
-- [Boxicons](https://boxicons.com/)
-- [Tabler Icons](https://tabler.io/icons)
-- [Vercel](https://vercel.com/)
+Preferences are saved locally
 
----
+6. 🔗 External Links
+Footer has all your developer and social links
 
-## 🖼️ Screenshots
+Click icons to open them in a new tab
 
-<!--
-Leave this space for screenshots. Add your images in a `screenshots/` folder and reference them here.
--->
+🤝 Contributing
+Contributions are welcome! To contribute:
+
+Fork the repo
+
+Create a branch (git checkout -b feature/AmazingFeature)
+
+Commit your changes (git commit -m 'Add feature')
+
+Push to your branch (git push origin feature/AmazingFeature)
+
+Open a Pull Request
