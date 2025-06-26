@@ -1,203 +1,133 @@
----
-
 # Programming Quiz Hosted
 
-And its live you can check it out on : https://hosting-zqt8.onrender.com
-
-Welcome to the **Programming Quiz Hosted** project! This platform is a robust solution for programming enthusiasts to test and enhance their knowledge through interactive quizzes on various programming languages and concepts. Designed with a modern tech stack, it offers a seamless experience for both users and administrators.
+A modern web application for hosting and taking programming quizzes on various languages and topics. Built with a clean, user-friendly interface using HTML, CSS, and JavaScript.
 
 ---
 
-## Table of Contents
+## 🚀 Features
 
-- [Checkout live project](#https://hosting-zqt8.onrender.com)
-- [About the Project](#about-the-project)
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
+- User registration and login
+- Profile management
+- Interactive quizzes on Java, C, C++, Python, SQL, CSS, DSA, JavaScript, and more
+- Performance tracking and statistics
+- Responsive design (works on desktop and mobile)
+- Social and portfolio links
+- Dark mode toggle
 
 ---
 
-## About the Project
+## 📸 Screenshots
 
-The **Programming Quiz Hosted** project is a full-stack web application designed to:
+<!--
+Add screenshots here
 
-- Allow users to register and log in securely.
-- Provide a variety of programming quizzes covering languages like Java, C++, Python, JavaScript, and more.
-- Offer an engaging platform to track progress and learn programming concepts interactively.
-- Provide an admin interface for managing quizzes and users.
-
----
-
-## Features
-
-- **Authentication System**: Secure registration and login using **Node.js** and **JWT**.
-- **Quiz Management**: Admins can create, update, and delete quizzes.
-- **Responsive Design**: Optimized for both desktop and mobile devices using modern CSS techniques.
-- **User Dashboard**: Track quiz progress and view performance history.
-- **Dynamic Content**: Quizzes are fetched from a **MongoDB** database, ensuring flexibility and scalability.
-- **Interactive UI**: Built with **Next.js**, the interface ensures a smooth, dynamic user experience.
-- **Randomized Questions**: Every quiz session has questions in a randomized order.
+![Dashboard Screenshot](screenshots/dashboard.png)
+![Quiz Screenshot](screenshots/quiz.png)
+-->
 
 ---
 
-## Technologies Used
+## 🛠️ Tech Stack
 
-### Frontend:
-- **Next.js**: For server-side rendering and dynamic content.
-- **HTML, CSS, JavaScript**: For styling and interactivity.
-
-### Backend:
-- **Node.js**: Backend server with Express.js.
-- **MongoDB**: NoSQL database for storing quizzes and user information.
-
-### Authentication:
-- **JWT** (JSON Web Token): For secure user authentication.
-
-### Hosting:
-- **Vercel**: Frontend hosting.
-- **MongoDB Atlas**: Cloud database hosting.
+- **Frontend:** HTML, CSS, JavaScript (Vanilla)
+- **Icons:** [Boxicons](https://boxicons.com/), [Tabler Icons](https://tabler.io/icons)
+- **Other:** Node.js (for optional local development), Vercel (for portfolio)
 
 ---
 
-## Getting Started
+## 🔗 All Links
+
+- **Portfolio:** [portfolio-react-app-rho.vercel.app](https://portfolio-react-app-rho.vercel.app/)
+- **GitHub:** [Pravin-Sonwane-2004](https://github.com/Pravin-Sonwane-2004)
+- **Buy Me a Coffee:** [buymeacoffee.com/devpravin](https://buymeacoffee.com/devpravin)
+- **Instagram:** [@its.pravin.2004](https://www.instagram.com/its.pravin.2004)
+- **YouTube:** [ProgrammingWithPravin](https://www.youtube.com/@ProgrammingWithPravin)
+- **LinkedIn:** [pravin-sonwane-079a621ba](https://www.linkedin.com/in/pravin-sonwane-079a621ba/)
+
+---
+
+## 🧑‍💻 Getting Started
 
 ### Prerequisites
+- Node.js and npm (optional, for running a local server)
 
-Ensure you have the following installed:
-- **Node.js** (v16.x or later)
-- **npm** (v8.x or later)
-- **MongoDB** (local or cloud via MongoDB Atlas)
+### Installation & Running Locally
 
----
-
-### Installation
-
-1. **Clone the repository**:
-
+1. **Clone the repository:**
    ```bash
-   git clone https://github.com/Pravin2004P/programming-quiz-hosted.git
-   ```
-
-2. **Navigate to the project directory**:
-
-   ```bash
+   git clone https://github.com/Pravin-Sonwane-2004/programming-quiz-hosted.git
    cd programming-quiz-hosted
    ```
-
-3. **Install dependencies**:
-
+2. **Serve the app locally:**
+   - You can use any static server, e.g. [live-server](https://www.npmjs.com/package/live-server):
    ```bash
-   npm install
+   npm install -g live-server
+   cd client/public
+   live-server
    ```
-
-4. **Set up environment variables**:
-
-   Create a `.env.local` file in the root directory and include:
-
-   ```env
-   DATABASE_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/<dbname>?retryWrites=true&w=majority
-   JWT_SECRET=your_secret_key
-   ```
-
-5. **Start the development server**:
-
-   ```bash
-   npm run dev
-   ```
-
-6. Open your browser and visit `http://localhost:3000`.
+   - Or simply open `client/public/index.html` in your browser.
 
 ---
 
-## Usage
+## 📚 User Manual
 
-### For Users:
-1. Register with a valid email and password.
-2. Log in to access quizzes.
-3. Attempt quizzes and track your progress on the dashboard.
+### 1. Registration & Login
+- Go to the **Sign Up** page to create a new account. Fill in your name, email, and password.
+- Already have an account? Use the **Login** page to sign in with your credentials.
+- Forgot your password? Use the **Forgot Password** link on the login page to reset it.
 
-### For Admins:
-1. Log in with admin credentials.
-2. Manage quizzes and user accounts via the admin panel.
+### 2. Navigating the Dashboard
+- After logging in, you will land on the **Dashboard**.
+- Use the navigation bar to access **Home**, **Profile**, **Quiz**, **Login**, and **Register** pages.
+- Your profile icon and performance stats are accessible from the **Profile** page.
 
----
+### 3. Taking Quizzes
+- Click the **Start Quiz** button or select a quiz topic from the dashboard.
+- Choose from topics like Java, C, C++, Python, SQL, CSS, DSA, JavaScript, and more.
+- Answer the questions. Your progress and score will be tracked automatically.
 
-## Project Structure
+### 4. Viewing Performance
+- After completing a quiz, view your performance summary.
+- Go to the **Profile** page to see your quiz history and statistics.
 
-```
-programming-quiz-hosted/
-├── public/             # Static files (images, CSS, etc.)
-├── src/
-│   ├── components/     # Reusable UI components
-│   ├── pages/          # Next.js pages
-│   ├── services/       # API service files
-│   ├── styles/         # Global and component-specific styles
-│   └── utils/          # Utility functions
-├── models/             # MongoDB models
-├── routes/             # Express.js route handlers
-├── .env.local          # Environment variables
-├── app.js              # Backend server file
-├── package.json        # Project metadata and dependencies
-└── README.md           # Documentation
-```
+### 5. Dark Mode
+- Use the **Toggle Dark Mode** button in the navigation bar to switch between light and dark themes.
+- Your preference is saved for future visits.
+
+### 6. Social & Portfolio Links
+- Find quick links to your **Portfolio**, **GitHub**, **Instagram**, **YouTube**, **LinkedIn**, and **Buy Me a Coffee** in the footer of every page.
+- Click any icon to visit the respective page in a new tab.
 
 ---
 
-## Contributing
+## 🤝 Contributing
 
-We welcome contributions! Follow these steps:
+Contributions, issues, and feature requests are welcome!
 
-1. **Fork the repository**.
-2. Create a new branch:
-
-   ```bash
-   git checkout -b feature/YourFeature
-   ```
-
-3. Commit your changes:
-
-   ```bash
-   git commit -m "Add YourFeature"
-   ```
-
-4. Push to your branch:
-
-   ```bash
-   git push origin feature/YourFeature
-   ```
-
-5. Open a **Pull Request**.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/YourFeature`)
+3. Commit your changes (`git commit -m 'Add some feature'`)
+4. Push to the branch (`git push origin feature/YourFeature`)
+5. Open a pull request
 
 ---
 
-## License
+## 📄 License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+This project is licensed under the MIT License.
 
-```text
-MIT License
+---
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+## 🙏 Acknowledgements
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+- [Boxicons](https://boxicons.com/)
+- [Tabler Icons](https://tabler.io/icons)
+- [Vercel](https://vercel.com/)
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-```
+---
+
+## 🖼️ Screenshots
+
+<!--
+Leave this space for screenshots. Add your images in a `screenshots/` folder and reference them here.
+-->

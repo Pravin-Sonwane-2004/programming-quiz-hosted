@@ -127,6 +127,15 @@ body {
     color: #4c00ff;
     font-size: 24px;
     text-decoration: none;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.social-icons a i {
+    font-size: 24px !important;
+    color: inherit;
+    pointer-events: auto;
+    cursor: pointer;
 }
 
 .social-icons a:hover {

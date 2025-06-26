@@ -927,7 +927,7 @@
               "None of the above"
             ],
             "answer": "A class is a blueprint, an object is an instance of a class"
-          },
+          },  
           {
             "question": "What is the purpose of the @Override annotation in Java?",
             "options": [

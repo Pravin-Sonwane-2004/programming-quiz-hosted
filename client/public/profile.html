@@ -8,6 +8,8 @@
     <title>Profile Page</title>
     <link rel="stylesheet" href="profile.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <!-- Tabler Icons CDN -->
+    <link href="https://unpkg.com/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet">
 </head>
 
 <body class="dark-mode">
@@ -32,6 +34,20 @@
                 <h2>Profile Details</h2>
                 <p><strong>Email:</strong> <span id="email">user@example.com</span></p>
                 <p><strong>Joined:</strong> <span id="joinedDate">01/01/2023</span></p>
+            </div>
+
+            <div class="edit-profile-section">
+                <h2>Edit Profile</h2>
+                <form id="editProfileForm" onsubmit="return updateProfile(event)">
+                    <label for="editUsername">Username:</label>
+                    <input type="text" id="editUsername" name="editUsername" required><br>
+                    <label for="editEmail">Email:</label>
+                    <input type="email" id="editEmail" name="editEmail" required><br>
+                    <label for="editPassword">New Password:</label>
+                    <input type="password" id="editPassword" name="editPassword" placeholder="Leave blank to keep current"><br>
+                    <button type="submit">Save Changes</button>
+                    <div id="profile-update-message" style="margin-top:10px;"></div>
+                </form>
             </div>
 
             <div class="performance-section">
@@ -71,6 +87,9 @@
                     document.getElementById('email').textContent = data.email;
                     document.getElementById('joinedDate').textContent = new Date(data.joinedDate).toLocaleDateString();
                     loadPerformanceData(data.performance);
+                    // Pre-fill edit form
+                    document.getElementById('editUsername').value = data.username;
+                    document.getElementById('editEmail').value = data.email;
                 })
                 .catch(error => console.error('Error fetching user profile:', error));
         }
@@ -78,6 +97,10 @@
         function loadPerformanceData(performance) {
             const performanceSection = document.getElementById('performanceData');
             performanceSection.innerHTML = '';
+            if (!performance || performance.length === 0) {
+                performanceSection.innerHTML = '<p>No performance data available.</p>';
+                return;
+            }
             performance.forEach(item => {
                 const div = document.createElement('div');
                 div.classList.add('performance-item');
@@ -89,8 +112,47 @@
                 performanceSection.appendChild(div);
             });
         }
+
+        function updateProfile(event) {
+            event.preventDefault();
+            const username = document.getElementById('editUsername').value;
+            const email = document.getElementById('editEmail').value;
+            const password = document.getElementById('editPassword').value;
+            const messageDiv = document.getElementById('profile-update-message');
+            messageDiv.textContent = '';
+            fetch('/api/user/profile', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, email, password })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    messageDiv.style.color = 'green';
+                    messageDiv.textContent = 'Profile updated successfully!';
+                    fetchUserProfile();
+                } else {
+                    messageDiv.style.color = 'red';
+                    messageDiv.textContent = data.message || 'Failed to update profile.';
+                }
+            })
+            .catch(() => {
+                messageDiv.style.color = 'red';
+                messageDiv.textContent = 'Error updating profile.';
+            });
+            return false;
+        }
     </script>
     <script src="scripts.js"></script>
+<footer class="footer">
+        <div style="text-align:center; margin-top:30px;">
+            <a href="https://buymeacoffee.com/devpravin" target="_blank" style="color:inherit; text-decoration:none; font-size:1.1em; display:inline-flex; align-items:center; gap:6px;">
+                <i class="ti ti-coffee" style="font-size:1.5em;"></i> Buy me a coffee
+            </a>
+        </div>
+    </footer>
 </body>
 
 </html>

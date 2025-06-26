@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const darkModeToggle = document.getElementById('dark-mode-toggle');
-    const isDarkMode = localStorage.getItem('darkMode') !== 'false'; // Default to dark mode
+    // Default to light mode unless user previously enabled dark mode
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
 
     if (isDarkMode) {
         document.body.classList.add('dark-mode');
@@ -8,6 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.nav-links a').forEach(link => link.classList.add('dark-mode'));
         document.querySelector('.main-content').classList.add('dark-mode');
         document.querySelectorAll('.quiz-button').forEach(button => button.style.color = 'black'); // Change quiz button text color
+    } else {
+        document.body.classList.remove('dark-mode');
+        document.querySelector('.navbar').classList.remove('dark-mode');
+        document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('dark-mode'));
+        document.querySelector('.main-content').classList.remove('dark-mode');
+        document.querySelectorAll('.quiz-button').forEach(button => button.style.color = '');
     }
 
     darkModeToggle.addEventListener('click', () => {
@@ -217,7 +224,7 @@ function selectOption(selected, correctAnswer) {
         } else {
             showFinalPerformance(); // Show final performance after all questions
         }
-    }, 100);
+    }, 2000);
 }
 
 // Function to evaluate performance based on score

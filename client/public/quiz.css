@@ -513,6 +513,10 @@ body.dark-mode .footer {
 
 /* Add any other elements that need dark mode styling */
 
+.social-icons a i {
+    font-size: 3.5em !important;
+}
+
 /* Ensure the questions container is always displayed and text color is appropriate */
 .questions-container {
     display: block;

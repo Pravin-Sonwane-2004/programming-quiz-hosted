@@ -31,8 +31,9 @@ body {
 }
 /* filepath: /C:/programming-quiz-hosted/client/public/styles.css */
 body.dark-mode {
-    background-color: var(--dark-bg);
-    color: var(--light-text);
+    background-color: #181a20;
+    color: #e0e6ed;
+    transition: background 0.3s, color 0.3s;
 }
 
 .navbar.dark-mode {
@@ -231,21 +232,33 @@ body.dark-mode {
 }
 
 body.dark-mode .navbar {
-    background-color: var(--navbar-dark);
+    background-color: #23272f;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.7);
 }
 
 body.dark-mode .quiz-container {
-    background-color: var(--dark-bg);
+    background-color: #23272f;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.5);
+    border-radius: 10px;
 }
 
 body.dark-mode .quiz-button {
-    background-color: #333333;
+    background-color: #2d72d9;
     color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    border: 1px solid #3a3f4b;
+}
+body.dark-mode .quiz-button:hover {
+    background-color: #1a4a8a;
+    color: #e0e6ed;
+    box-shadow: 0 4px 16px #1a4a8a44;
 }
 
 body.dark-mode .footer {
-    background-color: var(--navbar-dark);
-    color: var(--light-text);
+    background-color: #23272f;
+    color: #e0e6ed;
+    border-top: 1px solid #23272f;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.7);
 }
 
 /* Add any other elements that need dark mode styling */
@@ -271,8 +284,10 @@ body.dark-mode .questions-container {
 }
 
 body.dark-mode .quiz-question {
-    background-color: var(--dark-bg); /* Dark background for dark mode */
-    color: #fff; /* White text color for dark mode */
+    background-color: #23272f;
+    color: #e0e6ed;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.6);
+    border: 1px solid #23272f;
 }
 
 .option {
@@ -285,8 +300,21 @@ body.dark-mode .quiz-question {
 }
 
 body.dark-mode .option {
-    background-color: #ebdfdf; /* Dark background for options in dark mode */
-    color: #000000; /* White text color for options in dark mode */
+    background-color: #23272f;
+    color: #e0e6ed;
+    border: 1px solid #353b48;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    transition: background 0.2s, color 0.2s;
+}
+body.dark-mode .option:hover {
+    background-color: #2d72d9;
+    color: #fff;
+    border-color: #2d72d9;
+}
+body.dark-mode .option.selected {
+    background-color: #1a4a8a;
+    color: #fff;
+    border-color: #1a4a8a;
 }
 
 /* Styles for dark mode toggle button */
@@ -307,13 +335,16 @@ body.dark-mode .option {
 
 /* Dark mode styles for the toggle button */
 body.dark-mode #dark-mode-toggle {
-    border-color: var(--light-text);
-    color: var(--light-text);
+    border-color: #e0e6ed;
+    color: #e0e6ed;
+    background: #23272f;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
 }
 
 body.dark-mode #dark-mode-toggle:hover {
-    background-color: var(--light-text);
-    color: var(--dark-bg);
+    background-color: #2d72d9;
+    color: #fff;
+    border-color: #2d72d9;
 }
 
 body.dark-mode.feature {
@@ -323,9 +354,10 @@ body.dark-mode.feature {
 }
 
 body.dark-mode .feature {
-    background-color: var(--navbar-dark);
-    color: var(--light-text);
-    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+    background-color: #23272f;
+    color: #e0e6ed;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.6);
+    border: 1px solid #23272f;
 }
 
 body.dark-mode .big-button {
@@ -355,6 +387,10 @@ body.dark-mode .big-button {
 }
 
 /* ...existing code... */
+
+.social-icons a i {
+    font-size: 3.5em !important;
+}
 
 body.dark-mode .nav-links a {
     color: var(--light-text);
